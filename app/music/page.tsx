@@ -48,72 +48,27 @@ const sax = [
   },
 ];
 
+import Records from "@/components/Records";
+
 const Music = () => {
-    return (
-      <main className="flex items-center justify-center bg-pink-200">
-        <div className="w-full h-full mt-20">
-          <h1 className="text-center text-4xl">MUSIC</h1>
-          <div className="flex flex-col justify-center items-center">
-            <h2 className="">LAPTOP</h2>
-            {laptop.map((album, index) => (
-              <div key={index} className="ml-20 relative z-0 scroll-smooth">
-                <iframe
-                  key={index}
-                  src={album.src}
-                  seamless
-                  allow="autoplay; encrypted-media"
-                  width={350}
-                  height={350}
-                  className="z-0 pointer-events-auto"
-                />
-                {/* Invisible pseudo-element to enable scrolling */}
-                <div className="absolute inset-0 w-full h-full z-40 pointer-events-none" />
-              </div>
-            ))}
+  return (
+    <main className="flex items-center justify-center bg-pink-200">
+      <div className="w-full h-full mt-20">
+        <h1 className="text-center text-4xl">MUSIC</h1>
+        <div className="flex flex-col justify-center items-center">
+          <h2 className="">LAPTOP</h2>
+          <Records records={laptop} />
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-            
-            <h2>SAX</h2>
-            {sax.map((album, index) => (
-              <div key={index} className="ml-20 relative">
-                <iframe
-                  key={index}
-                  src={album.src}
-                  seamless
-                  allow="autoplay; encrypted-media"
-                  width={350}
-                  height={350}
-                />
-                {/* Invisible pseudo-element to enable scrolling */}
-                <div className="absolute inset-0 w-full h-full z-40" />
-              </div>
-            ))}
-          </div>
-  
-          <h2>aup</h2>
+          <h2>SAX</h2>
+          <Records records={sax} />
         </div>
-      </main>
-    );
-  };
-  
-  export default Music;
+
+        <h2>aup</h2>
+      </div>
+    </main>
+  );
+};
+
+export default Music;
 
 //sax, code

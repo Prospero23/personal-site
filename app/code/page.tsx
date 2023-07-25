@@ -1,6 +1,6 @@
 export default function Code() {
   return (
-    <main className="flex items-center bg-pink-100 text-black">
+    <main className="flex items-center bg-pink-200 text-black">
       <div className="mt-20 justify-center w-screen h-screen">
         <h1 className="text-center">Code</h1>
 
