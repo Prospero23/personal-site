@@ -8,7 +8,6 @@ import { OrbitControls, Text, Billboard, useCursor } from "@react-three/drei";
 import { useLoader } from "@react-three/fiber";
 import { OBJLoader } from "three/examples/jsm/loaders/OBJLoader";
 import { TextureLoader } from "three";
-import { useRouter } from "next/router";
 
 // <Text color={"purple"} position={[0,-5,-10]} rotation={[0, 0.0, 0.8]}>Coding</Text>
 //
