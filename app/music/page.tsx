@@ -54,7 +54,7 @@ import MusicCanvas from "@/components/MusicCanvas"
 const Music = () => {
   return (
     <main className="flex items-center justify-center bg-pink-200 w-screen h-screen">
-      <MusicCanvas albums={laptop}/>
+      <MusicCanvas sax={sax} laptop={laptop}/>
     </main>
   );
 };

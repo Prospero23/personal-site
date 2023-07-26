@@ -6,14 +6,13 @@ import { useRef, useState } from "react";
 
 function Record({ position, key, src }) {
   const myMesh = useRef();
-  const {camera} = useThree()
+  const { camera } = useThree();
 
   let angle = 0.3;
 
-   useFrame(({ clock }) => {
-     myMesh.current.lookAt(camera.position);
-
-   });
+  useFrame(({ clock }) => {
+    myMesh.current.lookAt(camera.position);
+  });
 
   return (
     <Billboard position={position} ref={myMesh} follow>
@@ -26,43 +25,61 @@ function Record({ position, key, src }) {
 
 export default function RecordCircle({ records }) {
   const numPlanes = records.length;
-  const radius = 2; 
-  const offset = -0.3 //maybe make offset a prop
+  const radius = 2;
+  const offset = -0.3; //maybe make offset a prop
   const fullSpeed = 0.1;
 
   const [goalRotation, setGoalRotation] = useState(offset);
   const [startingTime, setStartingTime] = useState(0);
   const [rotationSpeed, setRotationSpeed] = useState(fullSpeed);
-  //maybe add back isRotating state
+  const [isBackward, setIsBackward] = useState(false);
+  const [isRotating, setIsRotating] = useState(false);
 
   const myGroup = useRef();
   const { clock } = useThree();
 
-  const handleClick = () => {
+  const handleClickBackward = () => {
     // Start the rotation if not already rotating
-
-    setStartingTime(clock.getElapsedTime());
-    setGoalRotation(myGroup.current.rotation.y + (Math.PI * 2) / numPlanes); // Rotate by 360 degrees (2 * Math.PI)  \divided by numPlanes
-    setRotationSpeed(fullSpeed) // reset speed
+    if (!isRotating) {
+      console.log('rarara')
+      setIsRotating(true);
+      setIsBackward(true);
+      setStartingTime(clock.getElapsedTime());
+      setGoalRotation(myGroup.current.rotation.y + (Math.PI * 2) / numPlanes); // Rotate by 360 degrees (2 * Math.PI)  \divided by numPlanes
+      setRotationSpeed(fullSpeed); // reset speed
+    }
+  };
+  const handleClickForward = () => {
+    // Start the rotation if not already rotating
+    if (!isRotating) {
+      setIsRotating(true);
+      setIsBackward(false);
+      setStartingTime(clock.getElapsedTime());
+      setGoalRotation(myGroup.current.rotation.y - (Math.PI * 2) / numPlanes); // Rotate by 360 degrees (2 * Math.PI)  \divided by numPlanes
+      setRotationSpeed(-fullSpeed); // reset speed
+    }
   };
 
   useFrame(({ clock }) => {
-    
-    const decelerationFactor = 0.974; // Adjust this value to control the deceleration rate
+    const decelerationFactor = 0.9745; // Adjust this value to control the deceleration rate
+    const minSpeed = 0.00001
 
-    if (myGroup.current.rotation.y < goalRotation) {
-      setRotationSpeed(rotationSpeed * decelerationFactor)
+    if (
+      (isBackward && myGroup.current.rotation.y < goalRotation) ||
+      (!isBackward && myGroup.current.rotation.y > goalRotation)
+    ) {
+      setRotationSpeed(rotationSpeed * decelerationFactor);
       // Continue rotating until reaching the goal rotation
       const elapsedTime = clock.elapsedTime - startingTime;
       myGroup.current.rotation.y += elapsedTime * rotationSpeed;
     } else {
-      // Stop rotating once the goal rotation is reached
+      setIsRotating(false);
     }
   });
 
   return (
     <>
-      <group ref={myGroup} position={[0, 0.1, 1.8]} rotation={[0,offset,0]}>
+      <group ref={myGroup} position={[0, 0.1, 1.8]} rotation={[0, offset, 0]}>
         {records.map((record, i) => {
           const angle = (i / numPlanes) * Math.PI * 2;
           const x = Math.cos(angle) * radius;
@@ -74,10 +91,14 @@ export default function RecordCircle({ records }) {
           return <Record position={[x, y, z]} key={i} src={record.src} />;
         })}
       </group>
-      <Text position={[4, -3, 0]} onClick={handleClick} color={"white"}>
+      <Text position={[4, -3, 0]} onClick={handleClickForward} color={"white"}>
         Next
       </Text>
-      <Text position={[-4, -3, 0]} onClick={handleClick} color={"white"}>
+      <Text
+        position={[-4, -3, 0]}
+        onClick={handleClickBackward}
+        color={"white"}
+      >
         Previous
       </Text>
     </>
