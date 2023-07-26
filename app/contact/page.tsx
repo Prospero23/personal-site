@@ -1,6 +1,9 @@
 "use client";
 
 import { useForm, SubmitHandler } from "react-hook-form";
+import emailjs from '@emailjs/browser';
+import { useRouter } from 'next/navigation'
+
 
 interface FormData {
   name: string;
@@ -9,6 +12,8 @@ interface FormData {
 }
 
 export default function Contact() {
+  const router = useRouter()
+
   const {
     register,
     handleSubmit,
@@ -16,18 +21,20 @@ export default function Contact() {
   } = useForm<FormData>();
 
   const onSubmit: SubmitHandler<FormData> = async (data) => {
-    try {
-      const res = await fetch('/api/contact', {
-        method: 'POST',
-        body: JSON.stringify({data}),
-        headers: {
-          'content-type': 'application/json',
 
-        }
-      })
+    const sendValues = {
+      name: data.name,
+      email: data.email,
+      message: data.message,
+  };
+
+    try {
+      //const res = await emailjs.send('service_l0x9ygh','template_rh2vcj7', sendValues, 'Kl4Y4LLfBRmRE2afA' )
+      router.push('/contact/confirm')
     } catch(err:any){
       console.log('Error', err)
     }
+
   };
 
   return (
