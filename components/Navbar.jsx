@@ -5,12 +5,13 @@ import { useState } from "react";
 
 export default function Navbar() {
   const [navbar, setNavbar] = useState(false);
+  //const [currentPage, setCurrentPage] = useState('home')
   return (
     <nav className="w-full z-50 absolute">
       <div className="justify-between px-4 mx-auto lg:max-w-7xl md:items-center md:flex md:px-8 z-20">
         <div>
           <div className="flex items-center justify-between py-3 md:py-5 md:block">
-              <Link href='/' className="text-2xl text-white font-bold">
+              <Link href='/' className="text-2xl text-white font-bold hover:bg-pink-400">
                 Ben Eidson
               </Link>
 
@@ -59,13 +60,13 @@ export default function Navbar() {
             }`}
           >
             <ul className="items-center justify-center space-y-8 md:flex md:space-x-6 md:space-y-0">
-              <li className="text-white">
+              <li className="text-white hover:bg-pink-400">
                 <Link href="/code">Code</Link>
               </li>
-              <li className="text-white">
+              <li className="text-white hover:bg-pink-400">
                 <Link href="/music">Music</Link>
               </li>
-              <li className="text-white">
+              <li className="text-white hover:bg-pink-400">
                 <Link href="/contact">Contact</Link>
               </li>
             </ul>
