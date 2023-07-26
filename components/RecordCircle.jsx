@@ -6,14 +6,14 @@ import { useRef, useState } from "react";
 
 function Record({ position, key, src }) {
   const myMesh = useRef();
+  const {camera} = useThree()
 
   let angle = 0.3;
 
-  // useFrame(({ clock }) => {
-  //   const speed = 0.1;
-  //   const radius = 3
-  //   myMesh.current.rotation.x = clock.elapsedTime() * speed
-  // });
+   useFrame(({ clock }) => {
+     myMesh.current.lookAt(camera.position);
+
+   });
 
   return (
     <Billboard position={position} ref={myMesh} key={key} follow>
@@ -26,8 +26,8 @@ function Record({ position, key, src }) {
 
 export default function RecordCircle({ records }) {
   const numPlanes = records.length;
-  const radius = 2;
-  const offset = -0.3
+  const radius = 2; 
+  const offset = -0.3 //maybe make offset a prop
 
   const [goalRotation, setGoalRotation] = useState(offset);
   const [startingTime, setStartingTime] = useState(0);
