@@ -8,7 +8,7 @@ import {
   useCursor,
   Html,
 } from "@react-three/drei";
-import Record from "@/components/Record";
+import RecordCircle from "@/components/RecordCircle";
 
 export default function MusicCanvas({ albums }) {
   return (
@@ -17,7 +17,8 @@ export default function MusicCanvas({ albums }) {
       <ambientLight intensity={0.1} />
       <directionalLight color="red" position={[0, 0, 5]} />
       <PresentationControls global polar={[-0.4, 0.2]} azimuth={[-0.4, 0.2]}>
-        <Record />
+        <RecordCircle records={albums} />
+        
       </PresentationControls>
     </Canvas>
   );
