@@ -1,6 +1,6 @@
 "use client";
 
-import { Html, Text, Billboard } from "@react-three/drei";
+import { Html, Text, Billboard, PresentationControls } from "@react-three/drei";
 import { useFrame, useThree } from "@react-three/fiber";
 import { useRef, useState } from "react";
 
@@ -41,7 +41,7 @@ export default function RecordCircle({ records }) {
   const handleClickBackward = () => {
     // Start the rotation if not already rotating
     if (!isRotating) {
-      console.log('rarara')
+      console.log("rarara");
       setIsRotating(true);
       setIsBackward(true);
       setStartingTime(clock.getElapsedTime());
@@ -62,7 +62,7 @@ export default function RecordCircle({ records }) {
 
   useFrame(({ clock }) => {
     const decelerationFactor = 0.9745; // Adjust this value to control the deceleration rate
-    const minSpeed = 0.00001
+    const minSpeed = 0.00001;
 
     if (
       (isBackward && myGroup.current.rotation.y < goalRotation) ||
@@ -79,25 +79,29 @@ export default function RecordCircle({ records }) {
 
   return (
     <>
-      <group ref={myGroup} position={[0, 0.1, 1.8]} rotation={[0, offset, 0]}>
-        {records.map((record, i) => {
-          const angle = (i / numPlanes) * Math.PI * 2;
-          const x = Math.cos(angle) * radius;
-          const y = 0;
-          const z = Math.sin(angle) * radius;
+      <PresentationControls global polar={[-0.4, 0.2]} azimuth={[-0.4, 0.2]}>
+        <group ref={myGroup} position={[0, 0.1, 1.8]} rotation={[0, offset, 0]}>
+          {records.map((record, i) => {
+            const angle = (i / numPlanes) * Math.PI * 2;
+            const x = Math.cos(angle) * radius;
+            const y = 0;
+            const z = Math.sin(angle) * radius;
 
-          const rotateY = angle; // Add Math.PI/2 to make it face outward
+            const rotateY = angle; // Add Math.PI/2 to make it face outward
 
-          return <Record position={[x, y, z]} key={i} src={record.src} />;
-        })}
-      </group>
-      <Text position={[4, -3, 0]} onClick={handleClickForward} color={"white"}>
+            return <Record position={[x, y, z]} key={i} src={record.src} />;
+          })}
+        </group>
+      </PresentationControls>
+
+      <Text position={[1, -3, 0]} onClick={handleClickForward} color={'black'} fontSize={0.3}>
         Next
       </Text>
       <Text
-        position={[-4, -3, 0]}
+        position={[-1, -3, 0]}
         onClick={handleClickBackward}
-        color={"white"}
+        color={"black"}
+        fontSize={0.3}
       >
         Previous
       </Text>

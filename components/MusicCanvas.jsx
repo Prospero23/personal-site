@@ -1,35 +1,45 @@
 "use client";
 
-
 import { useState } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
-import {
-  PresentationControls,
-  Text,
-  useCursor,
-} from "@react-three/drei";
+import { Text, useCursor } from "@react-three/drei";
 import RecordCircle from "@/components/RecordCircle";
 
 export default function MusicCanvas({ sax, laptop }) {
-   const [isLaptop, setIsLaptop]  = useState(false)
+  const [isLaptop, setIsLaptop] = useState(false);
 
-   const handleClick = () =>{
-    setIsLaptop(!isLaptop)
-   }
+  const handleClickLaptop = () => {
+    setIsLaptop(true);
+  };
+  const handleClickSax = () => {
+    setIsLaptop(false);
+  };
 
   return (
     <>
-    <button className="z-10" onClick={handleClick}>test</button>
-    <Canvas>
-      <color attach="background" args={["pink"]} />
-      <ambientLight intensity={0.1} />
-      <directionalLight color="red" position={[0, 0, 5]} />
-      <PresentationControls global polar={[-0.4, 0.2]} azimuth={[-0.4, 0.2]}>
-        {isLaptop ? <RecordCircle records={laptop}/> : <RecordCircle records={sax}/>}
-        
-      </PresentationControls>
-
-    </Canvas>
+      <div className="absolute z-10 right-16 bottom-10 text-4xl border border-solid rounded-lg p-4 bg-green-400">
+        <button
+          className={`z-10 block ${!isLaptop ? "underline text-purple-600" : "text-white"} hover:text-purple-600`}
+          onClick={handleClickSax}
+        >
+          Sax
+        </button>
+        <button
+          className={`z-10 block ${isLaptop ? "underline text-red-600" : "text-white"} hover:text-red-600`}
+          onClick={handleClickLaptop}
+        >
+          Laptop
+        </button>
+      </div>
+      <Canvas>
+        <color attach="background" args={["pink"]} />
+        <ambientLight intensity={1} color={"white"} />
+        {isLaptop ? (
+          <RecordCircle records={laptop} />
+        ) : (
+          <RecordCircle records={sax} />
+        )}
+      </Canvas>
     </>
   );
 }
