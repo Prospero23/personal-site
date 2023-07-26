@@ -49,22 +49,12 @@ const sax = [
 ];
 
 import Records from "@/components/Records";
+import MusicCanvas from "@/components/MusicCanvas"
 
 const Music = () => {
   return (
-    <main className="flex items-center justify-center bg-pink-200">
-      <div className="w-full h-full mt-20">
-        <h1 className="text-center text-4xl">MUSIC</h1>
-        <div className="flex flex-col justify-center items-center">
-          <h2 className="">LAPTOP</h2>
-          <Records records={laptop} />
-
-          <h2>SAX</h2>
-          <Records records={sax} />
-        </div>
-
-        <h2>aup</h2>
-      </div>
+    <main className="flex items-center justify-center bg-pink-200 w-screen h-screen">
+      <MusicCanvas albums={laptop}/>
     </main>
   );
 };
@@ -72,3 +62,18 @@ const Music = () => {
 export default Music;
 
 //sax, code
+
+
+
+{/* <div className="w-full h-full mt-20">
+<h1 className="text-center text-4xl">MUSIC</h1>
+<div className="flex flex-col justify-center items-center">
+  <h2 className="">LAPTOP</h2>
+  <Records records={laptop} />
+
+  <h2>SAX</h2>
+  <Records records={sax} />
+</div>
+
+<h2>aup</h2>
+</div> */}
