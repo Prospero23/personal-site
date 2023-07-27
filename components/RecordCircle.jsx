@@ -91,22 +91,24 @@ export default function RecordCircle({ records }) {
           })}
         </group>
       </PresentationControls>
-      <Html>
-        <div className="z-10 mt-80 text-4xl flex justify-between w-28">
+      <Html position={[-1, -2.5,0]} className="text-2xl lg:text-4xl">
           <button
-            className="hover:underline inline"
+            className="hover:underline"
             onClick={handleClickBackward}
           >
             PREV
           </button>
+          </Html>
+          <Html position={[1, -2.5, 0]} className="text-2xl lg:text-4xl">
           <button
-            className="hover:underline inline"
+            className="hover:underline"
             onClick={handleClickForward}
           >
             NEXT
           </button>
-        </div>
-      </Html>
+          </Html>
+        
+     
     </>
   );
 }
