@@ -39,7 +39,7 @@ export default function Contact() {
 
   return (
     /* "handleSubmit" will validate your inputs before invoking "onSubmit" */
-    <main className="flex justify-center w-screen h-screen bg-pink-200">
+    <main className="flex justify-center w-screen h-screen bg-customPink">
       <form
         onSubmit={handleSubmit(onSubmit)}
         className="m-auto text-white rounded-md border-white border-2 p-8 px-24"
