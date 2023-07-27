@@ -1,8 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Canvas, useFrame } from "@react-three/fiber";
-import { Text, useCursor } from "@react-three/drei";
+import { Canvas } from "@react-three/fiber";
 import RecordCircle from "@/components/RecordCircle";
 
 export default function MusicCanvas({ sax, laptop }) {
@@ -17,15 +16,19 @@ export default function MusicCanvas({ sax, laptop }) {
 
   return (
     <>
-      <div className="absolute z-10 right-16 bottom-10 text-4xl border border-solid rounded-lg p-4 bg-green-400">
+      <div className="absolute flex justify-center flex-col z-10 right-4 bottom-4 sm:right-16 sm:bottom-14 text-2xl sm:text-4xl lg:text-6xl xl:text-8xl rounded-lg p-4 lg:p-8 bg-green-400">
         <button
-          className={`z-10 block ${!isLaptop ? "underline text-purple-600" : "text-white"} hover:text-purple-600`}
+          className={`z-10 block ${
+            !isLaptop ? "underline text-purple-600" : "text-white"
+          } hover:text-purple-600`}
           onClick={handleClickSax}
         >
           Sax
         </button>
         <button
-          className={`z-10 block ${isLaptop ? "underline text-red-600" : "text-white"} hover:text-red-600`}
+          className={`z-10 block ${
+            isLaptop ? "underline text-red-600" : "text-white"
+          } hover:text-red-600`}
           onClick={handleClickLaptop}
         >
           Laptop

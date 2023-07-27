@@ -1,12 +1,6 @@
 "use client";
 
-import {
-  Html,
-  Text,
-  Billboard,
-  PresentationControls,
-  useCursor,
-} from "@react-three/drei";
+import { Html, Billboard, PresentationControls } from "@react-three/drei";
 import { useFrame, useThree } from "@react-three/fiber";
 import { useRef, useState } from "react";
 
@@ -38,8 +32,6 @@ export default function RecordCircle({ records }) {
   const [rotationSpeed, setRotationSpeed] = useState(fullSpeed);
   const [isBackward, setIsBackward] = useState(false);
   const [isRotating, setIsRotating] = useState(false);
-  const [hovered, setHovered] = useState([false, false]);
-  useCursor(hovered /*'pointer', 'auto'*/);
 
   const myGroup = useRef();
   const { clock } = useThree();
@@ -100,38 +92,21 @@ export default function RecordCircle({ records }) {
         </group>
       </PresentationControls>
       <Html>
-        <div className="z-10 mt-80">
-          <button className="hover:underline inline" onClick={handleClickForward}>Next</button>
-          <button className="hover:underline inline" onClick={handleClickBackward}>Prev</button>
+        <div className="z-10 mt-80 text-4xl flex justify-between w-28">
+          <button
+            className="hover:underline inline"
+            onClick={handleClickBackward}
+          >
+            PREV
+          </button>
+          <button
+            className="hover:underline inline"
+            onClick={handleClickForward}
+          >
+            NEXT
+          </button>
         </div>
       </Html>
     </>
   );
-}
-
-// const angle = (i / numPlanes) * Math.PI * 2;
-// const x = Math.cos(angle) * radius;
-// const z = Math.sin(angle) * radius;
-
-{
-  /* <Text
-position={[1, -3, 0]}
-onClick={handleClickForward}
-color={"black"}
-fontSize={0.3}
-onPointerOver={() => setHovered([true, hovered[0]])}
-onPointerOut={() => setHovered([false, hovered[0]])}
->
-Next
-</Text>
-<Text
-position={[-1, -3, 0]}
-onClick={handleClickBackward}
-color={"black"}
-fontSize={0.3}
-onPointerOver={() => setHovered([true, hovered[1]])}
-onPointerOut={() => setHovered([false, hovered[1]])}
->
-Previous
-</Text> */
 }
