@@ -62,7 +62,6 @@ export default function Contact() {
             Email
           </label>
           <input
-            defaultValue="email"
             type="email"
             id="contact"
             {...register("email", { required: true })}

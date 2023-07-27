@@ -78,7 +78,8 @@ export default function Ben() {
   }
 
   return(
-    <>
+    <> 
+    <group position={[0,-2,-4]} rotation={[0.4, 2.8, 0.0]}>
     {textData.map((text, i) => (
         <Text
           position={text.position}
@@ -96,6 +97,8 @@ export default function Ben() {
           {text.type}
         </Text>
       ))}
+      </group>
       </>
   )
 }
+//maybe flip some of the text
