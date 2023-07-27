@@ -4,6 +4,7 @@ import { Html, Billboard } from "@react-three/drei";
 import { useFrame, useThree } from "@react-three/fiber";
 import { useRef, useState } from "react";
 
+
 function Record({ position, key, src }) {
   const myMesh = useRef();
   const { camera } = useThree();
@@ -77,6 +78,8 @@ export default function RecordCircle({ records }) {
 
   return (
     <>
+            {/* <PresentationControls global polar={[-0.4, 0.2]} azimuth={[-0.4, 0.2]}> */}
+
         <group ref={myGroup} position={[0, 0.1, 1.8]} rotation={[0, offset, 0]}>
           {records.map((record, i) => {
             const angle = (i / numPlanes) * Math.PI * 2;
@@ -89,6 +92,7 @@ export default function RecordCircle({ records }) {
             return <Record position={[x, y, z]} key={i} src={record.src} />;
           })}
         </group>
+        {/* </PresentationControls> */}
       <Html position={[-1, -2.5,0]} className="text-2xl lg:text-4xl">
           <button
             className="hover:underline"

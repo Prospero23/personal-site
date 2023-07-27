@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { Canvas } from "@react-three/fiber";
 import RecordCircle from "@/components/RecordCircle";
-import { PresentationControls } from "@react-three/drei";
+import { OrbitControls } from "@react-three/drei";
 
 
 export default function MusicCanvas({ sax, laptop }) {
@@ -39,14 +39,13 @@ export default function MusicCanvas({ sax, laptop }) {
       <Canvas>
         <color attach="background" args={["pink"]} />
         <ambientLight intensity={1} color={"white"} />
-        <PresentationControls global polar={[-0.4, 0.2]} azimuth={[-0.4, 0.2]}>
 
         {isLaptop ? (
           <RecordCircle records={laptop}/>
         ) : (
           <RecordCircle records={sax}/>
         )}
-        </PresentationControls>
+        <OrbitControls/>
       </Canvas>
     </>
   );
