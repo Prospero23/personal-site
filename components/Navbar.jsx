@@ -6,14 +6,21 @@ import { useState } from "react";
 export default function Navbar() {
   const [navbar, setNavbar] = useState(false);
   //const [currentPage, setCurrentPage] = useState('home')
+
+  const handleClick = () => {
+    setNavbar(false);
+  };
   return (
     <nav className="w-full z-50 absolute">
       <div className="justify-between px-4 mx-auto lg:max-w-7xl md:items-center md:flex md:px-8 z-20">
         <div>
           <div className="flex items-center justify-between py-3 md:py-5 md:block">
-              <Link href='/' className="text-2xl text-white font-bold hover:bg-pink-400">
-                Ben Eidson
-              </Link>
+            <Link
+              href="/"
+              className="text-2xl text-white font-bold hover:border-b border-pink-400 active:text-pink-400"
+            >
+              Ben Eidson
+            </Link>
 
             <div className="md:hidden">
               <button
@@ -59,15 +66,33 @@ export default function Navbar() {
               navbar ? "block" : "hidden"
             }`}
           >
-            <ul className="items-center justify-center space-y-8 md:flex md:space-x-6 md:space-y-0">
-              <li className="text-white hover:bg-pink-400">
-                <Link href="/code">Code</Link>
+            <ul className="items-center justify-center space-y-8 md:flex md:space-x-6 md:space-y-0 text-white">
+              <li>
+                <Link
+                  href="/code"
+                  onClick={handleClick}
+                  className="hover:border-b border-pink-400 active:text-pink-400"
+                >
+                  Code
+                </Link>
               </li>
-              <li className="text-white hover:bg-pink-400">
-                <Link href="/music">Music</Link>
+              <li>
+                <Link
+                  href="/music"
+                  onClick={handleClick}
+                  className="hover:border-b border-pink-400 active:text-pink-400"
+                >
+                  Music
+                </Link>
               </li>
-              <li className="text-white hover:bg-pink-400">
-                <Link href="/contact">Contact</Link>
+              <li>
+                <Link
+                  href="/contact"
+                  onClick={handleClick}
+                  className="hover:border-b border-pink-400 active:text-pink-400"
+                >
+                  Contact
+                </Link>
               </li>
             </ul>
           </div>

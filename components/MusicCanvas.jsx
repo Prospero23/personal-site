@@ -7,7 +7,7 @@ import { OrbitControls } from "@react-three/drei";
 
 
 export default function MusicCanvas({ sax, laptop }) {
-  const [isLaptop, setIsLaptop] = useState(true);
+  const [isLaptop, setIsLaptop] = useState(false);
 
   const handleClickLaptop = () => {
     setIsLaptop(true);
@@ -18,7 +18,7 @@ export default function MusicCanvas({ sax, laptop }) {
 
   return (
     <>
-      <div className="absolute flex justify-center flex-col z-10 right-4 bottom-4 sm:right-16 sm:bottom-14 text-2xl sm:text-4xl lg:text-6xl xl:text-8xl rounded-lg p-4 lg:p-8 bg-green-400">
+      <div className="absolute flex justify-center flex-col z-10 right-0 top-14  sm:right-16 sm:top-14 text-2xl sm:text-2xl lg:text-4xl xl:text-6xl p-4 lg:p-8">
         <button
           className={`z-10 block ${
             !isLaptop ? "underline text-purple-600" : "text-white"

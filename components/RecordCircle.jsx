@@ -80,7 +80,7 @@ export default function RecordCircle({ records }) {
     <>
             {/* <PresentationControls global polar={[-0.4, 0.2]} azimuth={[-0.4, 0.2]}> */}
 
-        <group ref={myGroup} position={[0, 0.1, 1.8]} rotation={[0, offset, 0]}>
+        <group ref={myGroup} position={[0, 0, 1.8]} rotation={[0, offset, 0]}>
           {records.map((record, i) => {
             const angle = (i / numPlanes) * Math.PI * 2;
             const x = Math.cos(angle) * radius;
@@ -93,7 +93,7 @@ export default function RecordCircle({ records }) {
           })}
         </group>
         {/* </PresentationControls> */}
-      <Html position={[-1, -2.5,0]} className="text-2xl lg:text-4xl">
+      <Html position={[-1, -2.75,0]} className="text-2xl lg:text-4xl">
           <button
             className="hover:underline"
             onClick={handleClickBackward}
@@ -101,7 +101,7 @@ export default function RecordCircle({ records }) {
             PREV
           </button>
           </Html>
-          <Html position={[1, -2.5, 0]} className="text-2xl lg:text-4xl">
+          <Html position={[1, -2.75, 0]} className="text-2xl lg:text-4xl">
           <button
             className="hover:underline"
             onClick={handleClickForward}
