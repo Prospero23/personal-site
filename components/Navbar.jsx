@@ -11,7 +11,7 @@ export default function Navbar() {
     setNavbar(false);
   };
   return (
-    <nav className="w-full z-50 absolute left-0 top-0">
+    <nav className="w-full z-50 absolute left-0 top-0 bg-customPink bg-opacity-70">
       <div className="justify-between px-4 mx-auto lg:max-w-7xl md:items-center md:flex md:px-8 z-20">
         <div>
           <div className="flex items-center justify-between py-3 md:py-5 md:block">

@@ -1,6 +1,6 @@
 export default function Confirm(){
     return(
-        <main className="w-screen h-screen flex justify-center items-center flex-col bg-pink-200">
+        <main className="w-screen h-screen flex justify-center items-center flex-col bg-customPink">
             <div>
             <h1 className="block">Submitted!</h1>
             </div>

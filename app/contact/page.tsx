@@ -29,7 +29,7 @@ export default function Contact() {
   };
 
     try {
-      //const res = await emailjs.send('service_l0x9ygh','template_rh2vcj7', sendValues, 'Kl4Y4LLfBRmRE2afA' )
+      const res = await emailjs.send('service_l0x9ygh','template_rh2vcj7', sendValues, 'Kl4Y4LLfBRmRE2afA' )
       router.push('/contact/confirm')
     } catch(err:any){
       console.log('Error', err)
