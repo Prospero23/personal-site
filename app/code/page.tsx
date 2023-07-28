@@ -6,7 +6,7 @@ export default function Code() {
       <div className="mt-20 mx-auto">
         <h1 className="text-center text-2xl md:text-4xl">CODE</h1>
 
-        <p className="mt-2 mx-20">
+        <p className="mt-2 mx-8 sm:mx-20">
           I started coding using MAX/MSP during lockdown after taking a class
           where we read some writing by Max Mathews. Originally, I built effects
           units and the sort for live performance with saxophone before
@@ -22,15 +22,17 @@ export default function Code() {
 
         <div className="flex items-center flex-col mt-8">
           <h2 className="md:text-2xl uppercase">synth</h2>
+          <div className="flex h-5/6">
           <iframe
-            width="560"
-            height="315"
+            width="full"
+            height="full"
             src="https://www.youtube.com/embed/AIMB2VJclkQ"
             title="YouTube video player"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
             allowFullScreen
             className="mt-2"
           ></iframe>
+          </div>
           <p>Max/MSP using Flucoma library</p>
         </div>
 
@@ -39,20 +41,20 @@ export default function Code() {
             Audio Reactive Scoring System
           </h2>
           <iframe
-            width="560"
-            height="315"
+            width="full"
+            height="full"
             src="https://www.youtube.com/embed/ZwfgKpYsR80"
             title="YouTube video player"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
             allowFullScreen
             className="mt-2"
           ></iframe>
-          <p>Max/MSP and JS using Bach and Vizzie libraries</p>
+          <p>Max/MSP and JS using Bach and Vizzie</p>
         </div>
 
         <div className="flex items-center flex-col mt-8">
           <h2 className="text-2xl uppercase">This Website</h2>
-          <Image src='/website.png' alt="Picture of website" width={500} height={500}/>
+          <Image src='/Website.png' alt="Picture of website" width={300} height={300}/>
           <p>Three JS + NextJs</p>
         </div>
 
@@ -64,3 +66,5 @@ export default function Code() {
     </main>
   );
 }
+
+// 560 316
