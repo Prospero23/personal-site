@@ -2,7 +2,7 @@ import Image from "next/image";
 
 export default function Code() {
   return (
-    <main className="flex bg-customPink text-white">
+    <main className="flex bg-customPink text-white min-h-screen min-w-screen">
       <div className="mt-20 mx-auto">
         <h1 className="text-center text-2xl md:text-4xl">CODE</h1>
 
