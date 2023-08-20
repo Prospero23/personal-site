@@ -63,7 +63,7 @@ export default function Code() {
           <a href="https://binsynth.vercel.app/">
           <Image src='/binsynth.png' alt="Picture of binSynth homepage" width={300} height={300} className="hover:outline-2 hover:outline-lime-600"/> 
           </a>
-          <p>Browser-based synth using p5.js, Tone.js, and MongoDB. You can also view other members of the community's creations</p>
+          <p>Browser-based synth using p5.js, Tone.js, and MongoDB. You can also view other members of the community&apos;s creations</p>
         </div>
       </div>
     </main>
