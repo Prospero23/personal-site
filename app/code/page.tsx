@@ -60,7 +60,9 @@ export default function Code() {
 
         <div className="flex items-center flex-col mt-8">
           <h2 className="text-2xl uppercase">BinSynth</h2>
-          <Image src='/binsynth.png' alt="Picture of binSynth homepage" width={300} height={300}/> 
+          <a href="https://binsynth.vercel.app/">
+          <Image src='/binsynth.png' alt="Picture of binSynth homepage" width={300} height={300} className="hover:outline-2 hover:outline-lime-600"/> 
+          </a>
           <p>Browser-based synth using p5.js, Tone.js, and MongoDB. You can also view other members of the community's creations</p>
         </div>
       </div>
