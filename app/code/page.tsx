@@ -60,7 +60,8 @@ export default function Code() {
 
         <div className="flex items-center flex-col mt-8">
           <h2 className="text-2xl uppercase">BinSynth</h2>
-          <p>INFO SOON</p>
+          <Image src='/binsynth.png' alt="Picture of binSynth homepage" width={300} height={300}/> 
+          <p>Browser-based synth using p5.js, Tone.js, and MongoDB. You can also view other members of the community's creations</p>
         </div>
       </div>
     </main>
