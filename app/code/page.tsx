@@ -49,7 +49,7 @@ export default function Code() {
             allowFullScreen
             className="mt-2"
           ></iframe>
-          <p>Max/MSP and JS using Bach and Vizzie. Related various video effects to different improvised systems and live triggered switches that the performer responded to. Video used a mix of stochastic processes and analyis of the player's performance</p>
+          <p>Max/MSP and JS using Bach and Vizzie. Related various video effects to different improvised systems and live triggered switches that the performer responded to. Video used a mix of stochastic processes and analyis of the player&apos;s performance</p>
         </div>
 
         <div className="flex items-center flex-col mt-8">
