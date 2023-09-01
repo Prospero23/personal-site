@@ -2,7 +2,7 @@ import Image from "next/image";
 
 export default function Code() {
   return (
-    <main className="flex bg-customPink text-white min-h-screen min-w-screen">
+    <main className="flex bg-customPink text-white min-h-screen min-w-screen ">
       <div className="mt-20 mx-auto">
         <h1 className="text-center text-2xl md:text-4xl">CODE</h1>
 
@@ -12,12 +12,12 @@ export default function Code() {
           units and the sort for live performance with saxophone before
           switching more into building custom instruments to perform on. I
           started using text-based coding with C/C++ to try and build externals
-          in MAX. Two years later, my composition professor introduced my to
+          for MAX. Two years later, my composition professor introduced my to
           using Python for generating compositional material and after that I
           got into using Javascript to do the same in Max. Using JS in Max got
-          me into full-stack web development (React, NextJs, Express) where I am
+          me into full-stack web development (React, NextJs, Express, Mongoose, AWS, etc.) where I am
           currently devoting my time and energy. Below are some various things
-          that I have worked on.
+          that I have worked on in chronological order. 
         </p>
 
         <div className="flex items-center flex-col mt-8">
@@ -33,7 +33,7 @@ export default function Code() {
             className="mt-2"
           ></iframe>
           </div>
-          <p>Max/MSP using Flucoma library</p>
+          <p>Max/MSP using Flucoma library. Controlled using interfaces I made in TouchOSC on two old iPads</p>
         </div>
 
         <div className="flex items-center flex-col mt-8">
@@ -49,7 +49,7 @@ export default function Code() {
             allowFullScreen
             className="mt-2"
           ></iframe>
-          <p>Max/MSP and JS using Bach and Vizzie</p>
+          <p>Max/MSP and JS using Bach and Vizzie. Related various video effects to different improvised systems and live triggered switches that the performer responded to. Video used a mix of stochastic processes and analyis of the player's performance</p>
         </div>
 
         <div className="flex items-center flex-col mt-8">
