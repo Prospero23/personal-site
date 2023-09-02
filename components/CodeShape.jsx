@@ -4,7 +4,6 @@ import React, { useRef, useEffect } from "react";
 import { Canvas, useThree, useFrame } from "@react-three/fiber";
 import * as THREE from "three";
 import { Plane } from "@react-three/drei";
-import { Text } from "@react-three/drei";
 import { Html } from "@react-three/drei";
 import Image from "next/image";
 
@@ -12,17 +11,9 @@ const cubeSize = 8; // Side length of the cube
 const halfSize = cubeSize / 2; // Half of the side length, used for positioning planes
 
 export default function CodeShape() {
-  const ref = useRef();
-
-  useFrame(() => {
-    if (ref.current) {
-      //ref.current.rotation.x += 0.01; // apply the offset to the rotation (scaled down)
-      //ref.current.rotation.y += 0.01; // apply the offset to the rotation (scaled down)
-    }
-  });
 
   return (
-    <group position={[0, 0, -8]} ref={ref}>
+    <>
       {/* Front face text offset fixes clipping*/}
       <Plane args={[cubeSize, cubeSize]} position={[0, 0, halfSize]}>
       <meshStandardMaterial color="black" />
@@ -89,6 +80,10 @@ export default function CodeShape() {
         rotation={[0, Math.PI / 2, 0]}
       >
         <meshStandardMaterial color="black" />
+        <Html transform>
+        {/* <Image src='/blackSide.png' alt="side of the cube" width={300} height={300}/>  */}
+
+        </Html>
       </Plane>
       {/* Left face */}
       <Plane
@@ -98,10 +93,11 @@ export default function CodeShape() {
       >
         <meshStandardMaterial color="black" />
         <Html transform>
-        <Image src='/Website.png' alt="Picture of binSynth homepage" width={300} height={300}/> 
+        {/* <Image src='/blackSide.png' alt="side of the cube" width={300} height={300} className="absolute"/>  */}
+        <Image src='/Website.png' alt="Picture of this website" width={300} height={300}/> 
         </Html>
 
       </Plane>
-    </group>
+      </>
   );
 }
