@@ -53,7 +53,7 @@ import MusicCanvas from "@/components/MusicCanvas"
 
 const Music = () => {
   return (
-    <main className="flex items-center justify-center bg-customPink w-screen h-screen">
+    <main className="flex items-center justify-center bg-customPink w-screen h-screen touch-none">
       <MusicCanvas sax={sax} laptop={laptop}/>
     </main>
   );

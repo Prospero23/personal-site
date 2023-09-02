@@ -21,6 +21,10 @@ export default function CodeCanvas() {
   const cameraPositionVector = new THREE.Vector3(...cameraPosition);
 
   const bind = useDrag((state) => {
+
+    state.event.preventDefault()
+    state.event.stopPropagation()
+
     const {
       movement: [x, y],
       down,
@@ -68,7 +72,7 @@ export default function CodeCanvas() {
   });
 
   return (
-    <div {...bind()} className="h-screen">
+    <div {...bind()} className="h-screen touch-none">
       <Canvas camera={{ position: cameraPosition }}>
         <color attach="background" args={["pink"]} />
         <ambientLight intensity={1} color={"white"} />
