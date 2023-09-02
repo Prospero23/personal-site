@@ -83,7 +83,7 @@ export default function CodeCanvas() {
       {/* <CodeModal side={codingData[closestFace]}/> */}
       <div className="absolute bottom-14 z-20 text-white bg-none w-full text-center">
 <h1 className="uppercase text-2xl mb-2">{codingData[closestFace].title}</h1>
-{/* <p className="mx-52">{codingData[closestFace].description}</p> */}
+{<p className="mx-52 hidden md:block">{codingData[closestFace].description}</p>}
 </div>
     </div>
   );
