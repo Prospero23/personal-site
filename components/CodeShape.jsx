@@ -1,7 +1,7 @@
 "use client";
 
-import React, { useRef, useEffect } from "react";
-import { Canvas, useThree, useFrame } from "@react-three/fiber";
+import React, { useRef, useEffect, useMemo } from "react";
+import { useThree } from "@react-three/fiber";
 import * as THREE from "three";
 import { Plane } from "@react-three/drei";
 import { Html } from "@react-three/drei";
@@ -11,6 +11,8 @@ const cubeSize = 8; // Side length of the cube
 const halfSize = cubeSize / 2; // Half of the side length, used for positioning planes
 
 export default function CodeShape() {
+
+  
 
   return (
     <>

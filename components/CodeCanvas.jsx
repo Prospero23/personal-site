@@ -1,17 +1,30 @@
 "use client";
 
-import { useRef, useState} from "react";
-import { Canvas } from "@react-three/fiber";
+import { useEffect, useRef, useState } from "react";
+import { Canvas, useThree } from "@react-three/fiber";
 import CodeShape from "@/components/CodeShape";
-import { useDrag } from '@use-gesture/react'
+import { useDrag } from "@use-gesture/react";
+import { Html } from "@react-three/drei";
+import * as THREE from "three";
+import codingData from '@/data/coding'
+import CodeModal from '@/components/CodeModal'
+
+const test = ["1", "2", "3", "4", "5", "6"];
+const cameraPosition = [0, 0, 5]; //for static camera position
 
 export default function CodeCanvas() {
   const groupRef = useRef();
   const [lastPosition, setLastPosition] = useState(null);
   const [isDragging, setIsDragging] = useState(false);
+  const [closestFace, setClosestFace] = useState(0);
+
+  const cameraPositionVector = new THREE.Vector3(...cameraPosition);
 
   const bind = useDrag((state) => {
-    const { movement: [x, y], down } = state;
+    const {
+      movement: [x, y],
+      down,
+    } = state;
 
     if (down && !isDragging) {
       setIsDragging(true);
@@ -31,6 +44,22 @@ export default function CodeCanvas() {
       if (groupRef.current) {
         groupRef.current.rotation.x += deltaY * 0.01;
         groupRef.current.rotation.y += deltaX * 0.01;
+
+        const worldPosition = new THREE.Vector3();
+        let minDistance = Infinity; // Initialize to a large value
+        let closestChildIndex = -1; // Initialize to an invalid index
+
+        groupRef.current.children.forEach((child, index) => {
+          child.getWorldPosition(worldPosition);
+          const distance = cameraPositionVector.distanceTo(worldPosition);
+
+          if (distance < minDistance) {
+            minDistance = distance;
+            closestChildIndex = index;
+          }
+        });
+        //closestFaceBABY
+        setClosestFace(closestChildIndex)
       }
 
       // Update the last position
@@ -38,18 +67,23 @@ export default function CodeCanvas() {
     }
   });
 
-
   return (
-    
     <div {...bind()} className="h-screen">
-      <Canvas>
+      <Canvas camera={{ position: cameraPosition }}>
         <color attach="background" args={["pink"]} />
         <ambientLight intensity={1} color={"white"} />
-        <group ref={groupRef} position={[0,0,-8]}>
-        <CodeShape/>
+        <group ref={groupRef} position={[0, 1, -8]}>
+          <CodeShape />
         </group>
-        {/* <OrbitControls/> */}
       </Canvas>
-      </div>
+      {/* <CodeModal side={codingData[closestFace]}/> */}
+      <div className="absolute bottom-14 z-20 text-white bg-none w-full text-center">
+<h1 className="uppercase text-2xl mb-2">{codingData[closestFace].title}</h1>
+{/* <p className="mx-52">{codingData[closestFace].description}</p> */}
+</div>
+    </div>
   );
 }
+
+
+
