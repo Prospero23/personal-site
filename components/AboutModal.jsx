@@ -27,7 +27,7 @@ export default function AboutModal() {
                 </div>
                 {/*body*/}
                 <div className="relative p-6 flex-auto pt-0">
-                  <p className="my-4 text-lg leading-relaxed">
+                  <p className="my-4 text-sm md:text-lg leading-relaxed">
                     Hey! I play music, organize concerts and code. I
                     graduated from The New England Conservatory with a degree in
                     Jazz Performance and have performed throughout the United

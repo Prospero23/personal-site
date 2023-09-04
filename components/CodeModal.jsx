@@ -2,17 +2,19 @@
 
 import { useState } from "react";
 
-export default function CodeModal({side}) {
+export default function CodeModal({ side }) {
   const [showModal, setShowModal] = useState(false);
   return (
     <>
-      <button
-        className="z-20  text-2xl lg:text-6xl xl:text-7xl  hover:bg-pink-400 text-white"
-        type="button"
-        onClick={() => setShowModal(true)}
-      >
-        {side.title}
-      </button>
+      <div className="absolute bottom-14 z-20 text-white bg-none w-full text-center">
+        <button
+          className="z-20  text-2xl lg:text-6xl xl:text-7xl  hover:bg-pink-400 text-white underline uppercase"
+          type="button"
+          onClick={() => setShowModal(true)}
+        >
+          {side.title}
+        </button>
+      </div>
       {showModal ? (
         <>
           <div className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none">
@@ -21,13 +23,11 @@ export default function CodeModal({side}) {
               <div className="rounded-lg shadow-lg relative flex flex-col w-full bg-pink-200 outline-none focus:outline-none text-black">
                 {/*header*/}
                 <div className="text-center p-5 rounded-t pb-0">
-                  <h3 className="text-3xl">
-                    {side.title}
-                  </h3>
+                  <h3 className="text-3xl">{side.title}</h3>
                 </div>
                 {/*body*/}
                 <div className="relative p-6 flex-auto pt-0">
-                  <p className="my-4 text-lg leading-relaxed">
+                  <p className="my-4 text-sm leading-relaxed">
                     {side.description}
                   </p>
                 </div>

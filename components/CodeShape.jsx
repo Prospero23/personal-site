@@ -19,7 +19,7 @@ export default function CodeShape() {
       {/* Front face text offset fixes clipping*/}
       <Plane args={[cubeSize, cubeSize]} position={[0, 0, halfSize]}>
       <meshStandardMaterial color="black" />
-        <Html transform>
+        <Html transform zIndexRange={[40, 0]}>
         <Image src='/basicSideFace.png' alt="Picture of binSynth homepage" width={300} height={300}/> 
         </Html>
       </Plane>
@@ -30,7 +30,7 @@ export default function CodeShape() {
         rotation={[0, Math.PI, 0]}
       >
         <meshStandardMaterial color="black" />
-        <Html transform>
+        <Html transform zIndexRange={[40, 0]}>
         <a href="https://binsynth.vercel.app/">
           <Image src='/binsynth.png' alt="Picture of binSynth homepage" width={300} height={300}/> 
           </a>
@@ -42,9 +42,9 @@ export default function CodeShape() {
         position={[0, halfSize, 0]}
         rotation={[-Math.PI / 2, 0, 0]}
       >
-        <meshStandardMaterial color="black" />
+        <meshStandardMaterial color="black"/>
 
-        <Html transform>
+        <Html transform zIndexRange={[40, 0]}>
           <iframe
             width="300"
             height="300"
@@ -52,6 +52,7 @@ export default function CodeShape() {
             title="YouTube video player"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
             allowFullScreen
+            className=""
           ></iframe>
         </Html>
       </Plane>
@@ -64,7 +65,7 @@ export default function CodeShape() {
         <meshStandardMaterial color="black" />
 
 
-        <Html transform>
+        <Html transform zIndexRange={[40, 0]}>
           <iframe
             width="300"
             height="300"
@@ -82,7 +83,7 @@ export default function CodeShape() {
         rotation={[0, Math.PI / 2, 0]}
       >
         <meshStandardMaterial color="black" />
-        <Html transform>
+        <Html transform zIndexRange={[40, 0]}>
         {/* <Image src='/blackSide.png' alt="side of the cube" width={300} height={300}/>  */}
 
         </Html>
@@ -94,7 +95,7 @@ export default function CodeShape() {
         rotation={[0, -Math.PI / 2, 0]}
       >
         <meshStandardMaterial color="black" />
-        <Html transform>
+        <Html transform zIndexRange={[40, 0]}>
         {/* <Image src='/blackSide.png' alt="side of the cube" width={300} height={300} className="absolute"/>  */}
         <Image src='/Website.png' alt="Picture of this website" width={300} height={300}/> 
         </Html>
@@ -103,3 +104,4 @@ export default function CodeShape() {
       </>
   );
 }
+

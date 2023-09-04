@@ -1,10 +1,9 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
-import { Canvas, useThree } from "@react-three/fiber";
+import {useRef, useState } from "react";
+import { Canvas } from "@react-three/fiber";
 import CodeShape from "@/components/CodeShape";
 import { useDrag } from "@use-gesture/react";
-import { Html } from "@react-three/drei";
 import * as THREE from "three";
 import codingData from '@/data/coding'
 import CodeModal from '@/components/CodeModal'
@@ -29,6 +28,7 @@ export default function CodeCanvas() {
       movement: [x, y],
       down,
     } = state;
+
 
     if (down && !isDragging) {
       setIsDragging(true);
@@ -72,7 +72,7 @@ export default function CodeCanvas() {
   });
 
   return (
-    <div {...bind()} className="h-screen touch-none">
+    <div {...bind()} className="touch-none h-screen">
       <Canvas camera={{ position: cameraPosition }}>
         <color attach="background" args={["pink"]} />
         <ambientLight intensity={1} color={"white"} />
@@ -80,10 +80,10 @@ export default function CodeCanvas() {
           <CodeShape />
         </group>
       </Canvas>
-      {/* <CodeModal side={codingData[closestFace]}/> */}
-      <div className="absolute bottom-14 z-20 text-white bg-none w-full text-center">
+      <CodeModal side={codingData[closestFace]}/>
+      <div className="absolute bottom-14 z-20 text-white bg-none w-full text-center hidden md:block">
 <h1 className="uppercase text-2xl mb-2">{codingData[closestFace].title}</h1>
-{<p className="mx-52 hidden md:block">{codingData[closestFace].description}</p>}
+{<p className="mx-52">{codingData[closestFace].description}</p>}
 </div>
     </div>
   );
