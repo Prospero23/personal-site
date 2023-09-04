@@ -8,7 +8,7 @@ export default function CodeModal({ side }) {
     <>
       <div className="absolute bottom-14 z-20 text-white bg-none w-full text-center">
         <button
-          className="z-20  text-2xl lg:text-6xl xl:text-7xl  hover:bg-pink-400 text-white underline uppercase"
+          className="z-20  text-2xl lg:text-6xl xl:text-7xl  hover:bg-pink-400 text-white underline uppercase md:hidden"
           type="button"
           onClick={() => setShowModal(true)}
         >

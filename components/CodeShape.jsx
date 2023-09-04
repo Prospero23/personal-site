@@ -12,8 +12,6 @@ const halfSize = cubeSize / 2; // Half of the side length, used for positioning 
 
 export default function CodeShape() {
 
-  
-
   return (
     <>
       {/* Front face text offset fixes clipping*/}
@@ -46,13 +44,11 @@ export default function CodeShape() {
 
         <Html transform zIndexRange={[40, 0]}>
           <iframe
-            width="300"
-            height="300"
             src="https://www.youtube.com/embed/AIMB2VJclkQ"
             title="YouTube video player"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
             allowFullScreen
-            className=""
+            className="w-48 h-48 md:w-72 md:h-72"
           ></iframe>
         </Html>
       </Plane>
@@ -67,12 +63,11 @@ export default function CodeShape() {
 
         <Html transform zIndexRange={[40, 0]}>
           <iframe
-            width="300"
-            height="300"
             src="https://www.youtube.com/embed/ZwfgKpYsR80" //this is the don paul
             title="YouTube video player"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
             allowFullScreen
+            className="w-48 h-48 md:w-72 md:h-72"
           ></iframe>
         </Html>
       </Plane>
