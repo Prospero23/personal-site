@@ -36,11 +36,11 @@ const VideoPlayer = ({videoID}) => {
     },
   };
 
-  const pointerEventsClass = isPlaying ? 'pointer-events-auto' : 'pointer-events-none';
+  const pointerEventsClass = isPlaying ? 'pointer-events-auto' : 'pointer-events-none touch-none';
   const zButton = isStarted ? 'z-40 bg-red-500 rounded-lg p-2' : ''
 
   return (
-    <div className="flex items-center justify-center">
+    <div className="flex items-center justify-center touch-none">
       {!isPlaying && <button onClick={playVideo} className={`${zButton}`}>Resume</button>}
       <YouTube
         videoId={videoID}
