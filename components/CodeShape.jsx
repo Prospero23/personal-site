@@ -26,7 +26,7 @@ export default function CodeShape() {
         <Html transform zIndexRange={[40, 0]}>
           <Image
             src="/basicSideFace.png"
-            alt="Picture of binSynth homepage"
+            alt="basic front"
             width={300}
             height={300}
           />
@@ -40,14 +40,12 @@ export default function CodeShape() {
       >
         <meshStandardMaterial color="black" />
         <Html transform zIndexRange={[40, 0]}>
-          <a href="https://binsynth.vercel.app/">
             <Image
               src="/binsynth.png"
               alt="Picture of binSynth homepage"
               width={300}
               height={300}
             />
-          </a>
         </Html>
       </Plane>
       {/* Top face */}

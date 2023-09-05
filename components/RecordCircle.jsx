@@ -95,7 +95,7 @@ export default function RecordCircle({ records }) {
         {/* </PresentationControls> */}
       <Html position={[-1, -2.75,0]} className="text-2xl lg:text-4xl">
           <button
-            className="hover:underline"
+            className="hover:underline text-white"
             onClick={handleClickBackward}
           >
             PREV
@@ -103,7 +103,7 @@ export default function RecordCircle({ records }) {
           </Html>
           <Html position={[1, -2.75, 0]} className="text-2xl lg:text-4xl">
           <button
-            className="hover:underline"
+            className="hover:underline text-white"
             onClick={handleClickForward}
           >
             NEXT

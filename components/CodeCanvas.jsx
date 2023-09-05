@@ -31,7 +31,6 @@ export default function CodeCanvas() {
 
 
     if (down && !isDragging) {
-      document.body.style.overflow = 'hidden'
       setIsDragging(true);
       setLastPosition({ x, y });
       return;
@@ -39,7 +38,6 @@ export default function CodeCanvas() {
 
     if (!down) {
       setIsDragging(false);
-      document.body.style.overflow = '';
 
     }
 
