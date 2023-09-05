@@ -82,9 +82,10 @@ export default function CodeCanvas() {
         </group>
       </Canvas>
       <CodeModal side={codingData[closestFace]}/>
-      <div className="absolute bottom-14 z-20 text-white bg-none w-full text-center hidden md:block">
+      <div className="absolute bottom-14 z-20 text-white bg-none w-full text-center hidden md:block short-screen:hidden">
 <h1 className="uppercase text-2xl mb-2">{codingData[closestFace].title}</h1>
-{<p className="mx-52">{codingData[closestFace].description}</p>}
+{<p className="mx-32 text-sm lg:text-base">{codingData[closestFace].description}</p>}
+{codingData[closestFace].link ? (<a className="hover:underline" href={`${codingData[closestFace].link}`}>check it out here</a>) : ''}
 </div>
     </div>
   );

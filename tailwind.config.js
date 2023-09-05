@@ -9,6 +9,9 @@ module.exports = {
     extend: {
       colors: {
         customPink: '#ffc0cb'
+      },
+      screens: {
+        'short-screen': {'raw': '(max-height: 700px)'},
       }
     },
   },
