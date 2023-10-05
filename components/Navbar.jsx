@@ -17,7 +17,7 @@ export default function Navbar() {
           <div className="flex items-center justify-between py-3 md:py-5 md:block">
             <Link
               href="/"
-              className="text-2xl text-white font-bold hover:border-b border-pink-400 active:text-pink-400"
+              className="text-2xl xl:text-4xl text-white font-bold hover:border-b border-pink-400 active:text-pink-400"
             >
               Ben Eidson
             </Link>
@@ -66,7 +66,7 @@ export default function Navbar() {
               navbar ? "block" : "hidden"
             }`}
           >
-            <ul className="items-center justify-center space-y-8 md:flex md:space-x-6 md:space-y-0 text-white">
+            <ul className="items-center justify-center space-y-8 md:flex md:space-x-6 md:space-y-0 text-white text-xl xl:text-2xl ">
               <li>
                 <Link
                   href="/code"

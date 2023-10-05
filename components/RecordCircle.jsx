@@ -1,9 +1,10 @@
 "use client";
 
 import { Html, Billboard } from "@react-three/drei";
-import { useFrame, useThree } from "@react-three/fiber";
+import { useThree } from "@react-three/fiber";
 import { useRef, useState } from "react";
-
+import { gsap } from 'gsap';
+import { useFrame } from "@react-three/fiber";
 
 function Record({ position, key, src }) {
   const myMesh = useRef();
@@ -15,7 +16,7 @@ function Record({ position, key, src }) {
 
   return (
     <Billboard position={position} ref={myMesh} follow>
-      <Html className="" transform distanceFactor={1.16}>
+      <Html transform distanceFactor={1.2}>
         <iframe src={src} seamless height={360} width={360} key={key}></iframe>
       </Html>
     </Billboard>
@@ -23,94 +24,80 @@ function Record({ position, key, src }) {
 }
 
 export default function RecordCircle({ records }) {
+
+  const offsetConst = useRef(0)
+
   const numPlanes = records.length;
   const radius = 2;
-  const fullSpeed = 0.1;
-  const offset = -0.5
 
-  const [goalRotation, setGoalRotation] = useState(offset);
-  const [startingTime, setStartingTime] = useState(0);
-  const [rotationSpeed, setRotationSpeed] = useState(fullSpeed);
-  const [isBackward, setIsBackward] = useState(false);
+  const offset = numPlanes === 6 ? 1.55 : 2.16
+
+  // if (numPlanes === 6){ // for centering records
+  //  offsetConst.current = 1.55
+  // } else {
+  //   offsetConst.current = 2.16
+  // }
+
   const [isRotating, setIsRotating] = useState(false);
-
   const myGroup = useRef();
-  const { clock } = useThree();
 
-  const handleClickBackward = () => {
-    // Start the rotation if not already rotating
-    if (!isRotating) {
-      console.log("rarara");
-      setIsRotating(true);
-      setIsBackward(true);
-      setStartingTime(clock.getElapsedTime());
-      setGoalRotation(myGroup.current.rotation.y + (Math.PI * 2) / numPlanes); // Rotate by 360 degrees (2 * Math.PI)  \divided by numPlanes
-      setRotationSpeed(fullSpeed); // reset speed
-    }
-  };
-  const handleClickForward = () => {
-    // Start the rotation if not already rotating
+  const handleClick = (direction) => {
     if (!isRotating) {
       setIsRotating(true);
-      setIsBackward(false);
-      setStartingTime(clock.getElapsedTime());
-      setGoalRotation(myGroup.current.rotation.y - (Math.PI * 2) / numPlanes); // Rotate by 360 degrees (2 * Math.PI)  \divided by numPlanes
-      setRotationSpeed(-fullSpeed); // reset speed
+
+      // Calculate the absolute target rotation value for each plane.
+      let currentPlane = Math.round(myGroup.current.rotation.y / ((Math.PI * 2) / numPlanes));
+      let targetPlane = (direction === 'backward') ? currentPlane + 1 : currentPlane - 1;
+      const targetRotation = targetPlane * (Math.PI * 2) / numPlanes;
+
+      gsap.to(myGroup.current.rotation, {
+        y: targetRotation,
+        duration: 3, // Increased the duration to better observe the movement.
+        ease: "power3.out",
+        onComplete: () => {
+          setIsRotating(false);
+        }
+      });
     }
   };
-
-  useFrame(({ clock }) => {
-    const decelerationFactor = 0.9745; // Adjust this value to control the deceleration rate
-    const minSpeed = 0.00001;
-
-    if (
-      (isBackward && myGroup.current.rotation.y < goalRotation - .0001) ||
-      (!isBackward && myGroup.current.rotation.y > goalRotation + .0001)
-    ) {
-      setRotationSpeed(rotationSpeed * decelerationFactor);
-      // Continue rotating until reaching the goal rotation
-      const elapsedTime = clock.elapsedTime - startingTime;
-      myGroup.current.rotation.y += elapsedTime * rotationSpeed;
-    } else {
-      setIsRotating(false);
-    }
-  });
 
   return (
     <>
-            {/* <PresentationControls global polar={[-0.4, 0.2]} azimuth={[-0.4, 0.2]}> */}
+      <group ref={myGroup} position={[0, 0, 1.6]} rotation={[0, 0, 0]}>
+        {records.map((record, i) => {
+          // Adjust the starting angle so that one album starts in the center facing the camera.
+          const angleOffset = Math.PI + offset;
+          const angle = angleOffset + (i / numPlanes) * Math.PI * 2;
 
-        <group ref={myGroup} position={[0, 0, 1.8]} rotation={[0, offset, 0]}>
-          {records.map((record, i) => {
-            const angle = (i / numPlanes) * Math.PI * 2;
-            const x = Math.cos(angle) * radius;
-            const y = 0;
-            const z = Math.sin(angle) * radius;
+          const x = Math.cos(angle) * radius;
+          const y = 0.0;
+          const z = Math.sin(angle) * radius + 0;
 
-            const rotateY = angle; // Add Math.PI/2 to make it face outward
-
-            return <Record position={[x, y, z]} key={i} src={record.src} />;
-          })}
-        </group>
-        {/* </PresentationControls> */}
-      <Html position={[-1, -2.75,0]} className="text-2xl lg:text-4xl">
-          <button
-            className="hover:underline text-white"
-            onClick={handleClickBackward}
-          >
-            PREV
-          </button>
-          </Html>
-          <Html position={[1, -2.75, 0]} className="text-2xl lg:text-4xl">
-          <button
-            className="hover:underline text-white"
-            onClick={handleClickForward}
-          >
-            NEXT
-          </button>
-          </Html>
-        
-     
+          return <Record position={[x, y, z]} key={i} src={record.src} />;
+        })}
+      </group>
+      <Html position={[-1, -2.75, 0]} className="text-2xl lg:text-4xl">
+        <button
+          className="hover:underline text-white"
+          onClick={() => handleClick('backward')}
+        >
+          PREV
+        </button>
+      </Html>
+      <Html position={[1, -2.75, 0]} className="text-2xl lg:text-4xl">
+        <button
+          className="hover:underline text-white"
+          onClick={() => handleClick('forward')}
+        >
+          NEXT
+        </button>
+      </Html>
     </>
   );
 }
+
+//rotation={[0, offset, 0]
+
+
+// offset = 1.55 for sax 
+// 
