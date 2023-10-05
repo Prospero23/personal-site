@@ -1,14 +1,14 @@
 "use client";
 
 import { useRef, useState } from "react";
-import YouTube from "react-youtube";
+import YouTube, { type YouTubeEvent, type YouTubePlayer } from "react-youtube";
 
-const VideoPlayer = ({videoID}) => {
-  const playerRef = useRef(null);
+const VideoPlayer = ({videoID} : {videoID:string}) => {
+  const playerRef = useRef<YouTubePlayer>(null);
   const [isPlaying, setIsPlaying] = useState(false);
   const [isStarted, setIsStarted] = useState(false);
 
-  const onReady = (event) => {
+  const onReady = (event: YouTubeEvent) => {
     // Store the player object for use later
     playerRef.current = event.target;
   };

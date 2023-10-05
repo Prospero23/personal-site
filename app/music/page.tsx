@@ -1,4 +1,9 @@
-const laptop = [
+interface Record {
+  title: string;
+  src: string;
+}
+
+const laptop: Record[] = [
   {
     title: "BEASTS",
     src: "https://bandcamp.com/EmbeddedPlayer/album=3351662876/size=large/bgcol=ffffff/linkcol=de270f/minimal=true/transparent=true/",
@@ -21,7 +26,7 @@ const laptop = [
   },
 ];
 
-const sax = [
+const sax: Record[] = [
   {
     title: "NEB",
     src: "https://bandcamp.com/EmbeddedPlayer/album=4242995147/size=large/bgcol=ffffff/linkcol=0687f5/minimal=true/transparent=true/",
@@ -48,13 +53,12 @@ const sax = [
   },
 ];
 
-import Records from "@/components/Records";
 import MusicCanvas from "@/components/MusicCanvas"
 
 const Music = () => {
   return (
     <main className="flex items-center justify-center bg-customPink w-screen h-screen touch-none">
-      <MusicCanvas sax={sax} laptop={laptop}/>
+      <MusicCanvas sax={sax} laptop={laptop} />
     </main>
   );
 };

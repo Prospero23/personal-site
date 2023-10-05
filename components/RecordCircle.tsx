@@ -5,65 +5,73 @@ import { useThree } from "@react-three/fiber";
 import { useRef, useState } from "react";
 import { gsap } from 'gsap';
 import { useFrame } from "@react-three/fiber";
+import { Vector3, type Group } from "three";
 
-function Record({ position, key, src }) {
-  const myMesh = useRef();
+interface Record {
+  title: string;
+  src: string;
+}
+
+interface RecordProps {
+  position: Vector3;
+  src: string;
+}
+
+function Record({ position, src }: RecordProps) {
+  const record = useRef<Group>(null);
   const { camera } = useThree();
 
   useFrame(() => {
-    myMesh.current.lookAt(camera.position);
+    if (record.current != null) {
+      record.current.lookAt(camera.position);
+    }
   });
 
+
   return (
-    <Billboard position={position} ref={myMesh} follow>
+    <Billboard position={position} ref={record} follow>
       <Html transform distanceFactor={1.2}>
-        <iframe src={src} seamless height={360} width={360} key={key}></iframe>
+        <iframe src={src} seamless height={360} width={360}></iframe>
       </Html>
     </Billboard>
   );
 }
 
-export default function RecordCircle({ records }) {
-
-  const offsetConst = useRef(0)
+export default function RecordCircle({ records }: { records: Record[] }) {
 
   const numPlanes = records.length;
   const radius = 2;
 
   const offset = numPlanes === 6 ? 1.55 : 2.16
 
-  // if (numPlanes === 6){ // for centering records
-  //  offsetConst.current = 1.55
-  // } else {
-  //   offsetConst.current = 2.16
-  // }
-
   const [isRotating, setIsRotating] = useState(false);
-  const myGroup = useRef();
+  const myGroup = useRef<Group>(null);
 
-  const handleClick = (direction) => {
-    if (!isRotating) {
-      setIsRotating(true);
+  const handleClick = (direction: string) => {
+    if (myGroup.current != null) {
+      if (!isRotating) {
+        setIsRotating(true);
 
-      // Calculate the absolute target rotation value for each plane.
-      let currentPlane = Math.round(myGroup.current.rotation.y / ((Math.PI * 2) / numPlanes));
-      let targetPlane = (direction === 'backward') ? currentPlane + 1 : currentPlane - 1;
-      const targetRotation = targetPlane * (Math.PI * 2) / numPlanes;
+        // Calculate the absolute target rotation value for each plane.
+        let currentPlane = Math.round(myGroup.current.rotation.y / ((Math.PI * 2) / numPlanes));
+        let targetPlane = (direction === 'backward') ? currentPlane + 1 : currentPlane - 1;
+        const targetRotation = targetPlane * (Math.PI * 2) / numPlanes;
 
-      gsap.to(myGroup.current.rotation, {
-        y: targetRotation,
-        duration: 3, // Increased the duration to better observe the movement.
-        ease: "power3.out",
-        onComplete: () => {
-          setIsRotating(false);
-        }
-      });
+        gsap.to(myGroup.current.rotation, {
+          y: targetRotation,
+          duration: 3, // Increased the duration to better observe the movement.
+          ease: "power3.out",
+          onComplete: () => {
+            setIsRotating(false);
+          }
+        });
+      }
     }
   };
 
   return (
     <>
-      <group ref={myGroup} position={[0, 0, 1.6]} rotation={[0, 0, 0]}>
+      <group ref={myGroup} position={[0, 0, 1.5]} rotation={[0, 0, 0]}>
         {records.map((record, i) => {
           // Adjust the starting angle so that one album starts in the center facing the camera.
           const angleOffset = Math.PI + offset;
@@ -73,7 +81,7 @@ export default function RecordCircle({ records }) {
           const y = 0.0;
           const z = Math.sin(angle) * radius + 0;
 
-          return <Record position={[x, y, z]} key={i} src={record.src} />;
+          return <Record position={new Vector3(x, y, z)} key={i} src={record.src} />;
         })}
       </group>
       <Html position={[-1, -2.75, 0]} className="text-2xl lg:text-4xl">
