@@ -1,3 +1,5 @@
+import MusicCanvas from "@/components/MusicCanvas";
+
 interface Record {
   title: string;
   src: string;
@@ -53,8 +55,6 @@ const sax: Record[] = [
   },
 ];
 
-import MusicCanvas from "@/components/MusicCanvas"
-
 const Music = () => {
   return (
     <main className="flex items-center justify-center bg-customPink w-screen h-screen touch-none">
@@ -65,4 +65,4 @@ const Music = () => {
 
 export default Music;
 
-//add better loading stuff
+// add better loading stuff

@@ -1,9 +1,8 @@
 "use client";
 
-import { useForm, SubmitHandler } from "react-hook-form";
-import emailjs from '@emailjs/browser';
-import { useRouter } from 'next/navigation'
-
+import { useForm, type SubmitHandler } from "react-hook-form";
+import emailjs from "@emailjs/browser";
+import { useRouter } from "next/navigation";
 
 interface FormData {
   name: string;
@@ -12,7 +11,7 @@ interface FormData {
 }
 
 export default function Contact() {
-  const router = useRouter()
+  const router = useRouter();
 
   const {
     register,
@@ -21,20 +20,24 @@ export default function Contact() {
   } = useForm<FormData>();
 
   const onSubmit: SubmitHandler<FormData> = async (data) => {
-
     const sendValues = {
       name: data.name,
       email: data.email,
       message: data.message,
-  };
+    };
 
     try {
-      const res = await emailjs.send('service_l0x9ygh','template_rh2vcj7', sendValues, 'Kl4Y4LLfBRmRE2afA' )
-      router.push('/contact/confirm')
-    } catch(err:any){
-      console.log('Error', err)
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+      const res = await emailjs.send(
+        "service_l0x9ygh",
+        "template_rh2vcj7",
+        sendValues,
+        "Kl4Y4LLfBRmRE2afA",
+      );
+      router.push("/contact/confirm");
+    } catch (err: any) {
+      console.log("Error", err);
     }
-
   };
 
   return (
@@ -55,7 +58,7 @@ export default function Contact() {
             {...register("name", { required: true })}
             className="text-black"
           />
-          {errors.name && <span>This field is required</span>}
+          {errors.name != null && <span>This field is required</span>}
         </div>
         <div className="my-4">
           <label htmlFor="email" className="block">
@@ -67,7 +70,7 @@ export default function Contact() {
             {...register("email", { required: true })}
             className="text-black"
           />
-          {errors.email && <span>This field is required</span>}
+          {errors.email != null && <span>This field is required</span>}
         </div>
         {/* include validation with required or other standard HTML validation rules */}
         <div>
@@ -81,7 +84,7 @@ export default function Contact() {
           ></textarea>
         </div>
         {/* errors will return when field validation fails  */}
-        {errors.message && <span>This field is required</span>}
+        {errors.message != null && <span>This field is required</span>}
 
         <button className="text-white block">Submit</button>
       </form>
@@ -89,5 +92,4 @@ export default function Contact() {
   );
 }
 
-
-//have links to instagram, github, bandcamp??, send stuff to email
+// have links to instagram, github, bandcamp??, send stuff to email

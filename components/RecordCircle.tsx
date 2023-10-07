@@ -1,13 +1,12 @@
 "use client";
 
 import { Html, Billboard } from "@react-three/drei";
-import { useThree } from "@react-three/fiber";
+import { useThree, useFrame } from "@react-three/fiber";
 import { useRef, useState } from "react";
-import { gsap } from 'gsap';
-import { useFrame } from "@react-three/fiber";
+import { gsap } from "gsap";
 import { Vector3, type Group } from "three";
 
-interface Record {
+interface RecordType {
   title: string;
   src: string;
 }
@@ -27,7 +26,6 @@ function Record({ position, src }: RecordProps) {
     }
   });
 
-
   return (
     <Billboard position={position} ref={record} follow>
       <Html transform distanceFactor={1.2}>
@@ -37,12 +35,11 @@ function Record({ position, src }: RecordProps) {
   );
 }
 
-export default function RecordCircle({ records }: { records: Record[] }) {
-
+export default function RecordCircle({ records }: { records: RecordType[] }) {
   const numPlanes = records.length;
   const radius = 2;
 
-  const offset = numPlanes === 6 ? 1.55 : 2.16
+  const offset = numPlanes === 6 ? 1.55 : 2.16;
 
   const [isRotating, setIsRotating] = useState(false);
   const myGroup = useRef<Group>(null);
@@ -53,9 +50,12 @@ export default function RecordCircle({ records }: { records: Record[] }) {
         setIsRotating(true);
 
         // Calculate the absolute target rotation value for each plane.
-        let currentPlane = Math.round(myGroup.current.rotation.y / ((Math.PI * 2) / numPlanes));
-        let targetPlane = (direction === 'backward') ? currentPlane + 1 : currentPlane - 1;
-        const targetRotation = targetPlane * (Math.PI * 2) / numPlanes;
+        const currentPlane = Math.round(
+          myGroup.current.rotation.y / ((Math.PI * 2) / numPlanes),
+        );
+        const targetPlane =
+          direction === "backward" ? currentPlane + 1 : currentPlane - 1;
+        const targetRotation = (targetPlane * (Math.PI * 2)) / numPlanes;
 
         gsap.to(myGroup.current.rotation, {
           y: targetRotation,
@@ -63,7 +63,7 @@ export default function RecordCircle({ records }: { records: Record[] }) {
           ease: "power3.out",
           onComplete: () => {
             setIsRotating(false);
-          }
+          },
         });
       }
     }
@@ -71,6 +71,7 @@ export default function RecordCircle({ records }: { records: Record[] }) {
 
   return (
     <>
+      {/* eslint-disable-next-line react/no-unknown-property */}
       <group ref={myGroup} position={[0, 0, 1.5]} rotation={[0, 0, 0]}>
         {records.map((record, i) => {
           // Adjust the starting angle so that one album starts in the center facing the camera.
@@ -81,13 +82,17 @@ export default function RecordCircle({ records }: { records: Record[] }) {
           const y = 0.0;
           const z = Math.sin(angle) * radius + 0;
 
-          return <Record position={new Vector3(x, y, z)} key={i} src={record.src} />;
+          return (
+            <Record position={new Vector3(x, y, z)} key={i} src={record.src} />
+          );
         })}
       </group>
       <Html position={[-1, -2.75, 0]} className="text-2xl lg:text-4xl">
         <button
           className="hover:underline text-white"
-          onClick={() => handleClick('backward')}
+          onClick={() => {
+            handleClick("backward");
+          }}
         >
           PREV
         </button>
@@ -95,7 +100,9 @@ export default function RecordCircle({ records }: { records: Record[] }) {
       <Html position={[1, -2.75, 0]} className="text-2xl lg:text-4xl">
         <button
           className="hover:underline text-white"
-          onClick={() => handleClick('forward')}
+          onClick={() => {
+            handleClick("forward");
+          }}
         >
           NEXT
         </button>
@@ -104,8 +111,7 @@ export default function RecordCircle({ records }: { records: Record[] }) {
   );
 }
 
-//rotation={[0, offset, 0]
+// rotation={[0, offset, 0]
 
-
-// offset = 1.55 for sax 
-// 
+// offset = 1.55 for sax
+//

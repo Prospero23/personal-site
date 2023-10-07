@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unknown-property */
 "use client";
 
 import { useState } from "react";
@@ -29,15 +30,17 @@ export default function MusicCanvas({ sax, laptop }: MusicCanvasProps) {
     <>
       <div className="absolute flex justify-center flex-col z-10 right-0 top-14  sm:right-16 sm:top-14 text-2xl sm:text-2xl lg:text-4xl xl:text-6xl p-4 lg:p-8">
         <button
-          className={`z-10 block ${!isLaptop ? "underline text-purple-600" : "text-white"
-            } hover:text-purple-600`}
+          className={`z-10 block ${
+            !isLaptop ? "underline text-purple-600" : "text-white"
+          } hover:text-purple-600`}
           onClick={handleClickSax}
         >
           Sax
         </button>
         <button
-          className={`z-10 block ${isLaptop ? "underline text-red-600" : "text-white"
-            } hover:text-red-600`}
+          className={`z-10 block ${
+            isLaptop ? "underline text-red-600" : "text-white"
+          } hover:text-red-600`}
           onClick={handleClickLaptop}
         >
           Laptop
