@@ -57,7 +57,7 @@ const sax: Record[] = [
 
 const Music = () => {
   return (
-    <main className="flex items-center justify-center bg-customPink w-screen h-screen touch-none">
+    <main className="flex items-center justify-center bg-customPink w-screen h-[calc(100dvh)] touch-none">
       <MusicCanvas sax={sax} laptop={laptop} />
     </main>
   );

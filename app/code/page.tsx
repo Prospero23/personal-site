@@ -2,7 +2,7 @@ import CodeCanvas from "../../components/CodeCanvas";
 
 export default function Code() {
   return (
-    <main className="min-h-screen touch-none">
+    <main className="touch-none">
       <CodeCanvas />
     </main>
   );

@@ -74,7 +74,7 @@ export default function CodeCanvas() {
   });
 
   return (
-    <div {...bind()} className="touch-none h-screen">
+    <div {...bind()} className="touch-none h-[calc(100dvh)]">
       <Canvas camera={{ position: new THREE.Vector3(...cameraPosition) }}>
         <color attach="background" args={["pink"]} />
         <ambientLight intensity={1} color={"white"} />
