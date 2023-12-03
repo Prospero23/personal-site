@@ -72,7 +72,12 @@ export default function CodeShape() {
       >
         <meshStandardMaterial color="black" />
         <Html transform zIndexRange={[40, 0]}>
-          {/* <Image src='/blackSide.png' alt="side of the cube" width={300} height={300}/>  */}
+          <Image
+            src="/GPTGrooves.png"
+            alt="Picture GPTGrooves homepage"
+            width={300}
+            height={300}
+          />
         </Html>
       </Plane>
       {/* Left face */}

@@ -10,7 +10,7 @@ const codingData: CodingData = {
   0: {
     title: "Bio",
     description:
-      "I started coding using Max/MSP during lockdown after taking a class where we read some writing by Max Mathews. Originally, I built effects units and the sort for live performance with saxophone before switching into building more custom instruments to perform on. I started using text-based coding with C/C++ to try and build Max externals. My composition professor introduced me to using Python to generate compositional material and I started also doing this with js in Max. This got me into full-stack web development (React, NextJs, Express, Mongoose, AWS, etc.) where I am currently devoting my time and energy",
+      "I started coding using Max/MSP during lockdown after taking a class where we read some writing by Max Mathews. Originally, I built effects units and the sort for live performance with saxophone before switching into building more custom instruments to perform on. I started using text-based coding with C/C++ to try and build Max externals. My composition professor introduced me to using Python to generate compositional material and I started also doing this with js in Max. This got me into full-stack web development (React, NextJs, Express, Mongoose, AWS, etc.) where I am currently devoting my time and energy. Link to code on contact page.",
   },
   2: {
     title: "Synth",
@@ -28,7 +28,12 @@ const codingData: CodingData = {
     description:
       "Max/MSP and JS using Bach and Vizzie. Related various video effects to different improvised systems and live triggered switches that the performer responded to. Video used a mix of stochastic processes and analyis of the player's performance",
   },
-  4: { title: "Future Project", description: "FUTURE PROJECT HERE" },
+  4: {
+    title: "GPTGrooves",
+    description:
+      "Website that uses LangChain and the OpenAI API to generate house music. Runs AWS Lamda to generate new song every day. Audio generated using the WebAudio API and RNBO",
+    link: "https://GPTGrooves.vercel.app/",
+  },
   5: { title: "This Website", description: "Three JS + NextJs" },
 };
 
