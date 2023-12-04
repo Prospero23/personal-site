@@ -3,8 +3,9 @@
 
 import { useState } from "react";
 import { Canvas } from "@react-three/fiber";
+import ExtendedOrbit from "@/components/ExtendedOrbit";
 import RecordCircle from "@/components/RecordCircle";
-import { OrbitControls } from "@react-three/drei";
+import { A11y, A11yAnnouncer } from "@react-three/a11y";
 
 interface Record {
   title: string;
@@ -51,12 +52,17 @@ export default function MusicCanvas({ sax, laptop }: MusicCanvasProps) {
         <ambientLight intensity={1} color={"white"} />
 
         {isLaptop ? (
-          <RecordCircle records={laptop} />
+          <A11y role="content" description="circle of my records on laptop">
+            <RecordCircle records={laptop} />
+          </A11y>
         ) : (
-          <RecordCircle records={sax} />
+          <A11y role="content" description="circle of my records on saxophone">
+            <RecordCircle records={sax} />
+          </A11y>
         )}
-        <OrbitControls />
+        <ExtendedOrbit />
       </Canvas>
+      <A11yAnnouncer />
     </>
   );
 }
