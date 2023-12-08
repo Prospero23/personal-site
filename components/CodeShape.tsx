@@ -73,7 +73,7 @@ export default function CodeShape() {
         <meshStandardMaterial color="black" />
         <Html transform zIndexRange={[40, 0]}>
           <Image
-            src="/GPTGrooves.png"
+            src="/GPTGroovesLarge.png"
             alt="Picture GPTGrooves homepage"
             width={300}
             height={300}
