@@ -112,14 +112,14 @@ export default function CodeCanvas() {
       <Canvas camera={{ position: new THREE.Vector3(...cameraPosition) }}>
         <color attach="background" args={["pink"]} />
         <ambientLight intensity={1} color={"white"} />
-        <group ref={groupRef} position={[0, 1, -8]}>
-          <A11y
-            role="content"
-            description="Cube that holds all of my projects. Use mouse or arrow keys to see different projects"
-          >
+        <A11y
+          role="content"
+          description="Cube that holds all of my projects. Use mouse or arrow keys to see different projects"
+        >
+          <group ref={groupRef} position={[0, 1, -8]}>
             <CodeShape />
-          </A11y>
-        </group>
+          </group>
+        </A11y>
       </Canvas>
       <CodeModal side={codingData[closestFace]} />
       <div className="absolute bottom-14 z-20 text-white bg-none w-full text-center hidden md:block short-screen:hidden">
