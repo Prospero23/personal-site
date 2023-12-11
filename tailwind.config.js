@@ -8,11 +8,12 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        customPink: '#ffc0cb'
+        customPink: '#ffc0cb',
+        customBlue: '#c0fff4',
       },
       screens: {
         'short-screen': {'raw': '(max-height: 700px)'},
-      }
+      },
     },
   },
   plugins: [],

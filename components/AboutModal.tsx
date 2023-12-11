@@ -42,7 +42,7 @@ export default function AboutModal() {
                 {/* footer */}
                 <div className="flex items-center justify-end p-6 rounded-b pt-0">
                   <button
-                    className="background-transparent font-bold uppercase py-0 text-sm mr-1 mb-1 hover:bg-pink-500"
+                    className="background-transparent font-bold uppercase py-0 px-2 text-sm mr-1 mb-1 hover:bg-pink-500 hover:text-white"
                     type="button"
                     onClick={() => {
                       setShowModal(false);
