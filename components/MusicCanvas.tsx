@@ -3,18 +3,14 @@
 
 import { useState } from "react";
 import { Canvas } from "@react-three/fiber";
+import { A11y, A11yAnnouncer } from "@react-three/a11y";
 import ExtendedOrbit from "@/components/ExtendedOrbit";
 import RecordCircle from "@/components/RecordCircle";
-import { A11y, A11yAnnouncer } from "@react-three/a11y";
-
-interface Record {
-  title: string;
-  src: string;
-}
+import { Recording } from "@/data/recordings";
 
 interface MusicCanvasProps {
-  sax: Record[];
-  laptop: Record[];
+  sax: Recording[];
+  laptop: Recording[];
 }
 
 export default function MusicCanvas({ sax, laptop }: MusicCanvasProps) {
