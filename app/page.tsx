@@ -1,5 +1,5 @@
 import CanvasComponent from "@/components/homePage/HomePageCanvas";
-import AboutModal from "@/components/AboutModal";
+import AboutModal from "@/components/homePage/AboutModal";
 
 export default function Home() {
   return (
