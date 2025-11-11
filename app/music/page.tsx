@@ -1,4 +1,4 @@
-import MusicCanvas from "@/components/MusicCanvas";
+import MusicCanvas from "@/components/music/MusicCanvas";
 import { saxRecordings, laptopRecordings } from "../../data/recordings";
 
 const Music = () => {

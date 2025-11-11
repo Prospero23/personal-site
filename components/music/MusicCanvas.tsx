@@ -5,7 +5,7 @@ import { useState } from "react";
 import { Canvas } from "@react-three/fiber";
 import { A11y, A11yAnnouncer } from "@react-three/a11y";
 import ExtendedOrbit from "@/components/ExtendedOrbit";
-import RecordCircle from "@/components/RecordCircle";
+import RecordCircle from "@/components/music/RecordCircle";
 import { Recording } from "@/data/recordings";
 
 interface MusicCanvasProps {

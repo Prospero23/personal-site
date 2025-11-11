@@ -1,7 +1,7 @@
 "use client";
 import { Canvas, extend } from "@react-three/fiber";
 import { Loader, Html } from "@react-three/drei";
-import Ben from "@/components/homePage/Ben";
+import Ben from "@/components/home/Ben";
 import { Suspense } from "react";
 import { A11y, A11yAnnouncer } from "@react-three/a11y";
 import ExtendedOrbit from "@/components/ExtendedOrbit";

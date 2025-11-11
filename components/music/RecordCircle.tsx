@@ -1,41 +1,18 @@
 "use client";
 
-import { Html, Billboard } from "@react-three/drei";
-import { useThree, useFrame } from "@react-three/fiber";
+import { Html } from "@react-three/drei";
 import { useRef, useState } from "react";
 import { gsap } from "gsap";
 import { Vector3, type Group } from "three";
 
-interface RecordType {
-  title: string;
-  src: string;
+import { type Recording } from "@/data/recordings";
+import Record from "./Record";
+
+interface RecordCircleProps{
+  records: Recording[]
 }
 
-interface RecordProps {
-  position: Vector3;
-  src: string;
-}
-
-function Record({ position, src }: RecordProps) {
-  const record = useRef<Group>(null);
-  const { camera } = useThree();
-
-  useFrame(() => {
-    if (record.current != null) {
-      record.current.lookAt(camera.position);
-    }
-  });
-
-  return (
-    <Billboard position={position} ref={record} follow>
-      <Html transform distanceFactor={1.2}>
-        <iframe src={src} seamless height={360} width={360}></iframe>
-      </Html>
-    </Billboard>
-  );
-}
-
-export default function RecordCircle({ records }: { records: RecordType[] }) {
+export default function RecordCircle({ records }: RecordCircleProps) {
   const numPlanes = records.length;
   const radius = 2;
 
@@ -59,7 +36,7 @@ export default function RecordCircle({ records }: { records: RecordType[] }) {
 
         gsap.to(myGroup.current.rotation, {
           y: targetRotation,
-          duration: 3, // Increased the duration to better observe the movement.
+          duration: 0.5,
           ease: "power3.out",
           onComplete: () => {
             setIsRotating(false);
@@ -71,7 +48,6 @@ export default function RecordCircle({ records }: { records: RecordType[] }) {
 
   return (
     <>
-      {/* eslint-disable-next-line react/no-unknown-property */}
       <group ref={myGroup} position={[0, 0, 1.5]} rotation={[0, 0, 0]}>
         {records.map((record, i) => {
           // Adjust the starting angle so that one album starts in the center facing the camera.
@@ -87,6 +63,7 @@ export default function RecordCircle({ records }: { records: RecordType[] }) {
           );
         })}
       </group>
+      {/* TODO: Change to Text? */}
       <Html position={[-1, -2.75, 0]} className="text-2xl lg:text-4xl">
         <button
           className="hover:underline text-white"
@@ -110,8 +87,3 @@ export default function RecordCircle({ records }: { records: RecordType[] }) {
     </>
   );
 }
-
-// rotation={[0, offset, 0]
-
-// offset = 1.55 for sax
-//

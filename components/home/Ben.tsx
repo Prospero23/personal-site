@@ -86,8 +86,6 @@ export default function Ben() {
           continue;
         }
 
-        // TODO: AD-HOC check to get rid of extra points behind head?
-
         existingArrays.add(testArray);
 
         // create text
@@ -96,6 +94,8 @@ export default function Ben() {
         const type = options[randomNum];
         textData.push({ position, quaternion, type, hovered: false });    
       }
+      // TODO: AD-HOC check to get rid of extra points behind head?
+
       setTextData(textData);
     };
 
