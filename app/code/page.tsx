@@ -1,4 +1,4 @@
-import CodeCanvas from "../../components/CodeCanvas";
+import CodeCanvas from "../../components/code/CodeCanvas";
 
 export default function Code() {
   return (

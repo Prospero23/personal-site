@@ -3,11 +3,11 @@
 
 import { useRef, useState, useEffect } from "react";
 import { Canvas } from "@react-three/fiber";
-import CodeShape from "@/components/CodeShape";
+import CodeShape from "@/components/code/CodeShape";
 import { useDrag } from "@use-gesture/react";
 import * as THREE from "three";
 import codingData from "@/data/coding";
-import CodeModal from "@/components/CodeModal";
+import CodeModal from "@/components/code/CodeModal";
 import { A11y } from "@react-three/a11y";
 
 const cameraPosition = [0, 0, 5]; // for static camera position
