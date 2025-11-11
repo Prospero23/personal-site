@@ -1,7 +1,7 @@
 "use client";
 
 import { Html } from "@react-three/drei";
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { Vector3, type Group } from "three";
 
@@ -38,6 +38,12 @@ export default function RecordCircle({ records, offset }: RecordCircleProps) {
       
     }
   };
+
+  useEffect(() => {
+    if (myGroup.current != null){
+      // TODO: reset current rotation to zero
+    }
+  }, [records])
 
   return (
     <>
