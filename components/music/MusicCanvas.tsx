@@ -49,11 +49,11 @@ export default function MusicCanvas({ sax, laptop }: MusicCanvasProps) {
 
         {isLaptop ? (
           <A11y role="content" description="circle of my records on laptop">
-            <RecordCircle records={laptop} />
+            <RecordCircle records={laptop} offset={2.16}/>
           </A11y>
         ) : (
           <A11y role="content" description="circle of my records on saxophone">
-            <RecordCircle records={sax} />
+            <RecordCircle records={sax} offset={1.55}/>
           </A11y>
         )}
         <ExtendedOrbit />

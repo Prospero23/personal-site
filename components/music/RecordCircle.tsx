@@ -10,13 +10,12 @@ import Record from "./Record";
 
 interface RecordCircleProps{
   records: Recording[]
+  offset: number
 }
 
-export default function RecordCircle({ records }: RecordCircleProps) {
+export default function RecordCircle({ records, offset }: RecordCircleProps) {
   const numPlanes = records.length;
   const radius = 2;
-
-  const offset = numPlanes === 6 ? 1.55 : 2.16;
 
   const myGroup = useRef<Group>(null);
 
