@@ -1,7 +1,7 @@
 "use client";
 
 import { Html } from "@react-three/drei";
-import { useRef, useState } from "react";
+import { useRef } from "react";
 import { gsap } from "gsap";
 import { Vector3, type Group } from "three";
 
@@ -18,31 +18,25 @@ export default function RecordCircle({ records }: RecordCircleProps) {
 
   const offset = numPlanes === 6 ? 1.55 : 2.16;
 
-  const [isRotating, setIsRotating] = useState(false);
   const myGroup = useRef<Group>(null);
 
   const handleClick = (direction: string) => {
     if (myGroup.current != null) {
-      if (!isRotating) {
-        setIsRotating(true);
 
-        // Calculate the absolute target rotation value for each plane.
-        const currentPlane = Math.round(
-          myGroup.current.rotation.y / ((Math.PI * 2) / numPlanes),
-        );
-        const targetPlane =
-          direction === "backward" ? currentPlane + 1 : currentPlane - 1;
-        const targetRotation = (targetPlane * (Math.PI * 2)) / numPlanes;
+      // Calculate the absolute target rotation value for each plane.
+      const currentPlane = Math.round(
+        myGroup.current.rotation.y / ((Math.PI * 2) / numPlanes),
+      );
+      const targetPlane =
+        direction === "backward" ? currentPlane + 1 : currentPlane - 1;
+      const targetRotation = (targetPlane * (Math.PI * 2)) / numPlanes;
 
-        gsap.to(myGroup.current.rotation, {
-          y: targetRotation,
-          duration: 0.5,
-          ease: "power3.out",
-          onComplete: () => {
-            setIsRotating(false);
-          },
-        });
-      }
+      gsap.to(myGroup.current.rotation, {
+        y: targetRotation,
+        duration: 0.5,
+        ease: "power3.out",
+      });
+      
     }
   };
 
