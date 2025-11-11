@@ -1,7 +1,6 @@
-/* eslint-disable react/no-unknown-property */
 "use client";
 import { Canvas, extend } from "@react-three/fiber";
-import { Loader } from "@react-three/drei";
+import { Loader, Html } from "@react-three/drei";
 import Ben from "@/components/homePage/Ben";
 import { Suspense } from "react";
 import { A11y, A11yAnnouncer } from "@react-three/a11y";
@@ -11,7 +10,6 @@ extend({ Loader });
 export default function CanvasComponent() {
   return (
     <>
-      <Suspense fallback={null}>
         <Canvas tabIndex={0}>
           <color attach="background" args={["pink"]} />
           <ambientLight intensity={0.5} />
@@ -20,13 +18,22 @@ export default function CanvasComponent() {
             role="content"
             description="3d model of me (Ben) made of text that moves around"
           >
+          <Suspense fallback={<Loading/>}>
             <Ben />
+          </Suspense>
           </A11y>
           <ExtendedOrbit />
         </Canvas>
-      </Suspense>
       <A11yAnnouncer />
       <Loader />
     </>
   );
+}
+
+function Loading(){
+  return(
+      <Html>
+      <div style={{ color: "white" }}>Loading......</div>
+    </Html>
+  )
 }
