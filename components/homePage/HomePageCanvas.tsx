@@ -22,7 +22,7 @@ export default function CanvasComponent() {
             <Ben />
           </Suspense>
           </A11y>
-          <ExtendedOrbit />
+          <ExtendedOrbit autoRotate={true} autoRotateSpeed={0.5}/>
         </Canvas>
       <A11yAnnouncer />
       <Loader />

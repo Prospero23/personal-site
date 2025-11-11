@@ -1,8 +1,8 @@
 import { useEffect, useRef } from "react";
 import { useFrame } from "@react-three/fiber";
-import { OrbitControls } from "@react-three/drei";
+import { OrbitControls, OrbitControlsProps } from "@react-three/drei";
 
-interface KeyboardControlledOrbitProps {
+interface KeyboardControlledOrbitProps extends OrbitControlsProps {
   sensitivity?: number;
 }
 
@@ -45,8 +45,6 @@ export const KeyboardControlledOrbit: React.FC<
     const controls = orbitRef.current;
     if (controls == null) return;
 
-    // console.log(orbitRef.rotation);
-
     // if (keyStates.ArrowUp) orbitRef.current;
     // if (keyStates.ArrowDown) orbitRef.current;
     // if (keyStates.ArrowRight) orbitRef.current;
@@ -55,7 +53,7 @@ export const KeyboardControlledOrbit: React.FC<
     controls.update();
   });
 
-  return <OrbitControls ref={orbitRef} />;
+  return <OrbitControls ref={orbitRef} {...props}/>;
 };
 
 export default KeyboardControlledOrbit;
