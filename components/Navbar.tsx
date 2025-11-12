@@ -1,16 +1,16 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
+import { useState, type SetStateAction } from "react";
 
 export default function Navbar() {
   const [navbar, setNavbar] = useState(false);
-  // const [currentPage, setCurrentPage] = useState('home')
 
   const handleClick = () => {
     setNavbar(false);
   };
   return (
+    <>
     <nav className="w-full z-50 left-0 top-0 bg-customPink bg-opacity-70 absolute">
       <div className="justify-between px-4 mx-auto lg:max-w-7xl md:items-center md:flex md:px-8 z-20">
         <div>
@@ -24,7 +24,7 @@ export default function Navbar() {
 
             <div className="md:hidden">
               <button
-                className="p-2 text-gray-700 rounded-md outline-none focus:border-gray-400 focus:border"
+                className="p-2 rounded-md outline-none focus:border-gray-400 focus:border text-white hover:text-pink-400"
                 onClick={() => {
                   setNavbar(!navbar);
                 }}
@@ -32,7 +32,7 @@ export default function Navbar() {
                 {navbar ? (
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    className="w-6 h-6 text-white"
+                    className="w-6 h-6"
                     viewBox="0 0 20 20"
                     fill="currentColor"
                   >
@@ -45,7 +45,7 @@ export default function Navbar() {
                 ) : (
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    className="w-6 h-6 text-white"
+                    className="w-6 h-6"
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke="currentColor"
@@ -101,5 +101,18 @@ export default function Navbar() {
         </div>
       </div>
     </nav>
+    {navbar ? <ExitDiv toggleShowing={setNavbar}></ExitDiv>: <></>}
+    </>
   );
+}
+
+interface ExitDiv{
+  toggleShowing: (value: SetStateAction<boolean>) => void
+}
+// TODO: why is this causing slight shift
+function ExitDiv({toggleShowing}: ExitDiv){
+  return(
+<div className={`absolute w-screen h-screen cursor-pointer bg-transparent z-20`}
+    onClick={() => toggleShowing(false)}/>
+  )
 }
