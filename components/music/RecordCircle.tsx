@@ -11,9 +11,10 @@ import Record from "./Record";
 interface RecordCircleProps{
   records: Recording[]
   offset: number
+  position: Vector3
 }
 
-export default function RecordCircle({ records, offset }: RecordCircleProps) {
+export default function RecordCircle({ records, offset, position }: RecordCircleProps) {
   const numPlanes = records.length;
   const radius = 2;
 
@@ -47,7 +48,7 @@ export default function RecordCircle({ records, offset }: RecordCircleProps) {
 
   return (
     <>
-      <group ref={myGroup} position={[0, 0, 1.5]} rotation={[0, 0, 0]}>
+      <group ref={myGroup} position={position} rotation={[0, 0, 0]}>
         {records.map((record, i) => {
           // Adjust the starting angle so that one album starts in the center facing the camera.
           const angleOffset = Math.PI + offset;
