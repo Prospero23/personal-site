@@ -13,7 +13,11 @@ interface TextData {
   hovered: boolean;
 }
 
-export default function Ben() {
+interface BenProps{
+  isContoured: boolean;
+}
+
+export default function Ben({isContoured}: BenProps) {
   // does this need to be in state?
   const [textData, setTextData] = useState<TextData[]>([]);
   const [hovered, setHovered] = useState<boolean>(false);
@@ -110,7 +114,7 @@ export default function Ben() {
             position={text.position}
             key={i}
             fontSize={0.05}
-            quaternion={text.quaternion}
+            quaternion={isContoured ? text.quaternion : undefined}
             color={
               text.hovered && (text.type === "Music" || text.type === "Code")
                 ? "red"

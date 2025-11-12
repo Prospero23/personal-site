@@ -18,8 +18,8 @@ export default function CanvasComponent() {
             role="content"
             description="3d model of me (Ben) made of text that moves around"
           >
-          <Suspense fallback={<Loading/>}>
-            <Ben />
+          <Suspense fallback={null}>
+            <Ben isContoured={false}/>
           </Suspense>
           </A11y>
           <ExtendedOrbit autoRotate={true} autoRotateSpeed={0.5}/>
