@@ -11,7 +11,7 @@ export default function NavLink({href, text, onClick}: NavLinkProps){
     <Link
     href={href}
     onClick={onClick}
-    className="text-white hover:border-b border-pink-400 active:text-pink-400"
+    className="text-white hover:underline underline-offset-4 active:text-pink-400"
   >
     {text}
   </Link>

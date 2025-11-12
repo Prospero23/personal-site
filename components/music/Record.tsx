@@ -22,7 +22,7 @@ export default function Record({ position, src }: RecordProps) {
 
   return (
     <Billboard position={position} ref={record} follow>
-      <Html transform distanceFactor={1.2}>
+      <Html transform occlude distanceFactor={1.2} zIndexRange={[10000, 0]}>
         <iframe src={src} seamless height={360} width={360}></iframe>
       </Html>
     </Billboard>

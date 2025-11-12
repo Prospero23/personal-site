@@ -34,6 +34,7 @@ export default function Ben({isContoured}: BenProps) {
         : setHovered(false);
       return updatedData;
     });
+
   };
 
   const handlePointerOut = (index: number) => {

@@ -15,13 +15,13 @@ export default function Navbar() {
   };
   return (
     <>
-    <nav className="w-full absolute left-0 top-0 bg-customPink bg-opacity-70 z-30">
+    <nav className="w-full absolute left-0 top-0 bg-customPink/70 z-[30000]">
       <div id="nav-container" className="justify-between px-4 mx-auto md:items-center md:flex md:px-8 lg:max-w-7xl">
         {/* TODO: this could use a better ID */}
           <div id="small-nav" className="flex justify-between py-3 md:py-5">
             <Link
               href="/"
-              className="text-2xl xl:text-4xl text-white font-bold hover:border-b border-pink-400 active:text-pink-400"
+              className="text-2xl xl:text-4xl text-white font-bold hover:underline underline-offset-4  active:text-pink-400"
             >
               Ben Eidson {/* make my navlink take a child prop? */}
             </Link>
@@ -36,32 +36,39 @@ export default function Navbar() {
             }`}
           >
           <ul className="w-full space-y-8 md:flex md:space-x-6 md:space-y-0 text-xl xl:text-2xl ">
-            <li className="flex justify-center">
+            <li className="flex justify-center sm:justify-start md:justify-center">
               <NavLink
                 href="/code"
                 text="Code"
                 onClick={handleClick}
               />
             </li>
-            <li className="flex justify-center">
+            <li className="flex justify-center sm:justify-start md:justify-center">
               <NavLink
                 href="/music"
                 text="Music"
                 onClick={handleClick}
                 />
             </li>
-            <li className="flex justify-center">
+            {/* TODO: <li className="flex justify-center sm:justify-start md:justify-center">
+              <NavLink
+                href="/"
+                text="CV"
+                onClick={handleClick}
+              />
+            </li> */}
+            <li className="flex justify-center sm:justify-start md:justify-center">
               <NavLink
                 href="/contact"
                 text="Contact"
                 onClick={handleClick}
               />
-            </li>
+            </li>            
           </ul>
         </div>
       </div>
     </nav>
-    {navbar ? <ExitDiv toggleShowing={setNavbar}></ExitDiv>: <></>}
+    {navbar && <ExitDiv toggleShowing={setNavbar}></ExitDiv>}
     </>
   );
 }

@@ -64,7 +64,7 @@ export default function RecordCircle({ records, offset, position }: RecordCircle
         })}
       </group>
       {/* TODO: Change to Text? */}
-      <Html position={[-1, -2.75, 0]} className="text-2xl lg:text-4xl">
+      <Html position={[-1, -2.75, 0]} className="text-2xl lg:text-4xl" zIndexRange={[10000, 0]}>
         <button
           className="hover:underline text-white"
           onClick={() => {
@@ -74,7 +74,7 @@ export default function RecordCircle({ records, offset, position }: RecordCircle
           PREV
         </button>
       </Html>
-      <Html position={[1, -2.75, 0]} className="text-2xl lg:text-4xl">
+      <Html position={[1, -2.75, 0]} className="text-2xl lg:text-4xl" zIndexRange={[10000, 0]}>
         <button
           className="hover:underline text-white"
           onClick={() => {

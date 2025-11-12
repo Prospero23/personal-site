@@ -13,7 +13,7 @@ export default function Home() {
         </h1>
         <div className="flex justify-end w-full">
           <button
-            className="text-2xl lg:text-5xl xl:text-6xl  hover:border-b border-pink-400 text-white"
+            className="text-2xl lg:text-5xl xl:text-6xl  hover:underline underline-offset-4 active:text-pink-400 text-white"
             type="button"
             onClick={() => {
               setShowModal(true);
