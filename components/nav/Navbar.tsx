@@ -15,7 +15,7 @@ export default function Navbar() {
   };
   return (
     <>
-    <nav className="w-full absolute left-0 top-0 bg-customPink bg-opacity-70 z-40">
+    <nav className="w-full absolute left-0 top-0 bg-customPink bg-opacity-70 z-30">
       <div id="nav-container" className="justify-between px-4 mx-auto md:items-center md:flex md:px-8 lg:max-w-7xl">
         {/* TODO: this could use a better ID */}
           <div id="small-nav" className="flex justify-between py-3 md:py-5">

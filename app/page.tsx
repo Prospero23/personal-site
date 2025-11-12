@@ -1,7 +1,10 @@
+"use client"
 import CanvasComponent from "@/components/home/HomePageCanvas";
 import AboutModal from "@/components/home/AboutModal";
+import { useState } from "react";
 
 export default function Home() {
+  const [showModal, setShowModal] = useState(false)
   return (
     <main className="flex w-screen h-[calc(100dvh)] justify-end items-end bg-customPink touch-none">
       <div className="z-10 mb-20 mr-10 flex flex-col items-center">
@@ -9,12 +12,21 @@ export default function Home() {
           BEN EIDSON
         </h1>
         <div className="flex justify-end w-full">
-          <AboutModal />
+          <button
+            className="text-2xl lg:text-5xl xl:text-6xl  hover:border-b border-pink-400 text-white"
+            type="button"
+            onClick={() => {
+              setShowModal(true);
+            }}
+          >
+            About Me
+          </button>
         </div>
       </div>
       <div className="absolute w-screen h-screen top-0 left-0">
         <CanvasComponent />
       </div>
+      <AboutModal showModal={showModal} setShowModal={setShowModal}/>
     </main>
   );
 }

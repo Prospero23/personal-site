@@ -1,24 +1,19 @@
 "use client";
+import { type SetStateAction } from "react";
+interface AboutModalProps{
+  showModal: boolean;
+  setShowModal: (value: SetStateAction<boolean>) => void 
+}
 
-import { useState } from "react";
-
-export default function AboutModal() {
-  const [showModal, setShowModal] = useState(false);
+export default function AboutModal({showModal, setShowModal}: AboutModalProps) {
   return (
-    <>
-      <button
-        className="z-20  text-2xl lg:text-5xl xl:text-6xl  hover:border-b border-pink-400 text-white"
-        type="button"
-        onClick={() => {
-          setShowModal(true);
-        }}
-      >
-        About Me
-      </button>
-      {showModal ? (
+      showModal ? (
+        // TODO: use better HTML element for this
         <>
-          <div className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none">
-            <div className="relative w-auto my-6 mx-auto max-w-3xl">
+        <div className={`absolute top-0 left-0 w-screen h-screen cursor-pointer bg-black z-30 bg-opacity-70`}          
+onClick={()=> setShowModal(false)}></div>
+          <div className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 outline-none focus:outline-none z-50 pointer-events-none">
+            <div id="test" className="relative w-auto my-6 mx-auto max-w-3xl z-50 pointer-events-auto">
               {/* content */}
               <div className="rounded-lg shadow-lg relative flex flex-col w-full bg-customPink outline-none focus:outline-none text-gray-800 bg-opacity-90">
                 {/* header */}
@@ -54,9 +49,6 @@ export default function AboutModal() {
               </div>
             </div>
           </div>
-          <div className="opacity-25 fixed inset-0 z-40 bg-black"></div>
         </>
-      ) : null}
-    </>
-  );
+      ) : null)
 }
