@@ -7,7 +7,7 @@ export default function AboutModal() {
   return (
     <>
       <button
-        className="z-20  text-2xl lg:text-6xl xl:text-7xl  hover:bg-pink-400 text-white"
+        className="z-20  text-2xl lg:text-5xl xl:text-6xl  hover:border-b border-pink-400 text-white"
         type="button"
         onClick={() => {
           setShowModal(true);
@@ -20,7 +20,7 @@ export default function AboutModal() {
           <div className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none">
             <div className="relative w-auto my-6 mx-auto max-w-3xl">
               {/* content */}
-              <div className="rounded-lg shadow-lg relative flex flex-col w-full bg-pink-200 outline-none focus:outline-none text-black">
+              <div className="rounded-lg shadow-lg relative flex flex-col w-full bg-customPink outline-none focus:outline-none text-gray-800 bg-opacity-90">
                 {/* header */}
                 <div className="text-center p-5 rounded-t pb-0">
                   <h3 className="text-3xl">About</h3>
@@ -42,7 +42,7 @@ export default function AboutModal() {
                 {/* footer */}
                 <div className="flex items-center justify-end p-6 rounded-b pt-0">
                   <button
-                    className="background-transparent font-bold uppercase py-0 px-2 text-sm mr-1 mb-1 hover:bg-pink-500 hover:text-white"
+                    className="background-transparent font-bold uppercase py-0 px-2 text-sm mr-1 mb-1 hover:border-b border-pink-400"
                     type="button"
                     onClick={() => {
                       setShowModal(false);
