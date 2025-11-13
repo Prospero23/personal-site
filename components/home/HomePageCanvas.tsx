@@ -2,29 +2,27 @@
 import { Canvas, extend } from "@react-three/fiber";
 import { Loader, Html } from "@react-three/drei";
 import Ben from "@/components/home/Ben";
-import { Suspense } from "react";
+import { Dispatch, SetStateAction, Suspense } from "react";
 import { A11y, A11yAnnouncer } from "@react-three/a11y";
 import ExtendedOrbit from "@/components/ExtendedOrbit";
 extend({ Loader });
 
-export default function CanvasComponent() {
+interface HomeCanvasProps{
+  setIsHovered: Dispatch<SetStateAction<boolean>>
+}
+
+export default function HomeCanvas({setIsHovered}: HomeCanvasProps) {
   return (
     <>
-        <Canvas tabIndex={0}>
-          <color attach="background" args={["pink"]} />
-          <ambientLight intensity={0.5} />
-          <spotLight position={[10, 0, 0.2]} angle={0.15} penumbra={1} />
-          <A11y
-            role="content"
-            description="3d model of me (Ben) made of text that moves around"
-          >
-          <Suspense fallback={null}>
-            <Ben isContoured={false}/>
-          </Suspense>
-          </A11y>
-          <ExtendedOrbit autoRotate={true} autoRotateSpeed={0.5}/>
+      <Canvas tabIndex={0}>
+        <color attach="background" args={["pink"]} />
+        <ambientLight intensity={0.5} />
+        <spotLight position={[10, 0, 0.2]} angle={0.15} penumbra={1} />
+        <Suspense fallback={<Loading/>}>
+          <Ben isContoured={false} setIsHovered={setIsHovered}/>
+        </Suspense>
+        <ExtendedOrbit autoRotate={true} autoRotateSpeed={0.5}/>
         </Canvas>
-      <A11yAnnouncer />
       <Loader />
     </>
   );
