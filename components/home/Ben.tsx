@@ -100,7 +100,7 @@ export default function Ben({isContoured, setIsHovered}: BenProps) {
             position={text.position}
             key={i}
             fontSize={0.05}
-            quaternion={isContoured ? text.quaternion : undefined}
+            quaternion={isContoured ? text.quaternion : new Quaternion()}
             color={
               i == hoveredIndex && (text.type === "Music" || text.type === "Code")
                 ? "red"

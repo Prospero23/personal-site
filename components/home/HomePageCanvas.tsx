@@ -8,10 +8,11 @@ import ExtendedOrbit from "@/components/ExtendedOrbit";
 extend({ Loader });
 
 interface HomeCanvasProps{
-  setIsHovered: Dispatch<SetStateAction<boolean>>
+  setIsHovered: Dispatch<SetStateAction<boolean>>;
+  isContoured: boolean;
 }
 
-export default function HomeCanvas({setIsHovered}: HomeCanvasProps) {
+export default function HomeCanvas({setIsHovered, isContoured}: HomeCanvasProps) {
   return (
     <>
       <Canvas tabIndex={0}>
@@ -19,7 +20,7 @@ export default function HomeCanvas({setIsHovered}: HomeCanvasProps) {
         <ambientLight intensity={0.5} />
         <spotLight position={[10, 0, 0.2]} angle={0.15} penumbra={1} />
         <Suspense fallback={<Loading/>}>
-          <Ben isContoured={false} setIsHovered={setIsHovered}/>
+          <Ben isContoured={isContoured} setIsHovered={setIsHovered}/>
         </Suspense>
         <ExtendedOrbit autoRotate={true} autoRotateSpeed={0.5}/>
         </Canvas>
