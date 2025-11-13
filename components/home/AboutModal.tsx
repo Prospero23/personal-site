@@ -13,7 +13,7 @@ export default function AboutModal({showModal, setShowModal}: AboutModalProps) {
         <div className={`absolute top-0 left-0 w-screen h-screen cursor-pointer bg-clear z-30`}          
         onClick={()=> setShowModal(false)}></div>
           <div className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 outline-none focus:outline-none z-50 pointer-events-none">
-            <div id="test" className="relative w-auto my-6 mx-auto max-w-3xl z-50 pointer-events-auto cursor-default">
+            <div id="test" className="relative w-auto my-6 mx-auto max-w-3xl z-50 pointer-events-auto">
               {/* content */}
               <div className="rounded-lg shadow-xl relative flex flex-col w-full bg-customPink outline-none focus:outline-none text-gray-800 bg-opacity-90">
                 {/* header */}
@@ -23,7 +23,7 @@ export default function AboutModal({showModal, setShowModal}: AboutModalProps) {
                 {/* body */}
                 <div className="relative p-6 flex-auto pt-0 text-sm md:text-lg my-4 leading-relaxed">
                   <p>
-                    I play music, organize <a target="_blank" href="https://bigsound.live/" className="underline hover:text-white">concerts</a> and code. 
+                    I play music, organize <a target="_blank" href="https://bigsound.live/" className="underline hover:text-pink-400">concerts</a> and code. 
                     <p className="my-6">
                     I graduated from The New England Conservatory with a degree in Jazz
                     Performance and have performed throughout the United States
