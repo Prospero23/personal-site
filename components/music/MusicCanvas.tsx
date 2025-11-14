@@ -12,40 +12,14 @@ import { Vector3 } from "three";
 interface MusicCanvasProps {
   sax: Recording[];
   laptop: Recording[];
+  isLaptop: boolean;
 }
 
-export default function MusicCanvas({ sax, laptop }: MusicCanvasProps) {
-  const [isLaptop, setIsLaptop] = useState(false);
-
+export default function MusicCanvas({ sax, laptop, isLaptop }: MusicCanvasProps) {
   const focusPosition = new Vector3(0,0,1.5) // AD:HOC
-
-  const handleClickLaptop = () => {
-    setIsLaptop(true);
-  };
-  const handleClickSax = () => {
-    setIsLaptop(false);
-  };
 
   return (
     <>
-      <div className="absolute flex justify-center flex-col z-10 right-0 top-14  sm:right-16 sm:top-14 text-2xl sm:text-2xl lg:text-4xl xl:text-6xl p-4 lg:p-8">
-        <button
-          className={`z-10 block ${
-            !isLaptop ? "underline text-purple-600" : "text-white"
-          } hover:text-purple-600`}
-          onClick={handleClickSax}
-        >
-          Sax
-        </button>
-        <button
-          className={`z-10 block ${
-            isLaptop ? "underline text-red-600" : "text-white"
-          } hover:text-red-600`}
-          onClick={handleClickLaptop}
-        >
-          Laptop
-        </button>
-      </div>
       <Canvas>
         <color attach="background" args={["pink"]} />
         <ambientLight intensity={1} color={"white"} />
