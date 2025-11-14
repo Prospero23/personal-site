@@ -8,14 +8,15 @@ import ExtendedOrbit from "@/components/ExtendedOrbit";
 import RecordCircle from "@/components/music/RecordCircle";
 import { Recording } from "@/data/recordings";
 import { Vector3 } from "three";
+import { InstrumentFilter } from "./RecordingFilters";
 
 interface MusicCanvasProps {
   sax: Recording[];
   laptop: Recording[];
-  isLaptop: boolean;
+  currentInstrument: InstrumentFilter;
 }
 
-export default function MusicCanvas({ sax, laptop, isLaptop }: MusicCanvasProps) {
+export default function MusicCanvas({ sax, laptop, currentInstrument }: MusicCanvasProps) {
   const focusPosition = new Vector3(0,0,1.5) // AD:HOC
 
   return (
@@ -24,13 +25,13 @@ export default function MusicCanvas({ sax, laptop, isLaptop }: MusicCanvasProps)
         <color attach="background" args={["pink"]} />
         <ambientLight intensity={1} color={"white"} />
 
-        {isLaptop ? (
+        {currentInstrument == "laptop" ? (
           <A11y role="content" description="circle of my records on laptop">
-            <RecordCircle records={laptop} offset={2.16} position={focusPosition}/>
+            <RecordCircle records={laptop} position={focusPosition}/>
           </A11y>
         ) : (
           <A11y role="content" description="circle of my records on saxophone">
-            <RecordCircle records={sax} offset={1.55} position={focusPosition}/>
+            <RecordCircle records={sax} position={focusPosition}/>
           </A11y>
         )}
         <ExtendedOrbit target={focusPosition}/>

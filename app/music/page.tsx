@@ -2,18 +2,23 @@
 import { useState } from "react";
 import MusicCanvas from "@/components/music/MusicCanvas";
 import { saxRecordings, laptopRecordings } from "../../data/recordings";
-import SortingButtons from "@/components/music/SortingButtons";
+import RecordingFilters, { InstrumentFilter, RecordingFilter } from "@/components/music/RecordingFilters";
 
 const Music = () => {
-    const [isLaptop, setIsLaptop] = useState(false);
-  
+    const [currentRecordings, setCurrentRecordings] = useState<RecordingFilter>("highlights");
+    const [currentInstrument, setCurrentInstrument] = useState<InstrumentFilter>("sax");
+
   return (
     // touch-none?
     <main className="w-screen h-[calc(100dvh)] relative bg-customPink touch-none">
-      <MusicCanvas sax={saxRecordings} laptop={laptopRecordings} isLaptop={isLaptop}/>
+      <MusicCanvas sax={saxRecordings} laptop={laptopRecordings} currentInstrument={currentInstrument}/>
 
       {/* Dom Overlay */}
-      <SortingButtons isLaptop={isLaptop} setIsLaptop={setIsLaptop}/>
+      <RecordingFilters
+      currentRecordings={currentRecordings}
+      setCurrentRecordings={setCurrentRecordings}
+      currentInstrument={currentInstrument}
+      setCurrentInstrument={setCurrentInstrument} />
     </main>
   );
 };

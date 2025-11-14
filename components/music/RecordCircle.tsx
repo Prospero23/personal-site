@@ -10,11 +10,11 @@ import Record from "./Record";
 
 interface RecordCircleProps{
   records: Recording[]
-  offset: number
   position: Vector3
 }
 
-export default function RecordCircle({ records, offset, position }: RecordCircleProps) {
+// TODO: show nearest record name on bottom?
+export default function RecordCircle({ records, position }: RecordCircleProps) {
   const numPlanes = records.length;
   const radius = 2;
 
@@ -42,7 +42,8 @@ export default function RecordCircle({ records, offset, position }: RecordCircle
 
   useEffect(() => {
     if (myGroup.current != null){
-      // TODO: reset current rotation to zero
+      // reset rotation when records change
+      myGroup.current.rotation.set(0,0,0)
     }
   }, [records])
 
@@ -50,13 +51,15 @@ export default function RecordCircle({ records, offset, position }: RecordCircle
     <>
       <group ref={myGroup} position={position} rotation={[0, 0, 0]}>
         {records.map((record, i) => {
-          // Adjust the starting angle so that one album starts in the center facing the camera.
-          const angleOffset = Math.PI + offset;
+          // UNIT CIRCLE STUFF
+          // places index 0 at front by applying 90 degree offset
+          const angleOffset = Math.PI / 2;
+          // radius = 1 unit -> circum = 2pi
           const angle = angleOffset + (i / numPlanes) * Math.PI * 2;
-
+          
           const x = Math.cos(angle) * radius;
           const y = 0.0;
-          const z = Math.sin(angle) * radius + 0;
+          const z = Math.sin(angle) * radius;
 
           return (
             <Record position={new Vector3(x, y, z)} key={i} src={record.src} />
@@ -74,7 +77,7 @@ export default function RecordCircle({ records, offset, position }: RecordCircle
           PREV
         </button>
       </Html>
-      <Html position={[1, -2.75, 0]} className="text-2xl lg:text-4xl" zIndexRange={[10000, 0]}>
+      <Html position={[0.5, -2.75, 0]} className="text-2xl lg:text-4xl" zIndexRange={[10000, 0]}>
         <button
           className="hover:underline text-white"
           onClick={() => {
