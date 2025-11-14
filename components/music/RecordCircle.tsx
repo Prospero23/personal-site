@@ -1,7 +1,7 @@
 "use client";
 
 import { Html } from "@react-three/drei";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
 import { Vector3, type Group } from "three";
 
@@ -15,7 +15,9 @@ interface RecordCircleProps{
 
 // TODO: show nearest record name on bottom?
 export default function RecordCircle({ records, position }: RecordCircleProps) {
-  const numPlanes = records.length;
+  const [displayedRecords, setDisplayedRecords] = useState(records)
+
+  const numPlanes = displayedRecords.length;
   const radius = 2;
 
   const myGroup = useRef<Group>(null);
@@ -39,18 +41,41 @@ export default function RecordCircle({ records, position }: RecordCircleProps) {
       
     }
   };
-
   useEffect(() => {
-    if (myGroup.current != null){
-      // reset rotation when records change
-      myGroup.current.rotation.set(0,0,0)
-    }
-  }, [records])
+  if (!myGroup.current) {
+    setDisplayedRecords(records);
+    return;
+  }
+
+  const group = myGroup.current;
+
+  gsap.to(group.scale, {
+    x: 0.2,
+    y: 0.2,
+    z: 0.2,
+    duration: 0.2,
+    ease: "power2.in",
+    onComplete: () => {
+      setDisplayedRecords(records);
+      
+      group.rotation.y = 0;
+
+      gsap.to(group.scale, {
+        x: 1,
+        y: 1,
+        z: 1,
+        duration: 0.2,
+        ease: "power2.out",
+      });
+    },
+  });
+}, [records]);
+
 
   return (
     <>
       <group ref={myGroup} position={position} rotation={[0, 0, 0]}>
-        {records.map((record, i) => {
+        {displayedRecords.map((record, i) => {
           // UNIT CIRCLE STUFF
           // places index 0 at front by applying 90 degree offset
           const angleOffset = Math.PI / 2;
@@ -62,7 +87,7 @@ export default function RecordCircle({ records, position }: RecordCircleProps) {
           const z = Math.sin(angle) * radius;
 
           return (
-            <Record position={new Vector3(x, y, z)} key={i} src={record.src} />
+            <Record position={new Vector3(x, y, z)} key={record.title} src={record.src} />
           );
         })}
       </group>
