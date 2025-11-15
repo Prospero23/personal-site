@@ -1,4 +1,4 @@
-import { Instrument } from "@/components/music/RecordingFilters";
+import { type Instrument } from "@/components/music/RecordingFilters";
 
 export interface Recording {
   title: string;
@@ -9,40 +9,39 @@ export interface Recording {
 }
 
 const laptopRecords: Recording[] = [
-    {
+  {
     title: "BEASTS",
     src: "https://bandcamp.com/EmbeddedPlayer/album=3351662876/size=large/bgcol=ffffff/linkcol=de270f/minimal=true/transparent=true/",
-    kind: 'audio',
-    instrument: 'laptop'
+    kind: "audio",
+    instrument: "laptop",
   },
   {
     title: "BEASTS 2",
     src: "https://bandcamp.com/EmbeddedPlayer/album=5736703/size=large/bgcol=ffffff/linkcol=0687f5/minimal=true/transparent=true/",
-    kind: 'audio',
-    instrument: 'laptop',
-    isHighlight: true
+    kind: "audio",
+    instrument: "laptop",
+    isHighlight: true,
   },
   {
     title: "stimulant",
     src: "https://bandcamp.com/EmbeddedPlayer/album=621373296/size=large/bgcol=ffffff/linkcol=f171a2/minimal=true/transparent=true/",
-    kind: 'audio',
-    instrument: 'laptop',
-
+    kind: "audio",
+    instrument: "laptop",
   },
 
   {
     title: "synonyms",
     src: "https://bandcamp.com/EmbeddedPlayer/album=2169524843/size=large/bgcol=ffffff/linkcol=e99708/minimal=true/transparent=true/",
-    kind: 'audio',
-    instrument: 'laptop'
+    kind: "audio",
+    instrument: "laptop",
   },
   {
     title: "Nonalith",
     src: "https://bandcamp.com/EmbeddedPlayer/album=1432124684/size=large/bgcol=ffffff/linkcol=333333/minimal=true/transparent=true/",
-    kind: 'audio',
-    instrument: 'laptop'
+    kind: "audio",
+    instrument: "laptop",
   },
-]
+];
 
 const saxRecords: Recording[] = [
   {
@@ -54,50 +53,46 @@ const saxRecords: Recording[] = [
   {
     title: "NEB",
     src: "https://bandcamp.com/EmbeddedPlayer/album=4242995147/size=large/bgcol=ffffff/linkcol=0687f5/minimal=true/transparent=true/",
-    kind: 'audio',
-    instrument: 'sax',
-    isHighlight: true
+    kind: "audio",
+    instrument: "sax",
+    isHighlight: true,
   },
   {
     title: "Ben and Caleb 2",
     src: "https://bandcamp.com/EmbeddedPlayer/album=3868216107/size=large/bgcol=ffffff/linkcol=0687f5/minimal=true/transparent=true/",
-    kind: 'audio',
-    instrument: 'sax'
-
+    kind: "audio",
+    instrument: "sax",
   },
   {
     title: "STALWART",
     src: "https://bandcamp.com/EmbeddedPlayer/album=2311132352/size=large/bgcol=ffffff/linkcol=0687f5/minimal=true/transparent=true/",
-    kind: 'audio',
-    instrument: 'sax'
-
+    kind: "audio",
+    instrument: "sax",
   },
   {
     title: "STALWART 2",
     src: "https://bandcamp.com/EmbeddedPlayer/album=356793531/size=large/bgcol=ffffff/linkcol=de270f/minimal=true/transparent=true/",
-    kind: 'audio',
-    instrument: 'sax'
-
+    kind: "audio",
+    instrument: "sax",
   },
   {
     title: "STALWART BLESSED",
     src: "https://bandcamp.com/EmbeddedPlayer/album=598708310/size=large/bgcol=ffffff/linkcol=0687f5/minimal=true/transparent=true/",
     kind: "audio",
     instrument: "sax",
-    isHighlight: true
+    isHighlight: true,
   },
   {
     title: "Octapus",
     src: "https://bandcamp.com/EmbeddedPlayer/album=308713918/size=large/bgcol=ffffff/linkcol=0687f5/minimal=true/transparent=true/",
-    kind: 'audio',
-    instrument: 'sax'
-
+    kind: "audio",
+    instrument: "sax",
   },
   {
     title: "Sepsis",
     src: "https://bandcamp.com/EmbeddedPlayer/album=2842659991/size=large/bgcol=ffffff/linkcol=0687f5/minimal=true/transparent=true/",
-    kind: 'audio',
-    instrument: 'sax'
+    kind: "audio",
+    instrument: "sax",
   },
 ];
 
@@ -105,60 +100,64 @@ const laptopVideos: Recording[] = [
   {
     title: "Solo Laptop",
     src: "https://www.youtube.com/embed/p0V3MkqAzrw?si=4Of3V29bF5kprIhx",
-    kind: 'video',
-    instrument: 'laptop',
-    isHighlight: true
+    kind: "video",
+    instrument: "laptop",
+    isHighlight: true,
   },
   {
     title: "Dubow/Eidson/Abramovski/Eylam",
     src: "https://www.youtube.com/embed/D7TMtrqmKDg?si=sxidMEG2HtXplnh2",
     kind: "video",
-    instrument: "laptop"
+    instrument: "laptop",
   },
   {
     title: "Sax and Laptop",
     src: "https://www.youtube.com/embed/deahVmtTZgo?si=WSe1l13SGtJ5YwGV",
-    kind: 'video',
-    instrument: 'laptop',
-    isHighlight: true
-  }
-]
-
+    kind: "video",
+    instrument: "laptop",
+    isHighlight: true,
+  },
+];
 
 const saxVideoes: Recording[] = [
   {
     title: "Jamison/Ben",
     src: "https://www.youtube.com/embed/2gB_4YjCbNk?si=gLm4qTlcas4V92bj",
-    kind: 'video',
-    instrument: 'sax'
+    kind: "video",
+    instrument: "sax",
   },
   {
     title: "Daisy/Ben",
     src: "https://www.youtube.com/embed/_hnE9eToU5I?si=bPisp4xSW1COHQo-",
     kind: "video",
-    instrument: "sax"
+    instrument: "sax",
   },
   {
     title: "Solo",
     src: "https://www.youtube.com/embed/NCWWoi8wvPI?si=fmjhQBZ55dUfKT7b",
-    kind: 'video',
-    instrument: 'sax',
-    isHighlight: true
-  }, 
+    kind: "video",
+    instrument: "sax",
+    isHighlight: true,
+  },
   {
     title: "Greene/Murray/Eidson",
     src: "https://www.youtube.com/embed/C3K4pR54VFo?si=mIf6rU0vsNILkq9-",
     kind: "video",
-    instrument: "sax"
-  }, 
+    instrument: "sax",
+  },
   {
     title: "Hoffman Quartet",
     src: "https://www.youtube.com/embed/Xy5MycPatVo?si=HG1YjQ2qySQw79eE",
     kind: "video",
-    instrument: "sax"
-  }
-]
+    instrument: "sax",
+  },
+];
 
-export const recordings: Recording[] = [...laptopRecords, ...saxRecords, ...laptopVideos, ...saxVideoes]
+export const recordings: Recording[] = [
+  ...laptopRecords,
+  ...saxRecords,
+  ...laptopVideos,
+  ...saxVideoes,
+];
 
 //

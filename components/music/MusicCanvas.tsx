@@ -2,22 +2,29 @@
 "use client";
 
 import { Canvas } from "@react-three/fiber";
-import { A11y, A11yAnnouncer } from "@react-three/a11y";
+import { A11yAnnouncer } from "@react-three/a11y";
 import ExtendedOrbit from "@/components/ExtendedOrbit";
-import RecordCircle, { RegisterRotateHandler } from "@/components/music/RecordCircle";
-import { Recording } from "@/data/recordings";
+import RecordCircle, {
+  type RegisterRotateHandler,
+} from "@/components/music/RecordCircle";
+import { type Recording } from "@/data/recordings";
 import { Vector3 } from "three";
-import { Instrument, RecordingKind } from "./RecordingFilters";
+import { type Instrument, type RecordingKind } from "./RecordingFilters";
 import { useMemo } from "react";
 interface MusicCanvasProps {
   recordings: Recording[];
   currentRecordings: RecordingKind;
   currentInstrument: Instrument;
-  onRegisterRotateHandler?: RegisterRotateHandler
+  onRegisterRotateHandler?: RegisterRotateHandler;
 }
 
-export default function MusicCanvas({ recordings, currentRecordings, currentInstrument, onRegisterRotateHandler }: MusicCanvasProps) {
-  const focusPosition = new Vector3(0,0,0.75) // AD:HOC
+export default function MusicCanvas({
+  recordings,
+  currentRecordings,
+  currentInstrument,
+  onRegisterRotateHandler,
+}: MusicCanvasProps) {
+  const focusPosition = new Vector3(0, 0, 0.75); // AD:HOC
 
   const filteredRecordings = useMemo(() => {
     // Always filter by instrument first
@@ -38,15 +45,19 @@ export default function MusicCanvas({ recordings, currentRecordings, currentInst
       default:
         return byInstrument;
     }
-  } , [recordings, currentInstrument, currentRecordings]);
+  }, [recordings, currentInstrument, currentRecordings]);
 
   return (
     <>
       <Canvas className="cursor-grab active:cursor-grabbing z-0">
         <color attach="background" args={["pink"]} />
         <ambientLight intensity={1} color={"white"} />
-        <RecordCircle records={filteredRecordings} position={focusPosition} onRegisterRotateHandler={onRegisterRotateHandler}/>
-        <ExtendedOrbit target={focusPosition}/>
+        <RecordCircle
+          records={filteredRecordings}
+          position={focusPosition}
+          onRegisterRotateHandler={onRegisterRotateHandler}
+        />
+        <ExtendedOrbit target={focusPosition} />
       </Canvas>
       <A11yAnnouncer />
     </>

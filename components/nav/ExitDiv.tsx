@@ -1,12 +1,16 @@
-import { SetStateAction } from "react"
+import { type SetStateAction } from "react";
 
-interface ExitDivProps{
-  toggleShowing: (value: SetStateAction<boolean>) => void
+interface ExitDivProps {
+  toggleShowing: (value: SetStateAction<boolean>) => void;
 }
 // TODO: why is this causing slight shift
-export default function ExitDiv({toggleShowing}: ExitDivProps){
-  return(
-<div className={`absolute w-screen h-screen cursor-pointer bg-clear z-[20000]`}
-    onClick={() => toggleShowing(false)}/>
-  )
+export default function ExitDiv({ toggleShowing }: ExitDivProps) {
+  return (
+    <div
+      className={`absolute w-screen h-screen cursor-pointer bg-clear z-[20000]`}
+      onClick={() => {
+        toggleShowing(false);
+      }}
+    />
+  );
 }

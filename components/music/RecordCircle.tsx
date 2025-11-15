@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
 import { Vector3, type Group } from "three";
 
@@ -10,78 +10,81 @@ import Record from "./Record";
 export type RotateFn = (direction: "forward" | "backward") => void;
 export type RegisterRotateHandler = (fn: RotateFn) => void;
 
-
-interface RecordCircleProps{
-  records: Recording[]
-  position: Vector3
-  onRegisterRotateHandler?: RegisterRotateHandler
-
+interface RecordCircleProps {
+  records: Recording[];
+  position: Vector3;
+  onRegisterRotateHandler?: RegisterRotateHandler;
 }
 
 // TODO: show nearest record name on bottom?
-export default function RecordCircle({ records, position, onRegisterRotateHandler }: RecordCircleProps) {
-  const [displayedRecords, setDisplayedRecords] = useState(records)
+export default function RecordCircle({
+  records,
+  position,
+  onRegisterRotateHandler,
+}: RecordCircleProps) {
+  const [displayedRecords, setDisplayedRecords] = useState(records);
 
   const numPlanes = displayedRecords.length;
   const radius = 2;
 
   const myGroup = useRef<Group>(null);
 
-  const rotateGroup: RotateFn = (direction: "forward" | "backward") => {
-    if (myGroup.current != null) {
+  const rotateGroup: RotateFn = useCallback(
+    (direction: "forward" | "backward") => {
+      if (myGroup.current != null) {
+        // Calculate the absolute target rotation value for each plane.
+        const currentPlane = Math.round(
+          myGroup.current.rotation.y / ((Math.PI * 2) / numPlanes),
+        );
+        const targetPlane =
+          direction === "backward" ? currentPlane + 1 : currentPlane - 1;
+        const targetRotation = (targetPlane * (Math.PI * 2)) / numPlanes;
 
-      // Calculate the absolute target rotation value for each plane.
-      const currentPlane = Math.round(
-        myGroup.current.rotation.y / ((Math.PI * 2) / numPlanes),
-      );
-      const targetPlane =
-        direction === "backward" ? currentPlane + 1 : currentPlane - 1;
-      const targetRotation = (targetPlane * (Math.PI * 2)) / numPlanes;
-
-      gsap.to(myGroup.current.rotation, {
-        y: targetRotation,
-        duration: 0.5,
-        ease: "power3.out",
-      });
-      
-    }
-  };
+        gsap.to(myGroup.current.rotation, {
+          y: targetRotation,
+          duration: 0.5,
+          ease: "power3.out",
+        });
+      }
+    },
+    [numPlanes],
+  );
   // animation stuff
   useEffect(() => {
-  if (!myGroup.current) {
-    setDisplayedRecords(records);
-    return;
-  }
-
-  const group = myGroup.current;
-
-  gsap.to(group.scale, {
-    x: 0.2,
-    y: 0.2,
-    z: 0.2,
-    duration: 0.2,
-    ease: "power2.in",
-    onComplete: () => {
+    if (myGroup.current == null) {
       setDisplayedRecords(records);
-      
-      group.rotation.y = 0;
+      return;
+    }
 
-      gsap.to(group.scale, {
-        x: 1,
-        y: 1,
-        z: 1,
-        duration: 0.2,
-        ease: "power2.out",
-      });
-    },
-  });
-}, [records]);
+    const group = myGroup.current;
 
-  //rotation stuff
+    gsap.to(group.scale, {
+      x: 0.2,
+      y: 0.2,
+      z: 0.2,
+      duration: 0.2,
+      ease: "power2.in",
+      onComplete: () => {
+        setDisplayedRecords(records);
+
+        group.rotation.y = 0;
+
+        gsap.to(group.scale, {
+          x: 1,
+          y: 1,
+          z: 1,
+          duration: 0.2,
+          ease: "power2.out",
+        });
+      },
+    });
+  }, [records]);
+
+  // rotation stuff
   useEffect(() => {
-    if (!onRegisterRotateHandler) return;
+    if (onRegisterRotateHandler === undefined) return;
     onRegisterRotateHandler(rotateGroup);
-  }, [onRegisterRotateHandler, numPlanes]);
+  }, [onRegisterRotateHandler, numPlanes, rotateGroup]);
 
   // arrow keys to be able to rotate
   useEffect(() => {
@@ -95,11 +98,14 @@ export default function RecordCircle({ records, position, onRegisterRotateHandle
     };
 
     window.addEventListener("keydown", handleKeyDown);
-    return () => window.removeEventListener("keydown", handleKeyDown);
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+    };
   }, [rotateGroup]);
 
   return (
     <>
+      {/* eslint-disable-next-line */}
       <group ref={myGroup} position={position} rotation={[0, 0, 0]}>
         {displayedRecords.map((record, i) => {
           // UNIT CIRCLE STUFF
@@ -107,13 +113,17 @@ export default function RecordCircle({ records, position, onRegisterRotateHandle
           const angleOffset = Math.PI / 2;
           // radius = 1 unit -> circum = 2pi
           const angle = angleOffset + (i / numPlanes) * Math.PI * 2;
-          
+
           const x = Math.cos(angle) * radius;
           const y = 0.0;
           const z = Math.sin(angle) * radius;
 
           return (
-            <Record position={new Vector3(x, y, z)} key={record.title} recording={record} />
+            <Record
+              position={new Vector3(x, y, z)}
+              key={record.title}
+              recording={record}
+            />
           );
         })}
       </group>

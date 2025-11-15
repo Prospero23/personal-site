@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useMemo, type Dispatch, type SetStateAction } from "react";
-import { Text, useCursor } from "@react-three/drei";
+import { Text } from "@react-three/drei";
 import { useLoader } from "@react-three/fiber";
 import { OBJLoader } from "three/examples/jsm/loaders/OBJLoader";
 import { Quaternion, Vector3 } from "three";
@@ -12,12 +12,12 @@ interface TextData {
   type: string;
 }
 
-interface BenProps{
+interface BenProps {
   isContoured: boolean;
   setIsHovered: Dispatch<SetStateAction<boolean>>;
 }
 
-export default function Ben({isContoured, setIsHovered}: BenProps) {
+export default function Ben({ isContoured, setIsHovered }: BenProps) {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
   const obj = useLoader(OBJLoader, "/textModel/TextBen.obj");
@@ -47,10 +47,10 @@ export default function Ben({isContoured, setIsHovered}: BenProps) {
       const forward = new Vector3(0, 0, 1);
       quaternion.setFromUnitVectors(forward, normal);
 
-      const key = position.toArray().toString()
+      const key = position.toArray().toString();
 
       // check for duplicates
-      if (existingArrays.has(key)){
+      if (existingArrays.has(key)) {
         continue;
       }
 
@@ -60,7 +60,7 @@ export default function Ben({isContoured, setIsHovered}: BenProps) {
       const options = ["Ben", "Eidson", "Code", "Music", "Ben", "Eidson"];
       const type = options[Math.floor(Math.random() * options.length)];
 
-      data.push({ position, quaternion, type }); 
+      data.push({ position, quaternion, type });
     }
     // TODO: AD-HOC check to get rid of extra points behind head?
 
@@ -70,7 +70,7 @@ export default function Ben({isContoured, setIsHovered}: BenProps) {
   const handlePointerOver = (index: number) => {
     const hoveredText = textData[index];
 
-    if (hoveredText.type == "Code" || hoveredText.type == "Music"){
+    if (hoveredText.type === "Code" || hoveredText.type === "Music") {
       setIsHovered(true);
       setHoveredIndex(index);
     }
@@ -79,7 +79,6 @@ export default function Ben({isContoured, setIsHovered}: BenProps) {
   const handlePointerOut = () => {
     setIsHovered(false);
     setHoveredIndex(null);
-
   };
 
   function handleMouseClick(index: number) {
@@ -94,6 +93,7 @@ export default function Ben({isContoured, setIsHovered}: BenProps) {
 
   return (
     <>
+      {/* eslint-disable-next-line */}
       <group position={[0, -2, -4]} rotation={[0.4, 2.8, 0.0]}>
         {textData.map((text, i) => (
           <Text
@@ -102,7 +102,8 @@ export default function Ben({isContoured, setIsHovered}: BenProps) {
             fontSize={0.05}
             quaternion={isContoured ? text.quaternion : new Quaternion()}
             color={
-              i == hoveredIndex && (text.type === "Music" || text.type === "Code")
+              i === hoveredIndex &&
+              (text.type === "Music" || text.type === "Code")
                 ? "red"
                 : "black"
             }

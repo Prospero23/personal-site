@@ -3,7 +3,10 @@
         "source.fixAll.eslint": "explicit"
     },
     "eslint.validate": [
-        "javascript"
+        "javascript",
+        "javascriptreact",
+        "typescript",
+        "typescriptreact"
     ],
     "editor.defaultFormatter": "rvest.vs-code-prettier-eslint",
     "editor.formatOnPaste": false, // required 
