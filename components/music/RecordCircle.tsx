@@ -1,6 +1,5 @@
 "use client";
 
-import { Html } from "@react-three/drei";
 import { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
 import { Vector3, type Group } from "three";
@@ -8,13 +7,19 @@ import { Vector3, type Group } from "three";
 import { type Recording } from "@/data/recordings";
 import Record from "./Record";
 
+export type RotateFn = (direction: "forward" | "backward") => void;
+export type RegisterRotateHandler = (fn: RotateFn) => void;
+
+
 interface RecordCircleProps{
   records: Recording[]
   position: Vector3
+  onRegisterRotateHandler?: RegisterRotateHandler
+
 }
 
 // TODO: show nearest record name on bottom?
-export default function RecordCircle({ records, position }: RecordCircleProps) {
+export default function RecordCircle({ records, position, onRegisterRotateHandler }: RecordCircleProps) {
   const [displayedRecords, setDisplayedRecords] = useState(records)
 
   const numPlanes = displayedRecords.length;
@@ -22,7 +27,7 @@ export default function RecordCircle({ records, position }: RecordCircleProps) {
 
   const myGroup = useRef<Group>(null);
 
-  const handleClick = (direction: string) => {
+  const rotateGroup: RotateFn = (direction: "forward" | "backward") => {
     if (myGroup.current != null) {
 
       // Calculate the absolute target rotation value for each plane.
@@ -41,6 +46,7 @@ export default function RecordCircle({ records, position }: RecordCircleProps) {
       
     }
   };
+  // animation stuff
   useEffect(() => {
   if (!myGroup.current) {
     setDisplayedRecords(records);
@@ -71,6 +77,26 @@ export default function RecordCircle({ records, position }: RecordCircleProps) {
   });
 }, [records]);
 
+  //rotation stuff
+  useEffect(() => {
+    if (!onRegisterRotateHandler) return;
+    onRegisterRotateHandler(rotateGroup);
+  }, [onRegisterRotateHandler, numPlanes]);
+
+  // arrow keys to be able to rotate
+  useEffect(() => {
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "ArrowLeft" || event.key === "a") {
+        rotateGroup("backward");
+      }
+      if (event.key === "ArrowRight" || event.key === "d") {
+        rotateGroup("forward");
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [rotateGroup]);
 
   return (
     <>
@@ -91,27 +117,6 @@ export default function RecordCircle({ records, position }: RecordCircleProps) {
           );
         })}
       </group>
-      {/* TODO: Change to Text? */}
-      <Html position={[-1, -2.75, 0]} className="text-2xl lg:text-4xl" zIndexRange={[10000, 0]}>
-        <button
-          className="hover:underline text-white"
-          onClick={() => {
-            handleClick("backward");
-          }}
-        >
-          PREV
-        </button>
-      </Html>
-      <Html position={[0.5, -2.75, 0]} className="text-2xl lg:text-4xl" zIndexRange={[10000, 0]}>
-        <button
-          className="hover:underline text-white"
-          onClick={() => {
-            handleClick("forward");
-          }}
-        >
-          NEXT
-        </button>
-      </Html>
     </>
   );
 }

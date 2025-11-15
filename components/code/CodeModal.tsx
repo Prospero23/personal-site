@@ -53,7 +53,7 @@ export default function CodeModal({ side }: { side: CodingDataItem }) {
                 {/* footer */}
                 <div className="flex items-center justify-end p-6 rounded-b pt-0">
                   <button
-                    className="background-transparent font-bold uppercase py-0 text-sm mr-1 mb-1 hover:bg-pink-500"
+                    className="background-transparent font-bold uppercase py-0 text-sm mr-1 mb-1 hover:bg-pink-400"
                     type="button"
                     onClick={() => {
                       setShowModal(false);

@@ -29,7 +29,7 @@ export default function Record({ position, recording }: RecordProps) {
 
   return (
     <Billboard position={position} ref={record} follow>
-      <Html transform occlude distanceFactor={1.2} zIndexRange={[10000, 0]}>
+      <Html transform occlude distanceFactor={1.2} zIndexRange={[4000, 0]}>
         {recording.kind == "audio" ?
           <iframe
           src={recording.src}

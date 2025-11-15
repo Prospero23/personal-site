@@ -1,24 +1,52 @@
 "use client"
-import { useState } from "react";
+import { useRef, useState } from "react";
 import MusicCanvas from "@/components/music/MusicCanvas";
 import { recordings } from "../../data/recordings";
 import RecordingFilters, {RecordingKind, Instrument} from "@/components/music/RecordingFilters";
+import { RotateFn } from "@/components/music/RecordCircle";
+
 
 const Music = () => {
     const [currentRecordings, setCurrentRecordings] = useState<RecordingKind>("highlights");
     const [currentInstrument, setCurrentInstrument] = useState<Instrument>("sax");
 
+    const rotateRef = useRef<RotateFn | null>(null);
+
+    function prevClick(){
+     rotateRef.current?.("backward") 
+    }
+
+    function nextClick(){
+     rotateRef.current?.("forward") 
+    }
+
   return (
     // touch-none?
-    <main className="w-screen h-[calc(100dvh)] relative bg-customPink touch-none">
-      <MusicCanvas recordings={recordings} currentRecordings={currentRecordings} currentInstrument={currentInstrument}/>
+    <main className="w-screen h-[calc(100dvh)] relative bg-customPink">
+      
+      <MusicCanvas 
+      recordings={recordings} 
+      currentRecordings={currentRecordings}
+      currentInstrument={currentInstrument}
+      onRegisterRotateHandler={(fn) => rotateRef.current = fn}/>
 
       {/* Dom Overlay */}
+      <div className="w-full h-full absolute top-0 pointer-events-none flex flex-col justify-end z-10">
       <RecordingFilters
       currentRecordings={currentRecordings}
       setCurrentRecordings={setCurrentRecordings}
       currentInstrument={currentInstrument}
       setCurrentInstrument={setCurrentInstrument} />
+
+      <div className="flex justify-center gap-28 p-8 text-white text-lg">
+        <button className="hover:underline active:text-pink-400 p-6 pointer-events-auto" onClick={() => rotateRef.current?.("backward")}>
+          prev
+        </button>
+        <button className="hover:underline active:text-pink-400 p-6 pointer-events-auto" onClick={() => rotateRef.current?.("forward")}>
+          next
+        </button>
+      </div>
+      </div>
     </main>
   );
 };

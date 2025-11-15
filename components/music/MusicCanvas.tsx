@@ -4,7 +4,7 @@
 import { Canvas } from "@react-three/fiber";
 import { A11y, A11yAnnouncer } from "@react-three/a11y";
 import ExtendedOrbit from "@/components/ExtendedOrbit";
-import RecordCircle from "@/components/music/RecordCircle";
+import RecordCircle, { RegisterRotateHandler } from "@/components/music/RecordCircle";
 import { Recording } from "@/data/recordings";
 import { Vector3 } from "three";
 import { Instrument, RecordingKind } from "./RecordingFilters";
@@ -13,9 +13,10 @@ interface MusicCanvasProps {
   recordings: Recording[];
   currentRecordings: RecordingKind;
   currentInstrument: Instrument;
+  onRegisterRotateHandler?: RegisterRotateHandler
 }
 
-export default function MusicCanvas({ recordings, currentRecordings, currentInstrument }: MusicCanvasProps) {
+export default function MusicCanvas({ recordings, currentRecordings, currentInstrument, onRegisterRotateHandler }: MusicCanvasProps) {
   const focusPosition = new Vector3(0,0,0.75) // AD:HOC
 
   const filteredRecordings = useMemo(() => {
@@ -41,10 +42,10 @@ export default function MusicCanvas({ recordings, currentRecordings, currentInst
 
   return (
     <>
-      <Canvas className="cursor-grab active:cursor-grabbing">
+      <Canvas className="cursor-grab active:cursor-grabbing z-0">
         <color attach="background" args={["pink"]} />
         <ambientLight intensity={1} color={"white"} />
-        <RecordCircle records={filteredRecordings} position={focusPosition}/>
+        <RecordCircle records={filteredRecordings} position={focusPosition} onRegisterRotateHandler={onRegisterRotateHandler}/>
         <ExtendedOrbit target={focusPosition}/>
       </Canvas>
       <A11yAnnouncer />
