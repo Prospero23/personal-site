@@ -41,14 +41,10 @@ export default function MusicCanvas({ recordings, currentRecordings, currentInst
 
   return (
     <>
-      <Canvas>
+      <Canvas className="cursor-grab active:cursor-grabbing">
         <color attach="background" args={["pink"]} />
         <ambientLight intensity={1} color={"white"} />
-
-        <A11y role="content" description="circle of my records in current selected category">
-          <RecordCircle records={filteredRecordings} position={focusPosition}/>
-        </A11y>
-        
+        <RecordCircle records={filteredRecordings} position={focusPosition}/>
         <ExtendedOrbit target={focusPosition}/>
       </Canvas>
       <A11yAnnouncer />
