@@ -87,7 +87,7 @@ export default function RecordCircle({ records, position }: RecordCircleProps) {
           const z = Math.sin(angle) * radius;
 
           return (
-            <Record position={new Vector3(x, y, z)} key={record.title} src={record.src} />
+            <Record position={new Vector3(x, y, z)} key={record.title} recording={record} />
           );
         })}
       </group>

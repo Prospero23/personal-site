@@ -1,18 +1,18 @@
 import {Dispatch, SetStateAction, ButtonHTMLAttributes, ReactNode } from "react";
 
-interface RecordingFiltersProps{
-    currentRecordings: RecordingFilter;
-    setCurrentRecordings: Dispatch<SetStateAction<RecordingFilter>>;
-    currentInstrument: InstrumentFilter;
-    setCurrentInstrument: Dispatch<SetStateAction<InstrumentFilter>>;
+interface RecordingKindsProps{
+    currentRecordings: RecordingKind;
+    setCurrentRecordings: Dispatch<SetStateAction<RecordingKind>>;
+    currentInstrument: Instrument;
+    setCurrentInstrument: Dispatch<SetStateAction<Instrument>>;
 }
-export type RecordingFilter = "highlights" | "videos" | "audio";
-export type InstrumentFilter = "sax" | "laptop"
+export type RecordingKind = "audio" | "video" | "highlights";
+export type Instrument = "sax" | "laptop"
 
-export default function RecordingFilters({currentRecordings, setCurrentRecordings, currentInstrument, setCurrentInstrument}: RecordingFiltersProps){
+export default function RecordingFilters({currentRecordings, setCurrentRecordings, currentInstrument, setCurrentInstrument}: RecordingKindsProps){
 
     return(
-    <div className="absolute right-10 top-16 md:right-20 md:top-32 z-10 flex flex-col gap-2 pointer-events-none shadow-lg">
+    <div className="absolute top-16 md:right-20 md:top-32 z-10 flex flex-col gap-2 pointer-events-none shadow-lg">
     {/* Top row */}
     <div className="pointer-events-auto inline-flex items-center gap-1 px-2 py-1 text-xs sm:text-sm md:text-base">
         <FilterButton
@@ -22,16 +22,16 @@ export default function RecordingFilters({currentRecordings, setCurrentRecording
         Highlights
         </FilterButton>
         <FilterButton
-        isActive={currentRecordings === "videos"}
-        activeClassName="text-orange-500"
-        onClick={() => setCurrentRecordings("videos")}>
-        Videos
-        </FilterButton>
-        <FilterButton
         isActive={currentRecordings === "audio"}
-        activeClassName="text-blue-500"
+        activeClassName="text-orange-500"
         onClick={() => setCurrentRecordings("audio")}>
         Audio
+        </FilterButton>
+        <FilterButton
+        isActive={currentRecordings === "video"}
+        activeClassName="text-blue-500"
+        onClick={() => setCurrentRecordings("video")}>
+        Videos
         </FilterButton>
     </div>
 

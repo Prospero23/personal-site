@@ -1,17 +1,17 @@
 "use client"
 import { useState } from "react";
 import MusicCanvas from "@/components/music/MusicCanvas";
-import { saxRecordings, laptopRecordings } from "../../data/recordings";
-import RecordingFilters, { InstrumentFilter, RecordingFilter } from "@/components/music/RecordingFilters";
+import { recordings } from "../../data/recordings";
+import RecordingFilters, {RecordingKind, Instrument} from "@/components/music/RecordingFilters";
 
 const Music = () => {
-    const [currentRecordings, setCurrentRecordings] = useState<RecordingFilter>("highlights");
-    const [currentInstrument, setCurrentInstrument] = useState<InstrumentFilter>("sax");
+    const [currentRecordings, setCurrentRecordings] = useState<RecordingKind>("highlights");
+    const [currentInstrument, setCurrentInstrument] = useState<Instrument>("sax");
 
   return (
     // touch-none?
     <main className="w-screen h-[calc(100dvh)] relative bg-customPink touch-none">
-      <MusicCanvas sax={saxRecordings} laptop={laptopRecordings} currentInstrument={currentInstrument}/>
+      <MusicCanvas recordings={recordings} currentRecordings={currentRecordings} currentInstrument={currentInstrument}/>
 
       {/* Dom Overlay */}
       <RecordingFilters
