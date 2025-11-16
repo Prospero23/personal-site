@@ -4,7 +4,7 @@ interface CodingDataItem {
   link?: string;
 }
 
-type CodingData = Record<number, CodingDataItem>;
+export type CodingData = Record<number, CodingDataItem>;
 
 const codingData: CodingData = {
   0: {
@@ -36,5 +36,7 @@ const codingData: CodingData = {
   },
   5: { title: "This Website", description: "Three JS + NextJs" },
 };
+
+export const facesOfCube = ["0", "1", "2", "3", "4", "5"];
 
 export default codingData;

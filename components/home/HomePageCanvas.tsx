@@ -4,7 +4,6 @@ import { Loader, Html } from "@react-three/drei";
 import Ben from "@/components/home/Ben";
 import { type Dispatch, type SetStateAction, Suspense } from "react";
 import ExtendedOrbit from "@/components/ExtendedOrbit";
-extend({ Loader });
 
 interface HomeCanvasProps {
   setIsHovered: Dispatch<SetStateAction<boolean>>;

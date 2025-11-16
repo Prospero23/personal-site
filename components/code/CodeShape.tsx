@@ -14,7 +14,7 @@ export default function CodeShape() {
       {/* Front face text offset fixes clipping */}
       <Plane args={[cubeSize, cubeSize]} position={[0, 0, halfSize]}>
         <meshStandardMaterial color="black" />
-        <Html transform zIndexRange={[40, 0]}>
+        <Html transform zIndexRange={[4000, 0]}>
           <Image
             src="/basicSideFace.png"
             alt="basic front"
@@ -31,7 +31,7 @@ export default function CodeShape() {
         rotation={[0, Math.PI, 0]}
       >
         <meshStandardMaterial color="black" />
-        <Html transform zIndexRange={[40, 0]}>
+        <Html transform zIndexRange={[4000, 0]}>
           <Image
             src="/binsynth.png"
             alt="Picture of binSynth homepage"
@@ -71,7 +71,7 @@ export default function CodeShape() {
         rotation={[0, Math.PI / 2, 0]}
       >
         <meshStandardMaterial color="black" />
-        <Html transform zIndexRange={[40, 0]}>
+        <Html transform zIndexRange={[4000, 0]}>
           <Image
             src="/GPTGroovesLarge.png"
             alt="Picture GPTGrooves homepage"
@@ -87,7 +87,7 @@ export default function CodeShape() {
         rotation={[0, -Math.PI / 2, 0]}
       >
         <meshStandardMaterial color="black" />
-        <Html transform zIndexRange={[40, 0]}>
+        <Html transform zIndexRange={[4000, 0]}>
           {/* <Image src='/blackSide.png' alt="side of the cube" width={300} height={300} className="absolute"/>  */}
           <Image
             src="/Website.png"
