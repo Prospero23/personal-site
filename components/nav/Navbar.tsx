@@ -15,7 +15,7 @@ export default function Navbar() {
   };
   return (
     <>
-      <nav className="w-full absolute left-0 top-0 bg-customPink/70 z-[30000]">
+      <nav className="w-full absolute left-0 top-0 bg-customPink/70 z-30000">
         <div
           id="nav-container"
           className="justify-between px-4 mx-auto md:items-center md:flex md:px-8 lg:max-w-7xl"

@@ -3,7 +3,7 @@
 import { Plane, Html } from "@react-three/drei";
 import Image from "next/image";
 // import YouTube from "react-youtube";
-import VideoPlayer from "@/components/VideoPlayer";
+// import VideoPlayer from "@/components/VideoPlayer";
 
 const cubeSize = 8; // Side length of the cube
 const halfSize = cubeSize / 2; // Half of the side length, used for positioning planes
@@ -49,7 +49,7 @@ export default function CodeShape() {
         <meshStandardMaterial color="black" />
 
         <Html transform zIndexRange={[40, 0]}>
-          <VideoPlayer videoID={"AIMB2VJclkQ"} />
+          {/* <VideoPlayer videoID={"AIMB2VJclkQ"} /> */}
         </Html>
       </Plane>
       {/* Bottom face */}
@@ -61,7 +61,7 @@ export default function CodeShape() {
         <meshStandardMaterial color="black" />
 
         <Html transform zIndexRange={[40, 0]}>
-          <VideoPlayer videoID={"ZwfgKpYsR80"} />
+          {/* <VideoPlayer videoID={"ZwfgKpYsR80"} /> */}
         </Html>
       </Plane>
       {/* Right face */}

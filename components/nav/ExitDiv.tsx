@@ -7,7 +7,7 @@ interface ExitDivProps {
 export default function ExitDiv({ toggleShowing }: ExitDivProps) {
   return (
     <div
-      className={`absolute w-screen h-screen cursor-pointer bg-clear z-[20000]`}
+      className={`absolute w-screen h-screen cursor-pointer bg-clear z-20000`}
       onClick={() => {
         toggleShowing(false);
       }}

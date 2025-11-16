@@ -8,7 +8,6 @@ module.exports = {
   extends: [
     "next/core-web-vitals",
     "plugin:react/recommended",
-    "standard-with-typescript",
     "plugin:prettier/recommended",
   ],
   ignorePatterns: ["lib/link.tsx", "lib/create-emotion-cache.tsx"],
