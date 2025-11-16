@@ -44,7 +44,7 @@ export default function Home() {
           </h1>
           <div className="flex justify-end w-full">
             <button
-              className="text-2xl md:3xl lg:text-5xl pointer-events-auto  hover:underline underline-offset-4 active:text-pink-400"
+              className="text-2xl md:3xl lg:text-5xl pointer-events-auto hover:cursor-pointer  hover:underline underline-offset-4 active:text-pink-400"
               type="button"
               onClick={() => {
                 setShowModal(true);

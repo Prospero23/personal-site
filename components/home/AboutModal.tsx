@@ -20,11 +20,10 @@ export default function AboutModal({
       ></div>
       <div className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 outline-none focus:outline-none z-50 pointer-events-none">
         <div
-          id="test"
           className="relative w-auto my-6 mx-auto max-w-3xl z-50 pointer-events-auto"
         >
           {/* content */}
-          <div className="rounded-lg shadow-xl relative flex flex-col w-full bg-customPink outline-none focus:outline-none text-gray-800 bg-opacity-90">
+          <div className="rounded-lg shadow-xl relative flex flex-col w-full bg-customPink/90 outline-none focus:outline-none text-gray-800">
             {/* header */}
             <div className="text-center p-5 rounded-t pb-0">
               <h3 className="text-3xl">Bio</h3>
@@ -42,23 +41,25 @@ export default function AboutModal({
                   concerts
                 </a>{" "}
                 and code.
-                <p className="my-6">
+              </p>
+              <p className="my-6">
                   I graduated from The New England Conservatory with a degree in
                   Jazz Performance and have performed throughout the United
                   States in various groups on both saxophone and laptop at
                   festivals/conferences including the Catalytic Sound Festival
                   and TENOR.
-                </p>{" "}
+                </p>
+                <p>
                 I have made software for musical performances, native devices,
                 and the WORLD WIDE WEB. More information can be found on the
                 respective pages about these things.
-              </p>
+                </p>
               <p className=" mt-6">Please reach out!</p>
             </div>
             {/* footer */}
             <div className="flex items-center justify-end p-6 rounded-b pt-0">
               <button
-                className="background-transparent font-bold uppercase py-0 px-2 text-sm mr-1 mb-1 hover:underline underline-offset-4 active:text-pink-400"
+                className="background-transparent font-bold uppercase py-0 px-2 text-sm mr-1 mb-1 hover:underline hover:cursor-pointer underline-offset-4 active:text-pink-400"
                 type="button"
                 onClick={() => {
                   setShowModal(false);

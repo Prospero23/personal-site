@@ -36,13 +36,13 @@ const Music = () => {
 
         <div className="flex justify-center gap-28 p-8 text-white text-lg">
           <button
-            className="hover:underline active:text-pink-400 p-6 pointer-events-auto"
+            className="hover:underline hover:cursor-pointer active:text-pink-400 p-6 pointer-events-auto"
             onClick={() => rotateRef.current?.("backward")}
           >
             prev
           </button>
           <button
-            className="hover:underline active:text-pink-400 p-6 pointer-events-auto"
+            className="hover:underline hover:cursor-pointer active:text-pink-400 p-6 pointer-events-auto"
             onClick={() => rotateRef.current?.("forward")}
           >
             next

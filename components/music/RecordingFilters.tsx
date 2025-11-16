@@ -95,7 +95,7 @@ function FilterButton({
 }: FilterButtonProps) {
   return (
     <button
-      className={`pointer-events-auto p-1 hover:underline ${
+      className={`pointer-events-auto p-1 hover:underline hover:cursor-pointer ${
         isActive ? `${activeClassName} underline` : inactiveClassName
       }`}
       {...props}

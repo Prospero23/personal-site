@@ -17,3 +17,8 @@
 body {
   overflow: hidden;
 }
+
+@theme {
+  --color-customPink: #ffc0cb;
+  --color-customBlue: #c0fff4;
+}
