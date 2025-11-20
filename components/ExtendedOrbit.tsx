@@ -10,25 +10,27 @@ export const KeyboardControlledOrbit: React.FC<
   KeyboardControlledOrbitProps
 > = ({ sensitivity = 2, ...props }: KeyboardControlledOrbitProps) => {
   const orbitRef = useRef<any>(null);
-  const keyStates = useRef({
+  const keyStatesRef = useRef({
     ArrowUp: false,
     ArrowDown: false,
     ArrowRight: false,
     ArrowLeft: false,
-  }).current;
+  });
 
   // const { camera } = useThree();
 
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
-      if (event.key in keyStates) {
-        keyStates[event.key as keyof typeof keyStates] = true;
+      if (event.key in keyStatesRef.current) {
+        keyStatesRef.current[event.key as keyof typeof keyStatesRef.current] =
+          true;
       }
     };
 
     const handleKeyUp = (event: KeyboardEvent) => {
-      if (event.key in keyStates) {
-        keyStates[event.key as keyof typeof keyStates] = false;
+      if (event.key in keyStatesRef.current) {
+        keyStatesRef.current[event.key as keyof typeof keyStatesRef.current] =
+          false;
       }
     };
 
@@ -39,7 +41,7 @@ export const KeyboardControlledOrbit: React.FC<
       window.removeEventListener("keydown", handleKeyDown);
       window.removeEventListener("keyup", handleKeyUp);
     };
-  }, [keyStates]);
+  }, [keyStatesRef]);
 
   useFrame(() => {
     const controls = orbitRef.current;

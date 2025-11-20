@@ -17,11 +17,8 @@ export default function HomeCanvas({
   return (
     <>
       <Canvas tabIndex={0}>
-        {/* eslint-disable-next-line */}
         <color attach="background" args={["pink"]} />
-        {/* eslint-disable-next-line */}
         <ambientLight intensity={0.5} />
-        {/* eslint-disable-next-line */}
         <spotLight position={[10, 0, 0.2]} angle={0.15} penumbra={1} />
         <Suspense fallback={<Loading />}>
           <Ben isContoured={isContoured} setIsHovered={setIsHovered} />

@@ -19,9 +19,7 @@ export default function AboutModal({
         }}
       ></div>
       <div className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 outline-none focus:outline-none z-50 pointer-events-none">
-        <div
-          className="relative w-auto my-6 mx-auto max-w-3xl z-50 pointer-events-auto"
-        >
+        <div className="relative w-auto my-6 mx-auto max-w-3xl z-50 pointer-events-auto">
           {/* content */}
           <div className="rounded-lg shadow-xl relative flex flex-col w-full bg-customPink/90 outline-none focus:outline-none text-gray-800">
             {/* header */}
@@ -43,17 +41,17 @@ export default function AboutModal({
                 and code.
               </p>
               <p className="my-6">
-                  I graduated from The New England Conservatory with a degree in
-                  Jazz Performance and have performed throughout the United
-                  States in various groups on both saxophone and laptop at
-                  festivals/conferences including the Catalytic Sound Festival
-                  and TENOR.
-                </p>
-                <p>
+                I graduated from The New England Conservatory with a degree in
+                Jazz Performance and have performed throughout the United States
+                in various groups on both saxophone and laptop at
+                festivals/conferences including the Catalytic Sound Festival and
+                TENOR.
+              </p>
+              <p>
                 I have made software for musical performances, native devices,
                 and the WORLD WIDE WEB. More information can be found on the
                 respective pages about these things.
-                </p>
+              </p>
               <p className=" mt-6">Please reach out!</p>
             </div>
             {/* footer */}

@@ -27,7 +27,6 @@ export default function Contact() {
     };
 
     try {
-      // eslint-disable-next-line @typescript-eslint/no-unused-vars
       const res = await emailjs.send(
         "service_l0x9ygh",
         "template_rh2vcj7",

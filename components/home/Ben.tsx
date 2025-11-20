@@ -5,6 +5,7 @@ import { Text } from "@react-three/drei";
 import { useLoader } from "@react-three/fiber";
 import { OBJLoader } from "three/examples/jsm/loaders/OBJLoader";
 import { Quaternion, Vector3 } from "three";
+import { useRouter } from "next/navigation";
 
 interface TextData {
   position: Vector3;
@@ -19,6 +20,7 @@ interface BenProps {
 
 export default function Ben({ isContoured, setIsHovered }: BenProps) {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+  const router = useRouter();
 
   const obj = useLoader(OBJLoader, "/textModel/TextBen.obj");
 
@@ -58,6 +60,7 @@ export default function Ben({ isContoured, setIsHovered }: BenProps) {
 
       // create text
       const options = ["Ben", "Eidson", "Code", "Music", "Ben", "Eidson"];
+      // eslint-disable-next-line
       const type = options[Math.floor(Math.random() * options.length)];
 
       data.push({ position, quaternion, type });
@@ -83,17 +86,17 @@ export default function Ben({ isContoured, setIsHovered }: BenProps) {
 
   function handleMouseClick(index: number) {
     if (textData[index].type === "Music") {
-      window.location.href = "/music";
+      router.push("/music");
     }
 
     if (textData[index].type === "Code") {
-      window.location.href = "/code";
+      router.push("/code");
     }
   }
 
   return (
     <>
-      {/* eslint-disable-next-line */}
+      {}
       <group position={[0, -2, -4]} rotation={[0.4, 2.8, 0.0]}>
         {textData.map((text, i) => (
           <Text

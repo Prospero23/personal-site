@@ -1,25 +1,77 @@
-/* eslint-disable react/no-unknown-property */
 "use client";
 
-import { type Dispatch, type SetStateAction } from "react";
+import { useRef, useEffect, type Dispatch, type SetStateAction } from "react";
 import { Canvas } from "@react-three/fiber";
-import { Vector3 } from "three";
-import { type CodingData } from "@/data/coding";
-import Cube from "./Cube";
+import { Group, Vector3 } from "three";
+import gsap from "gsap";
+import { type CodingDataBySide } from "@/data/coding";
+import Cube, { Selection } from "./cube/GriddedCube";
 import { OrbitControls } from "@react-three/drei";
 
 interface CodingCanvasProps {
-  codingData: CodingData;
-  closestFace: number;
-  setClosestFace: Dispatch<SetStateAction<number>>;
+  codingData: CodingDataBySide;
+  currentSelection: Selection;
+  setCurrentSelection: Dispatch<SetStateAction<Selection>>;
 }
 
 const cameraPosition = [0, 0, 5]; // for static camera position
 
 export default function CodeCanvas({
   codingData,
-  setClosestFace,
+  currentSelection,
+  setCurrentSelection,
 }: CodingCanvasProps) {
+  const groupRef = useRef<Group>(null);
+
+  // handle key presses
+  useEffect(() => {
+    // TODO: round to nearest proper devision first
+    const handleKeyDown = (event: any) => {
+      if (groupRef.current != null) {
+        switch (event.key) {
+          case "ArrowUp":
+            gsap.to(groupRef.current.rotation, {
+              x: groupRef.current.rotation.x + Math.PI / 2,
+              duration: 0.5,
+              ease: "power3.out",
+            });
+            break;
+          case "ArrowDown":
+            gsap.to(groupRef.current.rotation, {
+              x: groupRef.current.rotation.x - Math.PI / 2,
+              duration: 0.5,
+              ease: "power3.out",
+            });
+            break;
+          case "ArrowLeft":
+            gsap.to(groupRef.current.rotation, {
+              y: groupRef.current.rotation.y + Math.PI / 2,
+              duration: 0.5,
+              ease: "power3.out",
+            });
+            break;
+          case "ArrowRight":
+            gsap.to(groupRef.current.rotation, {
+              y: groupRef.current.rotation.y - Math.PI / 2,
+              duration: 0.5,
+              ease: "power3.out",
+            });
+            break;
+
+          default:
+            break;
+        }
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+
+    // Clean up the event listener
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, []);
+
   return (
     <Canvas
       camera={{ position: new Vector3(...cameraPosition) }}
@@ -27,8 +79,14 @@ export default function CodeCanvas({
     >
       <color attach="background" args={["pink"]} />
       <ambientLight intensity={1} color={"white"} />
-      <Cube size={7} setClosestFace={setClosestFace} />
-      <OrbitControls enableZoom={false} enablePan={false} target={[0, 1, -8]} />
+      <Cube
+        currentSelection={currentSelection}
+        setCurrentSelection={setCurrentSelection}
+        gridSquareSize={1}
+        position={[0, 0, 0]}
+        groupRef={groupRef}
+      />
+      <OrbitControls enableZoom={false} enablePan={false} target={[0, 0, 0]} />
     </Canvas>
   );
 }

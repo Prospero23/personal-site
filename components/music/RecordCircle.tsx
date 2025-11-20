@@ -52,7 +52,8 @@ export default function RecordCircle({
   // animation stuff
   useEffect(() => {
     if (myGroup.current == null) {
-      setDisplayedRecords(records);
+      //TODO fix
+      setTimeout(() => setDisplayedRecords(records), 0);
       return;
     }
 
@@ -105,7 +106,6 @@ export default function RecordCircle({
 
   return (
     <>
-      {/* eslint-disable-next-line */}
       <group ref={myGroup} position={position} rotation={[0, 0, 0]}>
         {displayedRecords.map((record, i) => {
           // UNIT CIRCLE STUFF
