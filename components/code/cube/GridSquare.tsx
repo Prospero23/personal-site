@@ -1,7 +1,9 @@
 import { type Mesh } from "three";
 import { Face, type Selection } from "./GriddedCube";
+import { CODING_CONFIG } from "@/data/coding";
 import { type ThreeEvent } from "@react-three/fiber";
 import gsap from "gsap";
+import { Color } from "three";
 
 import { type Dispatch, type SetStateAction, useRef, useEffect } from "react";
 
@@ -29,10 +31,16 @@ export default function GridSquare({
   currentSelection,
   setCurrentSelection,
 }: GridSquareProps) {
+  const faceConfig = CODING_CONFIG[face];
+  const item = faceConfig?.squares[index] ?? null;
+  const hasProject = item !== null;
+
   const square = useRef<Mesh>(null);
   const pointerDownInfo = useRef<MousePosition | null>(null);
   const isSelected =
     currentSelection.face === face && currentSelection.square === index;
+
+  const baseGray = grayForSquare(face, index);
 
   useEffect(() => {
     if (!square.current) return;
@@ -49,7 +57,7 @@ export default function GridSquare({
 
   function handlePointerDown(e: ThreeEvent<PointerEvent>) {
     // only allow selections if on nearest face.
-    if (currentSelection.face !== face) return;
+    if (currentSelection.face !== face || !hasProject) return;
 
     pointerDownInfo.current = { x: e.clientX, y: e.clientY };
   }
@@ -85,7 +93,35 @@ export default function GridSquare({
       onPointerUp={handlePointerUp}
     >
       <boxGeometry args={[size, size, size * 0.1]} />
-      <meshStandardMaterial color={isSelected ? "white" : color} />
+      <meshStandardMaterial
+        color={
+          !hasProject
+            ? baseGray // empty slot
+            : isSelected
+              ? "purple"
+              : color // or whatever per-category color
+        }
+        transparent
+        opacity={hasProject ? 1 : 0.35}
+      />
     </mesh>
   );
+}
+
+// Deterministic "random" based on face + index (0–3)
+export function grayForSquare(face: Face, index: number): Color {
+  // Simple numeric seed from the face string + index
+  const seed =
+    face.charCodeAt(0) * 31 +
+    face.charCodeAt(face.length - 1) * 17 +
+    index * 101;
+
+  // Deterministic pseudo-random in [0, 1]
+  const normalized = (Math.sin(seed) + 1) / 2; // Math.sin is pure, no warnings
+
+  // Clamp to a midrange gray so it's not too dark or too bright
+  const gray = 0.3 + normalized * 0.4; // [0.3, 0.7]
+
+  // Three.js Color in grayscale
+  return new Color(gray, gray, gray);
 }

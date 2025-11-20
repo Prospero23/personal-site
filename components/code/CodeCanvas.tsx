@@ -4,12 +4,10 @@ import { useRef, useEffect, type Dispatch, type SetStateAction } from "react";
 import { Canvas } from "@react-three/fiber";
 import { Group, Vector3 } from "three";
 import gsap from "gsap";
-import { type CodingDataBySide } from "@/data/coding";
 import Cube, { Selection } from "./cube/GriddedCube";
 import { OrbitControls } from "@react-three/drei";
 
 interface CodingCanvasProps {
-  codingData: CodingDataBySide;
   currentSelection: Selection;
   setCurrentSelection: Dispatch<SetStateAction<Selection>>;
 }
@@ -17,7 +15,6 @@ interface CodingCanvasProps {
 const cameraPosition = [0, 0, 5]; // for static camera position
 
 export default function CodeCanvas({
-  codingData,
   currentSelection,
   setCurrentSelection,
 }: CodingCanvasProps) {

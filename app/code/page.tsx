@@ -2,7 +2,6 @@
 import { useState } from "react";
 import CodeCanvas from "../../components/code/CodeCanvas";
 import CodeOverlay from "../../components/code/CodeOverlay";
-import codingData from "@/data/coding";
 import { Selection } from "@/components/code/cube/GriddedCube";
 
 export default function Code() {
@@ -14,14 +13,10 @@ export default function Code() {
   return (
     <main className="w-screen h-[calc(100dvh)] relative bg-customPink">
       <CodeCanvas
-        codingData={codingData}
         currentSelection={currentSelection}
         setCurrentSelection={setCurrentSelection}
       />
-      <CodeOverlay
-        codingData={codingData}
-        currentSelection={currentSelection}
-      />
+      <CodeOverlay currentSelection={currentSelection} />
     </main>
   );
 }

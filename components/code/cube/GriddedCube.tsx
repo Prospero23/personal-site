@@ -75,7 +75,7 @@ export default function GriddedCube({
   });
 
   return (
-    <group position={position} ref={groupRef}>
+    <group position={position} ref={groupRef} rotation={[0.0, 0.25, 0]}>
       {/* Front (+Z) */}
       <CubeSide
         rotation={[0, 0, 0]}
