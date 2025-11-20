@@ -11,9 +11,13 @@
   },
   "dependencies": {
     "@emailjs/browser": "^3.11.0",
+    "@mdx-js/loader": "^3.1.1",
+    "@mdx-js/react": "^3.1.1",
+    "@next/mdx": "^16.0.3",
     "@react-three/a11y": "^3.0.0",
     "@react-three/drei": "^10.7.7",
     "@react-three/fiber": "^9.4.0",
+    "@types/mdx": "^2.0.13",
     "@types/node": "24.10.1",
     "@types/react": "19.2.5",
     "@types/react-dom": "19.2.3",
