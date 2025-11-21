@@ -14,14 +14,21 @@ export default function CodeOverlay({ currentSelection }: CodeOverlayProps) {
     item = categoryData.squares[square];
   }
 
+  const isItem = item !== null;
+
   const title = item?.title ?? categoryData?.title;
   const description = item?.description ?? categoryData?.description;
 
   return (
     <div className="absolute bottom-14 z-20 text-white bg-none w-full text-center">
-      <button className="uppercase text-2xl mb-2 hover:underline cursor-pointer">
-        {title}
-      </button>
+      {isItem ? (
+        <button className="uppercase text-2xl mb-2 hover:underline cursor-pointer">
+          {title}
+        </button>
+      ) : (
+        <h1 className="uppercase text-2xl mb-2">{title}</h1>
+      )}
+
       <p className="mx-32 text-sm lg:text-base hidden md:block short-screen:hidden">
         {description}
       </p>

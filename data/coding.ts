@@ -81,8 +81,7 @@ export const CODING_CONFIG: CodingConfig = {
   right: {
     category: "Native",
     title: "Native / iOS",
-    description:
-      "Native apps in Swift and SwiftUI, often with audio / music tech focus.",
+    description: "Native apps in Swift and SwiftUI.",
     squares: [ORhythmic, null, null, null],
   },
   top: null,
