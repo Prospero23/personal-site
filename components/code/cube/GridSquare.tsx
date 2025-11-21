@@ -6,10 +6,10 @@ import gsap from "gsap";
 import { Color } from "three";
 
 import { type Dispatch, type SetStateAction, useRef, useEffect } from "react";
+import { useTexture } from "@react-three/drei";
 
 interface GridSquareProps {
   position: [number, number, number];
-  color: string;
   size: number;
   face: Face;
   index: number;
@@ -24,7 +24,6 @@ interface MousePosition {
 
 export default function GridSquare({
   position,
-  color,
   size,
   face,
   index,
@@ -41,6 +40,9 @@ export default function GridSquare({
     currentSelection.face === face && currentSelection.square === index;
 
   const baseGray = grayForSquare(face, index);
+
+  const textureURL = hasProject ? item.imageURL : "fallback.png";
+  const texture = useTexture(textureURL);
 
   useEffect(() => {
     if (!square.current) return;
@@ -94,13 +96,10 @@ export default function GridSquare({
     >
       <boxGeometry args={[size, size, size * 0.1]} />
       <meshStandardMaterial
-        color={
-          !hasProject
-            ? baseGray // empty slot
-            : isSelected
-              ? "purple"
-              : color // or whatever per-category color
-        }
+        map={hasProject ? texture : undefined}
+        color={!hasProject ? baseGray : "white"}
+        emissive={isSelected && hasProject ? "white" : "black"}
+        emissiveIntensity={isSelected && hasProject ? 0.1 : 0}
         transparent
         opacity={hasProject ? 1 : 0.35}
       />

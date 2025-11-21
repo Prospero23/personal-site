@@ -75,12 +75,13 @@ export default function CodeCanvas({
       className="cursor-grab active:cursor-grabbing"
     >
       <color attach="background" args={["pink"]} />
-      <ambientLight intensity={1} color={"white"} />
+      <ambientLight intensity={1.5} color={"white"} />
+
       <Cube
         currentSelection={currentSelection}
         setCurrentSelection={setCurrentSelection}
         gridSquareSize={1}
-        position={[0, 0, 0]}
+        position={[0, 0.0, 0]}
         groupRef={groupRef}
       />
       <OrbitControls enableZoom={false} enablePan={false} target={[0, 0, 0]} />

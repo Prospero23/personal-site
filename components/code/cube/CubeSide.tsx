@@ -25,7 +25,6 @@ export default function CubeSide({
       {/* position places center of geometry -> we want center of side to be point where all squares come together */}
       <GridSquare
         position={[-gridSquareSize / 2, gridSquareSize / 2, 0]}
-        color="red"
         size={gridSquareSize}
         face={face}
         index={0}
@@ -34,7 +33,6 @@ export default function CubeSide({
       />
       <GridSquare
         position={[gridSquareSize / 2, gridSquareSize / 2, 0]}
-        color="green"
         size={gridSquareSize}
         face={face}
         index={1}
@@ -43,7 +41,6 @@ export default function CubeSide({
       />
       <GridSquare
         position={[-gridSquareSize / 2, -gridSquareSize / 2, 0]}
-        color="blue"
         size={gridSquareSize}
         face={face}
         index={2}
@@ -52,7 +49,6 @@ export default function CubeSide({
       />
       <GridSquare
         position={[gridSquareSize / 2, -gridSquareSize / 2, 0]}
-        color="purple"
         size={gridSquareSize}
         face={face}
         index={3}
