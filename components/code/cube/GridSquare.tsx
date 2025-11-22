@@ -49,7 +49,7 @@ export default function GridSquare({
   useEffect(() => {
     if (!square.current) return;
 
-    const forwardAmount = size * 0.3;
+    const forwardAmount = 0.3;
     const targetZ = isSelected ? position[2] + forwardAmount : position[2];
 
     gsap.to(square.current.position, {
