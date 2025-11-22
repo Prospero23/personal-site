@@ -75,7 +75,7 @@ export default function GriddedCube({
   });
 
   return (
-    <group position={position} ref={groupRef} rotation={[0.0, 0.25, 0]}>
+    <group position={position} ref={groupRef} rotation={[0.0, 0.5, 0]}>
       {/* Front (+Z) */}
       <CubeSide
         rotation={[0, 0, 0]}
@@ -84,6 +84,7 @@ export default function GriddedCube({
         face="front"
         currentSelection={currentSelection}
         setCurrentSelection={setCurrentSelection}
+        isHero={true}
       />
 
       {/* Back (-Z) */}

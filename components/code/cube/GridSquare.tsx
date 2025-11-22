@@ -15,6 +15,7 @@ interface GridSquareProps {
   index: number;
   currentSelection: Selection;
   setCurrentSelection: Dispatch<SetStateAction<Selection>>;
+  thickness?: number;
 }
 
 interface MousePosition {
@@ -29,6 +30,7 @@ export default function GridSquare({
   index,
   currentSelection,
   setCurrentSelection,
+  thickness = 0.1,
 }: GridSquareProps) {
   const faceConfig = CODING_CONFIG[face];
   const item = faceConfig?.squares[index] ?? null;
@@ -94,7 +96,7 @@ export default function GridSquare({
       onPointerDown={handlePointerDown}
       onPointerUp={handlePointerUp}
     >
-      <boxGeometry args={[size, size, size * 0.1]} />
+      <boxGeometry args={[size, size, size * thickness]} />
       <meshStandardMaterial
         map={hasProject ? texture : undefined}
         color={!hasProject ? baseGray : "white"}

@@ -96,12 +96,12 @@ const ladybird: CodingDataItem = {
 
 export const CODING_CONFIG: CodingConfig = {
   front: {
-    category: "Max/MSP",
-    title: "Max/MSP Systems",
-    description:
-      "Improvisation systems and performance tools built in Max/MSP.",
-    squares: [viss0, null, null, synth],
+    category: "Native",
+    title: "Native / iOS",
+    description: "Native apps in Swift and SwiftUI.",
+    squares: [ORhythmic, null, null, null],
   },
+
   back: {
     category: "Open-Source",
     title: "Open-Source Contributions",
@@ -116,10 +116,11 @@ export const CODING_CONFIG: CodingConfig = {
     squares: [portfolio, binSynth, GPTGrooves, null],
   },
   right: {
-    category: "Native",
-    title: "Native / iOS",
-    description: "Native apps in Swift and SwiftUI.",
-    squares: [ORhythmic, null, null, null],
+    category: "Max/MSP",
+    title: "Max/MSP Systems",
+    description:
+      "Improvisation systems and performance tools built in Max/MSP.",
+    squares: [viss0, null, null, synth],
   },
   top: null,
   bottom: null,
