@@ -71,7 +71,7 @@ export default function CodeCanvas({
 
   return (
     <Canvas
-      camera={{ position: new Vector3(...cameraPosition) }}
+      camera={{ position: new Vector3(...cameraPosition), near: 0.5, far: 20 }}
       className="cursor-grab active:cursor-grabbing"
     >
       <color attach="background" args={["pink"]} />

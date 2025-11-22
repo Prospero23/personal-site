@@ -1,13 +1,6 @@
 "use client";
 import { useFrame, useThree } from "@react-three/fiber";
-import {
-  type Dispatch,
-  type SetStateAction,
-  useRef,
-  useState,
-  RefObject,
-  useEffect,
-} from "react";
+import { type Dispatch, type SetStateAction, useRef, RefObject } from "react";
 import { type Group, Object3DEventMap, Vector3 } from "three";
 
 import CubeSide from "./CubeSide";
@@ -39,6 +32,7 @@ export default function GriddedCube({
   groupRef,
 }: GriddedCubeProps) {
   const cubeSize = gridSquareSize * 2;
+  const faceOffset = 0.05 * gridSquareSize; // tiny nudge
 
   const lastClosestRef = useRef<number | null>(null);
   const worldPosition = useRef(new Vector3()).current;
@@ -79,7 +73,7 @@ export default function GriddedCube({
       {/* Front (+Z) */}
       <CubeSide
         rotation={[0, 0, 0]}
-        position={[0, 0, cubeSize / 2]}
+        position={[0, 0, cubeSize / 2 + faceOffset]}
         gridSquareSize={gridSquareSize}
         face="front"
         currentSelection={currentSelection}
@@ -90,7 +84,7 @@ export default function GriddedCube({
       {/* Back (-Z) */}
       <CubeSide
         rotation={[0, Math.PI, 0]}
-        position={[0, 0, -cubeSize / 2]}
+        position={[0, 0, -cubeSize / 2 - faceOffset]}
         gridSquareSize={gridSquareSize}
         face="back"
         currentSelection={currentSelection}
@@ -100,7 +94,7 @@ export default function GriddedCube({
       {/* Right (+X) */}
       <CubeSide
         rotation={[0, Math.PI / 2, 0]}
-        position={[cubeSize / 2, 0, 0]}
+        position={[cubeSize / 2 + faceOffset, 0, 0]}
         gridSquareSize={gridSquareSize}
         face="right"
         currentSelection={currentSelection}
@@ -110,7 +104,7 @@ export default function GriddedCube({
       {/* Left (-X) */}
       <CubeSide
         rotation={[0, -Math.PI / 2, 0]}
-        position={[-cubeSize / 2, 0, 0]}
+        position={[-cubeSize / 2 - faceOffset, 0, 0]}
         gridSquareSize={gridSquareSize}
         face="left"
         currentSelection={currentSelection}
@@ -120,7 +114,7 @@ export default function GriddedCube({
       {/* Top (+Y) */}
       <CubeSide
         rotation={[-Math.PI / 2, 0, 0]}
-        position={[0, cubeSize / 2, 0]}
+        position={[0, cubeSize / 2 + faceOffset, 0]}
         gridSquareSize={gridSquareSize}
         face="top"
         currentSelection={currentSelection}
@@ -130,7 +124,7 @@ export default function GriddedCube({
       {/* Bottom (-Y) */}
       <CubeSide
         rotation={[Math.PI / 2, 0, 0]}
-        position={[0, -cubeSize / 2, 0]}
+        position={[0, -cubeSize / 2 - faceOffset, 0]}
         gridSquareSize={gridSquareSize}
         face="bottom"
         currentSelection={currentSelection}
