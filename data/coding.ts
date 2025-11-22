@@ -2,13 +2,15 @@ import { JSX } from "react";
 import type { MDXComponents } from "mdx/types";
 import { Face } from "@/components/code/cube/GriddedCube";
 import binsynthMD from "@/data/markdown/binynth.mdx";
+import ladybirdMD from "@/data/markdown/ladybird.mdx";
 import gptGroovesMD from "@/data/markdown/gpt-grooves.mdx";
 import ORhythmicMD from "@/data/markdown/ORhythmic.mdx";
 import portfolioMD from "@/data/markdown/portfolio.mdx";
 import synthMD from "@/data/markdown/synth.mdx";
+import vexflowMD from "@/data/markdown/vexflow.mdx";
 import viss0MD from "@/data/markdown/viss-0.mdx";
 
-export type CodingCategory = "Max/MSP" | "Native" | "Web";
+export type CodingCategory = "Max/MSP" | "Native" | "Web" | "Open-Source";
 
 export type MDXContent = (props: { components?: MDXComponents }) => JSX.Element;
 export interface CodingDataItem {
@@ -78,15 +80,34 @@ const portfolio: CodingDataItem = {
   mdx: portfolioMD,
 };
 
+const vexflow: CodingDataItem = {
+  title: "Vexflow",
+  description: "Music rendering library",
+  imageURL: "vexflow.png",
+  mdx: vexflowMD,
+};
+
+const ladybird: CodingDataItem = {
+  title: "Ladybird",
+  description: "Open-source web browser.",
+  imageURL: "ladybird.png",
+  mdx: ladybirdMD,
+};
+
 export const CODING_CONFIG: CodingConfig = {
   front: {
     category: "Max/MSP",
     title: "Max/MSP Systems",
     description:
       "Improvisation systems and performance tools built in Max/MSP.",
-    squares: [viss0, synth, null, null],
+    squares: [viss0, null, null, synth],
   },
-  back: null,
+  back: {
+    category: "Open-Source",
+    title: "Open-Source Contributions",
+    description: "Projects I have contributed to that are not my own.",
+    squares: [vexflow, null, null, ladybird],
+  },
   left: {
     category: "Web",
     title: "Web Projects",

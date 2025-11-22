@@ -1,7 +1,7 @@
 import { CODING_CONFIG, CodingDataItem } from "@/data/coding";
 import { Selection } from "./cube/GriddedCube";
 import { useState } from "react";
-import CodeModal from "./CodeModal";
+import CodeModal from "./modal/CodeModal";
 
 interface CodeOverlayProps {
   currentSelection: Selection;
@@ -28,7 +28,7 @@ export default function CodeOverlay({ currentSelection }: CodeOverlayProps) {
       <div className="absolute bottom-14 z-20 text-white bg-none w-full text-center">
         {isItem ? (
           <button
-            className="uppercase text-2xl mb-2 underline cursor-pointer active:text-pink-400"
+            className="uppercase text-2xl mb-2 underline cursor-pointer active:text-pink-400 hover:font-bold"
             onClick={() => setShowModal(true)}
           >
             {title}
@@ -45,7 +45,7 @@ export default function CodeOverlay({ currentSelection }: CodeOverlayProps) {
         <>
           <CodeModal setShowModal={setShowModal} Mdx={mdx} />
           <div
-            className="fixed inset-0 z-40000 cursor-pointer bg-transparent" // bg-black/25
+            className="fixed inset-0 z-40000 cursor-pointer bg-transparent"
             onClick={() => setShowModal(false)}
           ></div>
         </>
