@@ -1,10 +1,13 @@
 import { CODING_CONFIG, CodingDataItem } from "@/data/coding";
 import { Selection } from "./cube/GriddedCube";
+import { useState } from "react";
+import CodeModal from "./CodeModal";
 
 interface CodeOverlayProps {
   currentSelection: Selection;
 }
 export default function CodeOverlay({ currentSelection }: CodeOverlayProps) {
+  const [showModal, setShowModal] = useState(false);
   const { face, square } = currentSelection;
 
   const categoryData = CODING_CONFIG[face];
@@ -18,20 +21,35 @@ export default function CodeOverlay({ currentSelection }: CodeOverlayProps) {
 
   const title = item?.title ?? categoryData?.title;
   const description = item?.description ?? categoryData?.description;
+  const mdx = item?.mdx ?? null;
 
   return (
-    <div className="absolute bottom-14 z-20 text-white bg-none w-full text-center">
-      {isItem ? (
-        <button className="uppercase text-2xl mb-2 hover:underline cursor-pointer">
-          {title}
-        </button>
-      ) : (
-        <h1 className="uppercase text-2xl mb-2">{title}</h1>
-      )}
+    <>
+      <div className="absolute bottom-14 z-20 text-white bg-none w-full text-center">
+        {isItem ? (
+          <button
+            className="uppercase text-2xl mb-2 underline cursor-pointer active:text-pink-400"
+            onClick={() => setShowModal(true)}
+          >
+            {title}
+          </button>
+        ) : (
+          <h1 className="uppercase text-2xl mb-2">{title}</h1>
+        )}
 
-      <p className="mx-32 text-sm lg:text-base hidden md:block short-screen:hidden">
-        {description}
-      </p>
-    </div>
+        <p className="mx-32 text-sm lg:text-base hidden md:block short-screen:hidden">
+          {description}
+        </p>
+      </div>
+      {showModal && (
+        <>
+          <CodeModal setShowModal={setShowModal} Mdx={mdx} />
+          <div
+            className="fixed inset-0 z-40000 cursor-pointer bg-transparent" // bg-black/25
+            onClick={() => setShowModal(false)}
+          ></div>
+        </>
+      )}
+    </>
   );
 }
