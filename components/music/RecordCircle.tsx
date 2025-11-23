@@ -1,11 +1,19 @@
 "use client";
 
-import { useCallback, useEffect, useRef, useState } from "react";
+import {
+  Dispatch,
+  SetStateAction,
+  useCallback,
+  useEffect,
+  useRef,
+  useState,
+} from "react";
 import { gsap } from "gsap";
 import { Vector3, type Group } from "three";
 
 import { type Recording } from "@/data/recordings";
 import Record from "./Record";
+import { useFrame, useThree } from "@react-three/fiber";
 
 export type RotateFn = (direction: "forward" | "backward") => void;
 export type RegisterRotateHandler = (fn: RotateFn) => void;
@@ -14,6 +22,7 @@ interface RecordCircleProps {
   records: Recording[];
   position: Vector3;
   onRegisterRotateHandler?: RegisterRotateHandler;
+  setClosestRecording: Dispatch<SetStateAction<Recording | null>>;
 }
 
 // TODO: show nearest record name on bottom?
@@ -21,13 +30,47 @@ export default function RecordCircle({
   records,
   position,
   onRegisterRotateHandler,
+  setClosestRecording,
 }: RecordCircleProps) {
   const [displayedRecords, setDisplayedRecords] = useState(records);
+
+  const myGroup = useRef<Group>(null);
+  const lastClosestRef = useRef<number | null>(null);
+  const worldPosition = useRef(new Vector3()).current;
+  const { camera } = useThree();
 
   const numPlanes = displayedRecords.length;
   const radius = 2;
 
-  const myGroup = useRef<Group>(null);
+  function getClosestRecording() {
+    let minDistance = Infinity;
+    let closestChildIndex = -1;
+
+    if (myGroup.current != null) {
+      myGroup.current.children.forEach((child, index) => {
+        child.getWorldPosition(worldPosition);
+        const distance = camera.position.distanceTo(worldPosition);
+
+        if (distance < minDistance) {
+          minDistance = distance;
+          closestChildIndex = index;
+        }
+      });
+
+      if (
+        closestChildIndex !== -1 &&
+        closestChildIndex !== lastClosestRef.current
+      ) {
+        lastClosestRef.current = closestChildIndex;
+
+        setClosestRecording(records[closestChildIndex]);
+      }
+    }
+  }
+
+  useFrame(() => {
+    getClosestRecording();
+  });
 
   const rotateGroup: RotateFn = useCallback(
     (direction: "forward" | "backward") => {

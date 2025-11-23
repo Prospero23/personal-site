@@ -1,7 +1,7 @@
 "use client";
 import { useRef, useState } from "react";
 import MusicCanvas from "@/components/music/MusicCanvas";
-import { recordings } from "../../data/recordings";
+import { Recording, recordings } from "../../data/recordings";
 import RecordingFilters, {
   type RecordingKind,
   type Instrument,
@@ -12,6 +12,9 @@ const Music = () => {
   const [currentRecordings, setCurrentRecordings] =
     useState<RecordingKind>("highlights");
   const [currentInstrument, setCurrentInstrument] = useState<Instrument>("sax");
+  const [closestRecording, setClosestRecording] = useState<Recording | null>(
+    null,
+  );
 
   const rotateRef = useRef<RotateFn | null>(null);
 
@@ -23,6 +26,7 @@ const Music = () => {
         currentRecordings={currentRecordings}
         currentInstrument={currentInstrument}
         onRegisterRotateHandler={(fn) => (rotateRef.current = fn)}
+        setClosestRecording={setClosestRecording}
       />
 
       {/* Dom Overlay */}
@@ -34,7 +38,7 @@ const Music = () => {
           setCurrentInstrument={setCurrentInstrument}
         />
 
-        <div className="flex justify-center gap-28 p-8 text-white text-lg">
+        <div className="flex justify-center gap-28 pb-8 text-white text-lg">
           <button
             className="hover:underline hover:cursor-pointer active:text-pink-400 p-6 pointer-events-auto"
             onClick={() => rotateRef.current?.("backward")}

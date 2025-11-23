@@ -9,12 +9,13 @@ import RecordCircle, {
 import { type Recording } from "@/data/recordings";
 import { Vector3 } from "three";
 import { type Instrument, type RecordingKind } from "./RecordingFilters";
-import { useMemo } from "react";
+import { Dispatch, SetStateAction, useMemo } from "react";
 interface MusicCanvasProps {
   recordings: Recording[];
   currentRecordings: RecordingKind;
   currentInstrument: Instrument;
   onRegisterRotateHandler?: RegisterRotateHandler;
+  setClosestRecording: Dispatch<SetStateAction<Recording | null>>;
 }
 
 export default function MusicCanvas({
@@ -22,6 +23,7 @@ export default function MusicCanvas({
   currentRecordings,
   currentInstrument,
   onRegisterRotateHandler,
+  setClosestRecording,
 }: MusicCanvasProps) {
   const focusPosition = new Vector3(0, 0, 0.75); // AD:HOC
 
@@ -55,6 +57,7 @@ export default function MusicCanvas({
           records={filteredRecordings}
           position={focusPosition}
           onRegisterRotateHandler={onRegisterRotateHandler}
+          setClosestRecording={setClosestRecording}
         />
         <ExtendedOrbit target={focusPosition} />
       </Canvas>
