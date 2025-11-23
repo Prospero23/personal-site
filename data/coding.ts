@@ -1,14 +1,14 @@
 import { JSX } from "react";
 import type { MDXComponents } from "mdx/types";
 import { Face } from "@/components/code/cube/GriddedCube";
-import binsynthMD from "@/data/markdown/binynth.mdx";
-import ladybirdMD from "@/data/markdown/ladybird.mdx";
-import gptGroovesMD from "@/data/markdown/gpt-grooves.mdx";
-import ORhythmicMD from "@/data/markdown/ORhythmic.mdx";
-import portfolioMD from "@/data/markdown/portfolio.mdx";
-import synthMD from "@/data/markdown/synth.mdx";
-import vexflowMD from "@/data/markdown/vexflow.mdx";
-import viss0MD from "@/data/markdown/viss-0.mdx";
+import binsynthMD from "@/data/markdown/code/binynth.mdx";
+import ladybirdMD from "@/data/markdown/code/ladybird.mdx";
+import gptGroovesMD from "@/data/markdown/code/gpt-grooves.mdx";
+import ORhythmicMD from "@/data/markdown/code/ORhythmic.mdx";
+import portfolioMD from "@/data/markdown/code/portfolio.mdx";
+import synthMD from "@/data/markdown/code/synth.mdx";
+import vexflowMD from "@/data/markdown/code/vexflow.mdx";
+import viss0MD from "@/data/markdown/code/viss-0.mdx";
 
 export type CodingCategory = "Max/MSP" | "Native" | "Web" | "Open-Source";
 
