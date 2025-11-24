@@ -38,7 +38,7 @@ export type CodingConfig = Record<Face, FaceConfig | null>;
 
 const ORhythmic: CodingDataItem = {
   title: "ORhythmic",
-  description: "Nested tuplet metronome",
+  description: "Metronome for irrational meters and tuplets.",
   imageURL: "orhythmic.png",
   mdx: ORhythmicMD,
 };

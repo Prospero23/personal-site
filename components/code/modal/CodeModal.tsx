@@ -16,9 +16,9 @@ export default function CodeModal({ Mdx, setShowModal }: CodeModalProps) {
         <div className="flex max-h-[80vh] w-full flex-col overflow-hidden rounded-lg bg-customPink/90 text-gray-800 shadow-lg">
           {/* content with scroll + fade */}
           <div className="relative flex-1 overflow-y-auto">
-            {/* inner padding + extra bottom padding so text doesn't hide behind fade */}
-            <div className="p-6 pb-16">
-              <article className="prose prose-sm prose-headings:m-2 prose-h1:mb-4 lg:prose-base prose-headings:font-semibold prose-h1:text-center prose-a:text-pink-700 prose-a:no-underline hover:prose-a:underline">
+            {/* inner padding */}
+            <div className="p-6">
+              <article className="prose prose-sm prose-headings:m-2 prose-h1:mb-4 lg:prose-base prose-headings:font-semibold prose-h1:text-center prose-a:text-pink-700 prose-a:no-underline prose-a:hover:underline">
                 {Mdx ? <Mdx /> : <p>No further information.</p>}
               </article>
             </div>
