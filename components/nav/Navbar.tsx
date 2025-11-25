@@ -24,7 +24,7 @@ export default function Navbar() {
           <div id="small-nav" className="flex justify-between py-3 md:py-5">
             <Link
               href="/"
-              className="text-2xl xl:text-4xl text-white font-bold hover:underline underline-offset-4  active:text-pink-400"
+              className="text-2xl xl:text-4xl text-white font-bold hover:underline underline-offset-4  active:text-pink-400 flex items-center justify-center"
             >
               Ben Eidson {/* make my navlink take a child prop? */}
             </Link>

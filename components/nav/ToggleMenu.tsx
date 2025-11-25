@@ -8,7 +8,7 @@ interface ToggleMenuProps {
 export default function ToggleMenu({ isOpen, setIsOpen }: ToggleMenuProps) {
   return (
     <button
-      className="p-2 rounded-md outline-none focus:border-gray-400 focus:border text-white hover:text-pink-400 hover:cursor-pointer"
+      className="p-2 rounded-md border border-transparent focus:border-pink-400 text-white hover:text-pink-400 hover:cursor-pointer"
       onClick={() => {
         setIsOpen(!isOpen);
       }}
@@ -16,7 +16,7 @@ export default function ToggleMenu({ isOpen, setIsOpen }: ToggleMenuProps) {
       {isOpen ? (
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          className="w-6 h-6"
+          className="w-8 h-8 "
           viewBox="0 0 20 20"
           fill="currentColor"
         >
@@ -29,7 +29,7 @@ export default function ToggleMenu({ isOpen, setIsOpen }: ToggleMenuProps) {
       ) : (
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          className="w-6 h-6"
+          className="w-8 h-8"
           fill="none"
           viewBox="0 0 24 24"
           stroke="currentColor"
