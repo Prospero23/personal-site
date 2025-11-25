@@ -52,7 +52,8 @@ const synth: CodingDataItem = {
 
 const viss0: CodingDataItem = {
   title: "VISS 0",
-  description: "Max/MSP + JS audiovisual improv system using Bach and Vizzie.",
+  description:
+    "Max/MSP + JS audiovisual improv system using Bach, Vizzie, and FluCoMa.",
   imageURL: "viss0.png",
   mdx: viss0MD,
 };
@@ -82,14 +83,14 @@ const portfolio: CodingDataItem = {
 
 const vexflow: CodingDataItem = {
   title: "Vexflow",
-  description: "Music rendering library",
+  description: "TS Music rendering library.",
   imageURL: "vexflow-examples.png",
   mdx: vexflowMD,
 };
 
 const ladybird: CodingDataItem = {
   title: "Ladybird",
-  description: "Open-source web browser.",
+  description: "Open-source C++ web browser.",
   imageURL: "ladybird.png",
   mdx: ladybirdMD,
 };
