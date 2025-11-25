@@ -10,10 +10,10 @@ interface CodeModalProps {
 
 export default function CodeModal({ Mdx, setShowModal }: CodeModalProps) {
   return (
-    <div className="fixed inset-0 z-50000 flex items-center justify-center pointer-events-none">
+    <div className="fixed inset-0 z-50000 flex items-center justify-center  pointer-events-none">
       {/* shell */}
-      <div className="pointer-events-auto relative mx-4 my-6 w-full max-w-2xl p-2">
-        <div className="flex max-h-[80vh] w-full flex-col overflow-hidden rounded-lg bg-customPink/90 text-gray-800 shadow-lg">
+      <div className="pointer-events-auto relative mx-4 w-full max-w-2xl p-2">
+        <div className="flex max-h-[70vh] sm:max-h-[80vh] w-full flex-col overflow-hidden rounded-lg bg-customPink/90 text-gray-800 shadow-lg">
           {/* content with scroll + fade */}
           <div className="relative flex-1 overflow-y-auto">
             {/* inner padding */}
