@@ -83,7 +83,7 @@ const portfolio: CodingDataItem = {
 const vexflow: CodingDataItem = {
   title: "Vexflow",
   description: "Music rendering library",
-  imageURL: "vexflow.png",
+  imageURL: "vexflow-examples.png",
   mdx: vexflowMD,
 };
 
