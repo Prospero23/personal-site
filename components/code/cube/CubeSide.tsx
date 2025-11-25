@@ -9,8 +9,9 @@ interface CubeSideProps {
   gridSquareSize: number;
   face: Face;
   currentSelection: Selection;
-  setCurrentSelection: Dispatch<SetStateAction<Selection>>;
   isHero?: boolean;
+  setCurrentSelection: Dispatch<SetStateAction<Selection>>;
+  setIsHovered: Dispatch<SetStateAction<boolean>>;
 }
 
 export default function CubeSide({
@@ -19,8 +20,9 @@ export default function CubeSide({
   gridSquareSize,
   face,
   currentSelection,
-  setCurrentSelection,
   isHero = false,
+  setCurrentSelection,
+  setIsHovered,
 }: CubeSideProps) {
   return (
     <group rotation={rotation} position={position}>
@@ -32,6 +34,7 @@ export default function CubeSide({
           index={0}
           currentSelection={currentSelection}
           setCurrentSelection={setCurrentSelection}
+          setIsHovered={setIsHovered}
           thickness={0.05}
         />
       ) : (
@@ -43,6 +46,7 @@ export default function CubeSide({
             index={0}
             currentSelection={currentSelection}
             setCurrentSelection={setCurrentSelection}
+            setIsHovered={setIsHovered}
           />
           <GridSquare
             position={[gridSquareSize / 2, gridSquareSize / 2, 0]}
@@ -51,6 +55,7 @@ export default function CubeSide({
             index={1}
             currentSelection={currentSelection}
             setCurrentSelection={setCurrentSelection}
+            setIsHovered={setIsHovered}
           />
           <GridSquare
             position={[-gridSquareSize / 2, -gridSquareSize / 2, 0]}
@@ -59,6 +64,7 @@ export default function CubeSide({
             index={2}
             currentSelection={currentSelection}
             setCurrentSelection={setCurrentSelection}
+            setIsHovered={setIsHovered}
           />
           <GridSquare
             position={[gridSquareSize / 2, -gridSquareSize / 2, 0]}
@@ -67,6 +73,7 @@ export default function CubeSide({
             index={3}
             currentSelection={currentSelection}
             setCurrentSelection={setCurrentSelection}
+            setIsHovered={setIsHovered}
           />
         </>
       )}

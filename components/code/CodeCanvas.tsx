@@ -1,6 +1,12 @@
 "use client";
 
-import { useRef, useEffect, type Dispatch, type SetStateAction } from "react";
+import {
+  useRef,
+  useEffect,
+  type Dispatch,
+  type SetStateAction,
+  useState,
+} from "react";
 import { Canvas } from "@react-three/fiber";
 import { Group, Vector3 } from "three";
 import gsap from "gsap";
@@ -18,7 +24,12 @@ export default function CodeCanvas({
   currentSelection,
   setCurrentSelection,
 }: CodingCanvasProps) {
+  const [isHovered, setIsHovered] = useState(false);
   const groupRef = useRef<Group>(null);
+
+  const cursorStyles = isHovered
+    ? "cursor-pointer"
+    : "cursor-grab active:cursor-grabbing";
 
   // handle key presses
   useEffect(() => {
@@ -72,7 +83,7 @@ export default function CodeCanvas({
   return (
     <Canvas
       camera={{ position: new Vector3(...cameraPosition), near: 0.5, far: 20 }}
-      className="cursor-grab active:cursor-grabbing"
+      className={cursorStyles}
     >
       <color attach="background" args={["pink"]} />
       <ambientLight intensity={1.5} color={"white"} />
@@ -83,6 +94,7 @@ export default function CodeCanvas({
         gridSquareSize={1}
         position={[0, 0.0, 0]}
         groupRef={groupRef}
+        setIsHovered={setIsHovered}
       />
       <OrbitControls enableZoom={false} enablePan={false} target={[0, 0, 0]} />
     </Canvas>

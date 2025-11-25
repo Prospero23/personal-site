@@ -18,8 +18,9 @@ interface GriddedCubeProps {
   gridSquareSize: number;
   position: [number, number, number];
   currentSelection: Selection;
-  setCurrentSelection: Dispatch<SetStateAction<Selection>>;
   groupRef: RefObject<Group<Object3DEventMap> | null>;
+  setCurrentSelection: Dispatch<SetStateAction<Selection>>;
+  setIsHovered: Dispatch<SetStateAction<boolean>>;
 }
 
 export type SquareID = string | null;
@@ -28,8 +29,9 @@ export default function GriddedCube({
   gridSquareSize,
   position,
   currentSelection,
-  setCurrentSelection,
   groupRef,
+  setCurrentSelection,
+  setIsHovered,
 }: GriddedCubeProps) {
   const cubeSize = gridSquareSize * 2;
   const faceOffset = 0.05 * gridSquareSize; // tiny nudge
@@ -77,8 +79,9 @@ export default function GriddedCube({
         gridSquareSize={gridSquareSize}
         face="front"
         currentSelection={currentSelection}
-        setCurrentSelection={setCurrentSelection}
         isHero={true}
+        setCurrentSelection={setCurrentSelection}
+        setIsHovered={setIsHovered}
       />
 
       {/* Back (-Z) */}
@@ -89,6 +92,7 @@ export default function GriddedCube({
         face="back"
         currentSelection={currentSelection}
         setCurrentSelection={setCurrentSelection}
+        setIsHovered={setIsHovered}
       />
 
       {/* Right (+X) */}
@@ -99,6 +103,7 @@ export default function GriddedCube({
         face="right"
         currentSelection={currentSelection}
         setCurrentSelection={setCurrentSelection}
+        setIsHovered={setIsHovered}
       />
 
       {/* Left (-X) */}
@@ -109,6 +114,7 @@ export default function GriddedCube({
         face="left"
         currentSelection={currentSelection}
         setCurrentSelection={setCurrentSelection}
+        setIsHovered={setIsHovered}
       />
 
       {/* Top (+Y) */}
@@ -119,6 +125,7 @@ export default function GriddedCube({
         face="top"
         currentSelection={currentSelection}
         setCurrentSelection={setCurrentSelection}
+        setIsHovered={setIsHovered}
       />
 
       {/* Bottom (-Y) */}
@@ -129,6 +136,7 @@ export default function GriddedCube({
         face="bottom"
         currentSelection={currentSelection}
         setCurrentSelection={setCurrentSelection}
+        setIsHovered={setIsHovered}
       />
     </group>
   );

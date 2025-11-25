@@ -15,6 +15,7 @@ interface GridSquareProps {
   index: number;
   currentSelection: Selection;
   setCurrentSelection: Dispatch<SetStateAction<Selection>>;
+  setIsHovered: Dispatch<SetStateAction<boolean>>;
   thickness?: number;
 }
 
@@ -30,6 +31,7 @@ export default function GridSquare({
   index,
   currentSelection,
   setCurrentSelection,
+  setIsHovered,
   thickness = 0.1,
 }: GridSquareProps) {
   const faceConfig = CODING_CONFIG[face];
@@ -88,6 +90,18 @@ export default function GridSquare({
     );
     e.stopPropagation();
   }
+  function handlePointerOver(e: ThreeEvent<PointerEvent>) {
+    if (currentSelection.face !== face || hasProject !== true) return;
+
+    setIsHovered(true);
+    e.stopPropagation();
+  }
+  function handlePointerOut(e: ThreeEvent<PointerEvent>) {
+    if (currentSelection.face !== face || hasProject !== true) return;
+
+    setIsHovered(false);
+    e.stopPropagation();
+  }
 
   return (
     <mesh
@@ -95,6 +109,8 @@ export default function GridSquare({
       position={position}
       onPointerDown={handlePointerDown}
       onPointerUp={handlePointerUp}
+      onPointerOver={handlePointerOver}
+      onPointerOut={handlePointerOut}
     >
       <boxGeometry args={[size, size, size * thickness]} />
       <meshStandardMaterial
