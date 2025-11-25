@@ -63,7 +63,7 @@ export default function RecordCircle({
       ) {
         lastClosestRef.current = closestChildIndex;
 
-        setClosestRecording(records[closestChildIndex]);
+        setClosestRecording(displayedRecords[closestChildIndex]);
       }
     }
   }
@@ -146,6 +146,18 @@ export default function RecordCircle({
       window.removeEventListener("keydown", handleKeyDown);
     };
   }, [rotateGroup]);
+
+  useEffect(() => {
+    // indices now refer to a new list
+    lastClosestRef.current = null;
+
+    if (displayedRecords.length === 0) {
+      setClosestRecording(null);
+    } else {
+      // assume index 0 is front after reset
+      setClosestRecording(displayedRecords[0]);
+    }
+  }, [displayedRecords, setClosestRecording]);
 
   return (
     <>
