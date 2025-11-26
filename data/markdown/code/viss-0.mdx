@@ -1,7 +1,7 @@
 import ProjectHeader from "@/components/code/modal/ProjectHeader";
 import ProjectVideo from "@/components/code/modal/ProjectVideo";
 
-# VISS-0
+# VISS 0
 <ProjectVideo
     videoUrl={"https://www.youtube.com/embed/ZwfgKpYsR80?si=54foIEYLgfjB5ThL"}
     videoDescription={"Performance by Don-Paul Kahl."}
@@ -10,5 +10,27 @@ import ProjectVideo from "@/components/code/modal/ProjectVideo";
 <ProjectHeader
     dates={"2023"}
     summary={'Video Improvisation Scoring System 0.'}
-    codeUrl={"TODO"}
+    codeUrl={"https://github.com/Prospero23/VISS-0/"}
 />
+
+## Description
+VISS 0 is an audio-reactive scoring system that maps three distinct video effects to three equally distinct improvisational systems. 
+It was influenced greatly by a lecture led by [Craig Vear](https://www.nottingham.ac.uk/humanities/departments/music/people/craig.vear) on digital scoring practices. Inspired by this lecture,
+each improvisational system varies both in its degree of interactivity with the performer and its level of notational specificity, ranging from abstract numerical ranges to traditional notation.
+
+The system was first developed and recorded during [Don-Paul Kahl](https://donpaulkahl.com/en/about)'s residency at NEC in 2023. 
+Later that year, it was performed live at the [TENOR](https://www.tenor-conference.org/) conference in Boston.
+
+Specific performance notes can be read in the [README](https://github.com/Prospero23/VISS-0/blob/main/other/README.md) of the project.
+
+## Technical Details
+- **Notation** Uses [bach](https://www.bachproject.net/) for reactive graphic score overlays and the basis of the live transcription engine
+- **Audio Analysis** Uses [FluCoMa](https://www.flucoma.org/) for loudness and onset detection
+- **Video Effects** Uses Jitter and Vizzie for score rendering and video effects
+
+## Added Thoughts/Context
+My improvised musical practice has often centered around finding ways to rapidly shift between multiple, contrasting improvisational logics.
+This project was an attempt to notate this process.
+
+While writing this piece, I was also influenced by Ferneyhough's idea that extreme or overwhelming constraints bring out the best of human creativity.
+Throughout a performance, the performer is overloaded with information, forcing them to make concessions and decisions they might never otherwise make.
