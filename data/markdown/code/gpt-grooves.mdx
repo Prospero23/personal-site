@@ -15,3 +15,14 @@ import ProjectImage from "@/components/code/modal/ProjectImage";
     summary={'Early LLM explorations.'}
     codeUrl={"https://github.com/Prospero23/GPTGrooves"}
 />
+## Description
+[gptgrooves.com](https://gptgrooves.vercel.app) is an archived web project that prompted OpenAI's GPT-4 model 
+to create MIDI for short [house](https://en.wikipedia.org/wiki/House_music) tracks once a day. 
+
+The results can still be listened to on the site, and users can experiment with real-time audio effects like 
+filtering, delay, reverb, and feedback.
+
+## Technical Details
+- **Daily Generation** Used LangChain through AWS Lambda functions to generate new MIDI sequences once per day
+- **Interface** Built with [react-three-fiber](https://github.com/pmndrs/react-three-fiber) and [Next.js](https://nextjs.org/) for the interactive 3D layout
+- **Sound Generation** Instruments built with [RNBO](https://rnbo.cycling74.com/) with Web Audio API handling effects and sequencing
