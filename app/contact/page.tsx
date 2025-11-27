@@ -40,14 +40,12 @@ export default function Contact() {
   };
 
   return (
-    /* "handleSubmit" will validate your inputs before invoking "onSubmit" */
     <main className="flex flex-col items-center justify-center w-screen h-screen">
       <form
         onSubmit={handleSubmit(onSubmit)}
         className="text-white rounded-md border-white border-2 p-8 px-24"
       >
         <h1 className=" text-center">Contact Form</h1>
-        {/* register your input into the hook by invoking the "register" function */}
         <div className="my-4">
           <label htmlFor="contact" className="block">
             Name
@@ -55,7 +53,7 @@ export default function Contact() {
           <input
             id="contact"
             {...register("name", { required: true })}
-            className="text-black"
+            className="text-black bg-white"
           />
           {errors.name != null && <span>This field is required</span>}
         </div>
@@ -67,7 +65,7 @@ export default function Contact() {
             type="email"
             id="contact"
             {...register("email", { required: true })}
-            className="text-black"
+            className="text-black bg-white"
           />
           {errors.email != null && <span>This field is required</span>}
         </div>
@@ -79,7 +77,7 @@ export default function Contact() {
           <textarea
             id="message"
             {...register("message", { required: true })}
-            className="text-black"
+            className="text-black bg-white"
           ></textarea>
         </div>
         {/* errors will return when field validation fails  */}
@@ -98,5 +96,3 @@ export default function Contact() {
     </main>
   );
 }
-
-// have links to instagram, github, bandcamp??, send stuff to email
