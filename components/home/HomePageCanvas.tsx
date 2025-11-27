@@ -1,10 +1,9 @@
 "use client";
 import { Canvas } from "@react-three/fiber";
-import { Loader, Html } from "@react-three/drei";
 import Ben from "@/components/home/Ben";
 import { type Dispatch, type SetStateAction, Suspense } from "react";
-import ExtendedOrbit from "@/components/ExtendedOrbit";
-
+import ExtendedOrbit from "@/components/utils/ExtendedOrbit";
+import LoadingScreen from "../utils/LoadingScreen";
 interface HomeCanvasProps {
   setIsHovered: Dispatch<SetStateAction<boolean>>;
   isContoured: boolean;
@@ -18,20 +17,11 @@ export default function HomeCanvas({
     <>
       <Canvas tabIndex={0}>
         <color attach="background" args={["pink"]} />
-        <Suspense fallback={<Loading />}>
+        <Suspense fallback={<LoadingScreen />}>
           <Ben isContoured={isContoured} setIsHovered={setIsHovered} />
         </Suspense>
         <ExtendedOrbit autoRotate={true} autoRotateSpeed={0.5} />
       </Canvas>
-      <Loader />
     </>
-  );
-}
-
-function Loading() {
-  return (
-    <Html>
-      <div style={{ color: "white" }}>Loading......</div>
-    </Html>
   );
 }

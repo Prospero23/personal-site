@@ -2,7 +2,7 @@
 
 import { Canvas } from "@react-three/fiber";
 import { A11yAnnouncer } from "@react-three/a11y";
-import ExtendedOrbit from "@/components/ExtendedOrbit";
+import ExtendedOrbit from "@/components/utils/ExtendedOrbit";
 import RecordCircle, {
   type RegisterRotateHandler,
 } from "@/components/music/RecordCircle";
