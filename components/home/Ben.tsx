@@ -21,6 +21,7 @@ interface BenProps {
 export default function Ben({ isContoured, setIsHovered }: BenProps) {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
   const router = useRouter();
+  const flatQuaternion = useMemo(() => new Quaternion(), []);
 
   const obj = useLoader(OBJLoader, "/textModel/TextBen.obj");
 
@@ -32,8 +33,10 @@ export default function Ben({ isContoured, setIsHovered }: BenProps) {
     const existingArrays = new Set();
     const data: TextData[] = [];
 
+    const step = 1;
+
     // calculate 3D positions for all text elements
-    for (let i = 0; i < positions.length / 3; i++) {
+    for (let i = 0; i < positions.length / 3; i += step) {
       const x = positions[i * 3];
       const y = positions[i * 3 + 1];
       const z = positions[i * 3 + 2];
@@ -103,7 +106,7 @@ export default function Ben({ isContoured, setIsHovered }: BenProps) {
             position={text.position}
             key={i}
             fontSize={0.05}
-            quaternion={isContoured ? text.quaternion : new Quaternion()}
+            quaternion={isContoured ? text.quaternion : flatQuaternion}
             color={
               i === hoveredIndex &&
               (text.type === "Music" || text.type === "Code")
@@ -122,6 +125,9 @@ export default function Ben({ isContoured, setIsHovered }: BenProps) {
           >
             {text.type}
           </Text>
+          // <mesh key={i} position={text.position}>
+          //   <boxGeometry />
+          // </mesh>
         ))}
       </group>
     </>

@@ -1,5 +1,5 @@
 "use client";
-import { Canvas, extend } from "@react-three/fiber";
+import { Canvas } from "@react-three/fiber";
 import { Loader, Html } from "@react-three/drei";
 import Ben from "@/components/home/Ben";
 import { type Dispatch, type SetStateAction, Suspense } from "react";
@@ -18,8 +18,6 @@ export default function HomeCanvas({
     <>
       <Canvas tabIndex={0}>
         <color attach="background" args={["pink"]} />
-        <ambientLight intensity={0.5} />
-        <spotLight position={[10, 0, 0.2]} angle={0.15} penumbra={1} />
         <Suspense fallback={<Loading />}>
           <Ben isContoured={isContoured} setIsHovered={setIsHovered} />
         </Suspense>
