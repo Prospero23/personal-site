@@ -6,7 +6,7 @@ import ladybirdMD from "@/data/markdown/code/ladybird.mdx";
 import gptGroovesMD from "@/data/markdown/code/gpt-grooves.mdx";
 import ORhythmicMD from "@/data/markdown/code/ORhythmic.mdx";
 import portfolioMD from "@/data/markdown/code/portfolio.mdx";
-import synthMD from "@/data/markdown/code/synth.mdx";
+import liveSetupMD from "@/data/markdown/code/live-setup.mdx";
 import vexflowMD from "@/data/markdown/code/vexflow.mdx";
 import viss0MD from "@/data/markdown/code/viss-0.mdx";
 
@@ -43,11 +43,11 @@ const ORhythmic: CodingDataItem = {
   mdx: ORhythmicMD,
 };
 
-const synth: CodingDataItem = {
-  title: "Synth",
+const liveSetup: CodingDataItem = {
+  title: "Live Setup",
   description: "Performance setup (Max + FluCoMa + TouchOSC and old iPads)",
   imageURL: "live-setup.png",
-  mdx: synthMD,
+  mdx: liveSetupMD,
 };
 
 const viss0: CodingDataItem = {
@@ -121,7 +121,7 @@ export const CODING_CONFIG: CodingConfig = {
     title: "Max/MSP Systems",
     description:
       "Improvisation systems and performance tools built in Max/MSP.",
-    squares: [viss0, null, null, synth],
+    squares: [viss0, null, null, liveSetup],
   },
   top: null,
   bottom: null,

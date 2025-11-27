@@ -1,0 +1,27 @@
+import ProjectHeader from "@/components/code/modal/ProjectHeader";
+import ProjectVideo from "@/components/code/modal/ProjectVideo";
+
+# Live Setup
+<ProjectVideo
+    videoUrl={"https://www.youtube.com/embed/AIMB2VJclkQ?si=eVFwduQ30aiLzsCo"}
+    videoDescription={"Recording of me using setup."}
+/>
+
+<ProjectHeader
+    dates={"2020 - Current"}
+    summary={'A live processing and synthesis system.'}
+    codeUrl={"TODO"}
+/>
+
+## Description
+This is one of my live performance setups. It uses two iPads as MIDI controllers to manipulate a pair of custom synthesizers 
+and a suite of audio effects. The interface is designed for fast timbral shifts, allowing me to respond fluidly to acoustic improvisers in real time.
+
+This system, and modules derived from it, has been used on many 
+of my [laptop recordings and performances](./music). 
+
+## Technical Notes
+- **Synthesis** [Max For Live](https://www.ableton.com/en/live/max-for-live/) instruments running inside [Ableton](https://www.ableton.com/)
+- **Control Mapping** Uses [FluCoMa](https://www.flucoma.org/) for feature extraction and parameter regression, reducing high-dimensional synth controls (10D and 50D) 
+into touch-controllable 2D/4D spaces
+- **MIDI** Dual iPads running [touchOSC](https://hexler.net/touchosc)
