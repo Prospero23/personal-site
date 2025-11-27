@@ -15,3 +15,22 @@ import ProjectImage from "@/components/code/modal/ProjectImage";
     summary={'10 second performances on browser based synth.'}
     codeUrl={"https://github.com/Prospero23/Bin-Synth"}
 />
+
+## Description
+[binSynth](https://binsynth.vercel.app/) is a web instrument and daily challenge platform. 
+Each user can sign in and record a short (10 second) improvisation once per day using a 
+synthesizer built into the site. Users can then watch each other's performances, leave feedback, and explore 
+a growing community-driven archive of sketches.
+
+## Technical Notes
+- **Frontend**: Built with [Next.js](https://nextjs.org/) and [p5.js](https://p5js.org/) 
+
+- **Synthesis / Audio Engine**: Implemented using [Tone.js](https://tonejs.github.io/)
+
+- **Authentication**: Managed through a secure login flow with user-specific daily submission tracking using [NextAuth.js](https://next-auth.js.org/)
+
+- **Database**: Stores user profiles, daily recordings, and comments for community playback in [mongodb](https://www.mongodb.com/)
+
+## Context
+This was my first large-scale web project, designed to help me learn authentication and full-stack user flow design. 
+The audio features are intentionally simple, with the interactive and social components serving as the core focus of the work.
