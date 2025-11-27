@@ -26,6 +26,7 @@ export default function Navbar() {
             <TransitionLink
               href="/"
               className="text-2xl xl:text-4xl text-ghost-white font-bold hover:underline underline-offset-4  active:text-pink-400 flex items-center justify-center"
+              onClick={handleClick}
             >
               Ben Eidson {/* make my navlink take a child prop? */}
             </TransitionLink>
