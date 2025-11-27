@@ -33,7 +33,7 @@ export default function Ben({ isContoured, setIsHovered }: BenProps) {
     const existingArrays = new Set();
     const data: TextData[] = [];
 
-    const step = 1;
+    const step = 5;
 
     // calculate 3D positions for all text elements
     for (let i = 0; i < positions.length / 3; i += step) {
