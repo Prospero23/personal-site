@@ -39,12 +39,12 @@ const Music = () => {
         />
         {closestRecording && (
           <div className="flex justify-center pb-1">
-            <div className="font-bold text-white text-sm md:text-base px-4 py-2 rounded-lg pointer-events-none">
+            <div className="font-bold text-ghost-white text-sm md:text-base px-4 py-2 rounded-lg pointer-events-none">
               {closestRecording.year} · {closestRecording.context}
             </div>
           </div>
         )}
-        <div className="flex justify-center gap-28 pb-8 text-white text-lg">
+        <div className="flex justify-center gap-28 pb-8 text-ghost-white text-lg">
           <button
             className="hover:underline hover:cursor-pointer active:text-pink-400 p-6 pointer-events-auto"
             onClick={() => rotateRef.current?.("backward")}

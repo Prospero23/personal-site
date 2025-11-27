@@ -21,7 +21,7 @@ export default function RecordingFilters({
   setCurrentInstrument,
 }: RecordingKindsProps) {
   return (
-    <div className="pointer-events-none absolute inset-x-0 top-20 md:top-24 z-10 flex justify-center text-white">
+    <div className="pointer-events-none absolute inset-x-0 top-20 md:top-24 z-10 flex justify-center text-ghost-white">
       <div className="flex flex-col shadow-lg">
         {/* Top row */}
         <div className="pointer-events-auto inline-flex items-center gap-1 px-2 py-1 text-sm sm:text-base md:text-lg">

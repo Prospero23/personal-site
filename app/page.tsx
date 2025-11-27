@@ -24,7 +24,7 @@ export default function Home() {
       </div>
 
       {/* DOM Overlay */}
-      <div className="absolute inset-0 flex justify-between items-end pointer-events-none text-white">
+      <div className="absolute inset-0 flex justify-between items-end pointer-events-none text-ghost-white">
         <div className="mb-10 ml-10 pointer-events-auto">
           <label className="hidden sm:flex items-center gap-2 text-sm md:text-base">
             <input

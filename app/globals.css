@@ -22,4 +22,5 @@ body {
 @theme {
   --color-customPink: #ffc0cb;
   --color-customBlue: #c0fff4;
+  --color-ghost-white: #F8F8FF;
 }

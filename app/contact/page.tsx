@@ -43,7 +43,7 @@ export default function Contact() {
     <main className="flex flex-col items-center justify-center w-screen h-screen">
       <form
         onSubmit={handleSubmit(onSubmit)}
-        className="text-white rounded-md border-white border-2 p-8 px-24"
+        className="text-ghost-white rounded-md border-white border-2 p-8 px-24"
       >
         <h1 className=" text-center">Contact Form</h1>
         <div className="my-4">
@@ -83,7 +83,9 @@ export default function Contact() {
         {/* errors will return when field validation fails  */}
         {errors.message != null && <span>This field is required</span>}
 
-        <button className="text-white block hover:text-pink-400">Submit</button>
+        <button className="text-ghost-white block hover:text-pink-400">
+          Submit
+        </button>
       </form>
       <a href="https://github.com/Prospero23" className="mt-4">
         <Image

@@ -25,7 +25,7 @@ export default function CodeOverlay({ currentSelection }: CodeOverlayProps) {
 
   return (
     <>
-      <div className="absolute bottom-14 z-20 text-white bg-none w-full text-center">
+      <div className="absolute bottom-14 z-20 text-ghost-white bg-none w-full text-center">
         {isItem ? (
           <button
             className="uppercase text-2xl mb-2 underline cursor-pointer active:text-pink-400 hover:font-bold"
