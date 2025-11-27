@@ -1,4 +1,5 @@
 import Link from "next/link";
+import TransitionLink from "../utils/TransitionLink";
 
 interface NavLinkProps {
   href: string;
@@ -8,12 +9,12 @@ interface NavLinkProps {
 
 export default function NavLink({ href, text, onClick }: NavLinkProps) {
   return (
-    <Link
+    <TransitionLink
       href={href}
       onClick={onClick}
       className="text-ghost-white hover:underline underline-offset-4 active:text-pink-400"
     >
       {text}
-    </Link>
+    </TransitionLink>
   );
 }

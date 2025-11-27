@@ -6,6 +6,7 @@ import { useState } from "react";
 import NavLink from "./NavLink";
 import ToggleMenu from "./ToggleMenu";
 import ExitDiv from "./ExitDiv";
+import TransitionLink from "../utils/TransitionLink";
 
 export default function Navbar() {
   const [navbar, setNavbar] = useState(false);
@@ -22,12 +23,12 @@ export default function Navbar() {
         >
           {/* TODO: this could use a better ID */}
           <div id="small-nav" className="flex justify-between py-3 md:py-5">
-            <Link
+            <TransitionLink
               href="/"
               className="text-2xl xl:text-4xl text-ghost-white font-bold hover:underline underline-offset-4  active:text-pink-400 flex items-center justify-center"
             >
               Ben Eidson {/* make my navlink take a child prop? */}
-            </Link>
+            </TransitionLink>
             <div id="navbar-toggle" className="md:hidden">
               <ToggleMenu isOpen={navbar} setIsOpen={setNavbar} />
             </div>
