@@ -84,6 +84,7 @@ export default function CodeCanvas({
     <Canvas
       camera={{ position: new Vector3(...cameraPosition), near: 0.5, far: 20 }}
       className={cursorStyles}
+      resize={{ debounce: 200 }}
     >
       <color attach="background" args={["pink"]} />
       <ambientLight intensity={1.5} color={"white"} />

@@ -50,7 +50,10 @@ export default function MusicCanvas({
 
   return (
     <>
-      <Canvas className="cursor-grab active:cursor-grabbing z-0">
+      <Canvas
+        className="cursor-grab active:cursor-grabbing z-0"
+        resize={{ debounce: 200 }}
+      >
         <color attach="background" args={["pink"]} />
         <ambientLight intensity={1} color={"white"} />
         <RecordCircle

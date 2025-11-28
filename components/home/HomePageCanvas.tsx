@@ -15,7 +15,7 @@ export default function HomeCanvas({
 }: HomeCanvasProps) {
   return (
     <>
-      <Canvas tabIndex={0}>
+      <Canvas tabIndex={0} resize={{ debounce: 200 }}>
         <color attach="background" args={["pink"]} />
         <Suspense fallback={<LoadingScreen />}>
           <Ben isContoured={isContoured} setIsHovered={setIsHovered} />
