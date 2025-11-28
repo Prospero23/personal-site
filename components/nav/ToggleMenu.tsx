@@ -8,7 +8,7 @@ interface ToggleMenuProps {
 export default function ToggleMenu({ isOpen, setIsOpen }: ToggleMenuProps) {
   return (
     <button
-      className="p-2 rounded-md border border-transparent focus:border-pink-400 text-ghost-white hover:text-pink-400 hover:cursor-pointer"
+      className="p-2 rounded-md border border-transparent focus:border-pink-400 text-ghost-white hover:text-pink-400 hover:cursor-pointer transition duration-300"
       onClick={() => {
         setIsOpen(!isOpen);
       }}

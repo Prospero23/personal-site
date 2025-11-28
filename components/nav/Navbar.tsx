@@ -22,7 +22,7 @@ export default function Navbar() {
           className="justify-between px-4 mx-auto md:items-center md:flex md:px-8 lg:max-w-7xl"
         >
           {/* TODO: this could use a better ID */}
-          <div id="small-nav" className="flex justify-between py-3 md:py-5">
+          <div className="flex justify-between py-3 md:py-5">
             <TransitionLink
               href="/"
               className="text-2xl xl:text-4xl text-ghost-white font-bold hover:underline underline-offset-4  active:text-pink-400 flex items-center justify-center"
@@ -30,15 +30,12 @@ export default function Navbar() {
             >
               Ben Eidson {/* make my navlink take a child prop? */}
             </TransitionLink>
-            <div id="navbar-toggle" className="md:hidden">
+            <div className="md:hidden">
               <ToggleMenu isOpen={navbar} setIsOpen={setNavbar} />
             </div>
           </div>
           <div
-            id="nav-links"
-            className={`flex pb-3 mt-8 md:block md:pb-0 md:mt-0 ${
-              navbar ? "block" : "hidden"
-            }`}
+            className={`md:flex md:pb-0 md:mt-0 overflow-hidden md:overflow-visible transition-all duration-300 ease-in-out ${navbar ? "mt-8 pb-3 max-h-64 opacity-100" : "mt-0 pb-0 max-h-0 opacity-0 pointer-events-none"} md:max-h-none md:opacity-100 md:pointer-events-auto`}
           >
             <ul className="w-full space-y-8 md:flex md:space-x-6 md:space-y-0 text-xl xl:text-2xl ">
               <li className="flex justify-center sm:justify-start md:justify-center">
