@@ -10,7 +10,6 @@ export default function AboutModal({
   setShowModal,
 }: AboutModalProps) {
   return showModal ? (
-    // TODO: use better HTML element for this use a portal?
     <>
       <div
         className={`absolute top-0 left-0 w-screen h-screen cursor-pointer bg-clear z-30`}
