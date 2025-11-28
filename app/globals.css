@@ -54,3 +54,9 @@ body {
          rounded-lg bg-customPink/90 text-gray-800 shadow-lg;
   animation: modal-fade-in-up 0.25s ease-out;
 }
+
+@custom-variant short-screen {
+  @media (max-height: 700px) {
+    @slot;
+  }
+}

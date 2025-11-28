@@ -21,86 +21,68 @@ export default function RecordingFilters({
   setCurrentInstrument,
 }: RecordingKindsProps) {
   return (
-    <div className="pointer-events-none absolute inset-x-0 top-20 md:top-24 z-10 flex justify-center text-ghost-white">
-      <div className="flex flex-col shadow-lg">
-        {/* Top row */}
-        <div className="pointer-events-auto inline-flex items-center gap-1 px-2 py-1 text-sm sm:text-base md:text-lg">
+    <div
+      className={`absolute inset-x-0 top-20 md:top-24 z-10 flex justify-center short-screen:justify-start`}
+    >
+      <div className="backdrop-blur-md bg-black/30 rounded-full px-4 py-2 flex flex-col gap-1 shadow-md pointer-events-auto">
+        {/* Category */}
+        <div className="flex gap-2 justify-center">
           <FilterButton
-            isActive={currentRecordings === "highlights"}
-            activeClassName="text-green-500"
-            onClick={() => {
-              setCurrentRecordings("highlights");
-            }}
-          >
-            Highlights
-          </FilterButton>
+            label="Highlights"
+            active={currentRecordings === "highlights"}
+            onClick={() => setCurrentRecordings("highlights")}
+          />
           <FilterButton
-            isActive={currentRecordings === "audio"}
-            activeClassName="text-orange-500"
-            onClick={() => {
-              setCurrentRecordings("audio");
-            }}
-          >
-            Audio
-          </FilterButton>
+            label="Audio"
+            active={currentRecordings === "audio"}
+            onClick={() => setCurrentRecordings("audio")}
+          />
           <FilterButton
-            isActive={currentRecordings === "video"}
-            activeClassName="text-blue-500"
-            onClick={() => {
-              setCurrentRecordings("video");
-            }}
-          >
-            Videos
-          </FilterButton>
+            label="Videos"
+            active={currentRecordings === "video"}
+            onClick={() => setCurrentRecordings("video")}
+          />
         </div>
-        {/* Bottom row */}
-        <div className="pointer-events-auto inline-flex justify-around items-center text-sm sm:text-base md:text-lg">
+
+        {/* Instrument */}
+        <div className="flex gap-2 justify-center">
           <FilterButton
-            isActive={currentInstrument === "sax"}
-            activeClassName="text-purple-600"
-            onClick={() => {
-              setCurrentInstrument("sax");
-            }}
-          >
-            Sax
-          </FilterButton>
+            label="Sax"
+            active={currentInstrument === "sax"}
+            onClick={() => setCurrentInstrument("sax")}
+          />
           <FilterButton
-            isActive={currentInstrument === "laptop"}
-            activeClassName="text-red-600"
-            onClick={() => {
-              setCurrentInstrument("laptop");
-            }}
-          >
-            Laptop
-          </FilterButton>
+            label="Laptop"
+            active={currentInstrument === "laptop"}
+            onClick={() => setCurrentInstrument("laptop")}
+          />
         </div>
       </div>
     </div>
   );
 }
 
-interface FilterButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
-  isActive: boolean;
-  activeClassName?: string;
-  inactiveClassName?: string;
-  children: ReactNode;
+interface FilterButtonProps {
+  label: string;
+  active: boolean;
+  onClick: () => void;
 }
 
-function FilterButton({
-  isActive,
-  activeClassName = "",
-  inactiveClassName = "",
-  children,
-  ...props
-}: FilterButtonProps) {
+function FilterButton({ label, active, onClick }: FilterButtonProps) {
   return (
     <button
-      className={`pointer-events-auto p-1 hover:underline hover:cursor-pointer ${
-        isActive ? `${activeClassName} underline` : inactiveClassName
-      }`}
-      {...props}
+      onClick={onClick}
+      className={`
+        px-3 py-1 text-xs sm:text-sm md:text-base rounded-full
+        transition-all duration-150 cursor-pointer
+        ${
+          active
+            ? "bg-pink-400 text-black font-semibold"
+            : "text-white/80 hover:text-white hover:underline"
+        }
+      `}
     >
-      {children}
+      {label}
     </button>
   );
 }
