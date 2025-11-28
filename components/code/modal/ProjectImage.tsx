@@ -32,7 +32,11 @@ export default function ProjectImage({
         <div
           className={`${aspectClass} relative w-full overflow-hidden rounded-md`}
         >
-          <a href={imageDestination} target="_blank">
+          <a
+            href={imageDestination}
+            target="_blank"
+            className="relative block h-full w-full"
+          >
             <Image
               src={imageUrl}
               alt={imageAlt}
