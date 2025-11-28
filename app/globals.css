@@ -37,3 +37,20 @@ body {
   transform: translateY(40px);
   filter: blur(12px);
 }
+
+@keyframes modal-fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(10px) scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.modal-card {
+  @apply flex max-h-[70vh] sm:max-h-[80vh] w-full flex-col overflow-hidden 
+         rounded-lg bg-customPink/90 text-gray-800 shadow-lg;
+  animation: modal-fade-in-up 0.25s ease-out;
+}
