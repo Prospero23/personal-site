@@ -24,34 +24,36 @@ export default function Home() {
       </div>
 
       {/* DOM Overlay */}
-      <div className="absolute inset-0 flex justify-between items-end pointer-events-none text-ghost-white">
-        <div className="mb-10 ml-10 pointer-events-auto">
-          <label className="hidden sm:flex items-center gap-2 text-sm md:text-base">
-            <input
-              type="checkbox"
-              checked={isContoured}
-              onChange={(e) => {
-                setIsContoured(e.target.checked);
-              }}
-              className="accent-pink-400"
-            />
-            <span>Contour Text</span>
-          </label>
-        </div>
-        <div className="mb-10 mr-5 sm:mr-10 gap-2 flex flex-col items-end">
-          <h1 className="ml-6 sm:ml-0 text-4xl md:text-6xl lg:text-8xl text-end">
-            BEN EIDSON
-          </h1>
-          <div className="flex justify-end w-full">
-            <button
-              className="text-2xl md:3xl lg:text-5xl pointer-events-auto hover:cursor-pointer  hover:underline underline-offset-4 active:text-pink-400"
-              type="button"
-              onClick={() => {
-                setShowModal(true);
-              }}
-            >
-              About Me
-            </button>
+      <div className="absolute inset-0 flex justify-center pointer-events-none text-ghost-white">
+        <div className="flex justify-between items-end w-full px-4 md:px-8 lg:max-w-7xl mx-auto">
+          <div className="mb-10 ml-10 pointer-events-auto">
+            <label className="hidden sm:flex items-center gap-2 text-sm md:text-base">
+              <input
+                type="checkbox"
+                checked={isContoured}
+                onChange={(e) => {
+                  setIsContoured(e.target.checked);
+                }}
+                className="accent-pink-400"
+              />
+              <span>Contour Text</span>
+            </label>
+          </div>
+          <div className="mb-10 gap-2 flex flex-col items-end">
+            <h1 className="text-4xl md:text-6xl lg:text-8xl text-end">
+              BEN EIDSON
+            </h1>
+            <div className="flex justify-end w-full">
+              <button
+                className="text-2xl md:3xl lg:text-5xl pointer-events-auto hover:cursor-pointer  hover:underline underline-offset-4 active:text-pink-400"
+                type="button"
+                onClick={() => {
+                  setShowModal(true);
+                }}
+              >
+                About Me
+              </button>
+            </div>
           </div>
         </div>
       </div>
