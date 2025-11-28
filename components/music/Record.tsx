@@ -37,6 +37,12 @@ export default function Record({ position, recording }: RecordProps) {
             height={size.height}
             width={size.width}
             title={recording.title}
+            className="transition-opacity duration-300 opacity-0"
+            onLoad={(e) => {
+              // fade the iframe in
+              e.currentTarget.classList.remove("opacity-0");
+              e.currentTarget.classList.add("opacity-100");
+            }}
           ></iframe>
         ) : (
           <iframe
@@ -48,6 +54,11 @@ export default function Record({ position, recording }: RecordProps) {
             allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
             referrerPolicy="strict-origin-when-cross-origin"
             allowFullScreen
+            className="transition-opacity duration-300 opacity-0"
+            onLoad={(e) => {
+              e.currentTarget.classList.remove("opacity-0");
+              e.currentTarget.classList.add("opacity-100");
+            }}
           ></iframe>
         )}
       </Html>

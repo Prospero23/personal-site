@@ -6,7 +6,6 @@ import {
   useCallback,
   useEffect,
   useRef,
-  useState,
 } from "react";
 import { gsap } from "gsap";
 import { Vector3, type Group } from "three";
@@ -32,14 +31,12 @@ export default function RecordCircle({
   onRegisterRotateHandler,
   setClosestRecording,
 }: RecordCircleProps) {
-  const [displayedRecords, setDisplayedRecords] = useState(records);
-
   const myGroup = useRef<Group>(null);
   const lastClosestRef = useRef<number | null>(null);
   const worldPosition = useRef(new Vector3()).current;
   const { camera } = useThree();
 
-  const numPlanes = displayedRecords.length;
+  const numPlanes = records.length;
   const radius = 2;
 
   function getClosestRecording() {
@@ -63,7 +60,7 @@ export default function RecordCircle({
       ) {
         lastClosestRef.current = closestChildIndex;
 
-        setClosestRecording(displayedRecords[closestChildIndex]);
+        setClosestRecording(records[closestChildIndex]);
       }
     }
   }
@@ -95,33 +92,10 @@ export default function RecordCircle({
   // animation stuff
   useEffect(() => {
     if (myGroup.current == null) {
-      //TODO fix
-      setTimeout(() => setDisplayedRecords(records), 0);
       return;
     }
 
-    const group = myGroup.current;
-
-    gsap.to(group.scale, {
-      x: 0.2,
-      y: 0.2,
-      z: 0.2,
-      duration: 0.2,
-      ease: "power2.in",
-      onComplete: () => {
-        setDisplayedRecords(records);
-
-        group.rotation.y = 0;
-
-        gsap.to(group.scale, {
-          x: 1,
-          y: 1,
-          z: 1,
-          duration: 0.2,
-          ease: "power2.out",
-        });
-      },
-    });
+    myGroup.current.rotation.y = 0;
   }, [records]);
 
   // rotation stuff
@@ -151,18 +125,18 @@ export default function RecordCircle({
     // indices now refer to a new list
     lastClosestRef.current = null;
 
-    if (displayedRecords.length === 0) {
+    if (records.length === 0) {
       setClosestRecording(null);
     } else {
       // assume index 0 is front after reset
-      setClosestRecording(displayedRecords[0]);
+      setClosestRecording(records[0]);
     }
-  }, [displayedRecords, setClosestRecording]);
+  }, [records, setClosestRecording]);
 
   return (
     <>
       <group ref={myGroup} position={position} rotation={[0, 0, 0]}>
-        {displayedRecords.map((record, i) => {
+        {records.map((record, i) => {
           // UNIT CIRCLE STUFF
           // places index 0 at front by applying 90 degree offset
           const angleOffset = Math.PI / 2;
