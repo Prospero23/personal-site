@@ -73,7 +73,7 @@ function FilterButton({ label, active, onClick }: FilterButtonProps) {
     <button
       onClick={onClick}
       className={`
-        px-3 py-1 text-xs sm:text-sm md:text-base rounded-full
+        px-3 py-1 text-sm md:text-base rounded-full
         transition-all duration-150 cursor-pointer
         ${
           active
