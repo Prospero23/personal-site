@@ -83,7 +83,7 @@ export default function Contact() {
         {/* errors will return when field validation fails  */}
         {errors.message != null && <span>This field is required</span>}
 
-        <button className="text-ghost-white block hover:text-pink-400">
+        <button className="text-ghost-white block hover:text-pink-400 hover:cursor-pointer">
           Submit
         </button>
       </form>
