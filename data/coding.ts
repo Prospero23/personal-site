@@ -106,7 +106,7 @@ export const CODING_CONFIG: CodingConfig = {
   back: {
     category: "Open-Source",
     title: "Open-Source Contributions",
-    description: "Projects I have contributed to that are not my own.",
+    description: "Contributions to third-pary open-source projects.",
     squares: [vexflow, null, null, ladybird],
   },
   left: {
