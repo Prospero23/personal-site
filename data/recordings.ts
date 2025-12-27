@@ -82,12 +82,28 @@ const saxRecords: Recording[] = [
     context: "Duo",
   },
   {
+    title: "Duval, Eidson, Alford, Larocca",
+    src: "https://bandcamp.com/EmbeddedPlayer/album=4139558760/size=large/bgcol=ffffff/linkcol=0687f5/minimal=true/transparent=true/",
+    kind: "audio",
+    instrument: "sax",
+    year: 2023,
+    context: "Quartet",
+  },
+  {
     title: "STALWART",
     src: "https://bandcamp.com/EmbeddedPlayer/album=2311132352/size=large/bgcol=ffffff/linkcol=0687f5/minimal=true/transparent=true/",
     kind: "audio",
     instrument: "sax",
     year: 2022,
     context: "Quartet",
+  },
+  {
+    title: "Sepsis",
+    src: "https://bandcamp.com/EmbeddedPlayer/album=2842659991/size=large/bgcol=ffffff/linkcol=0687f5/minimal=true/transparent=true/",
+    kind: "audio",
+    instrument: "sax",
+    year: 2022,
+    context: "Septet",
   },
   {
     title: "STALWART 2",
@@ -102,7 +118,6 @@ const saxRecords: Recording[] = [
     src: "https://bandcamp.com/EmbeddedPlayer/album=598708310/size=large/bgcol=ffffff/linkcol=0687f5/minimal=true/transparent=true/",
     kind: "audio",
     instrument: "sax",
-    isHighlight: true,
     year: 2024,
     context: "Quartet",
   },
@@ -113,14 +128,6 @@ const saxRecords: Recording[] = [
     instrument: "sax",
     year: 2022,
     context: "Octet",
-  },
-  {
-    title: "Sepsis",
-    src: "https://bandcamp.com/EmbeddedPlayer/album=2842659991/size=large/bgcol=ffffff/linkcol=0687f5/minimal=true/transparent=true/",
-    kind: "audio",
-    instrument: "sax",
-    year: 2022,
-    context: "Septet",
   },
 ];
 
@@ -194,6 +201,7 @@ const saxVideoes: Recording[] = [
     instrument: "sax",
     year: 2025,
     context: "Quartet",
+    isHighlight: true,
   },
 ];
 
